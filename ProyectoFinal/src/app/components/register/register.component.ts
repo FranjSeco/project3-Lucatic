@@ -3,6 +3,7 @@ import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { User } from '../../model/user-interface';
 
 import { AuthService } from 'src/app/services/auth.service';
+
 @Component({
   selector: 'app-register',
   templateUrl: './register.component.html',
@@ -17,6 +18,7 @@ export class RegisterComponent implements OnInit {
   constructor(private auth: AuthService) {}
 
   ngOnInit(): void {}
+
   onSubmit() {
     if (!this.name) {
       alert('Please add name');
@@ -31,12 +33,12 @@ export class RegisterComponent implements OnInit {
     };
 
     console.log(newUser);
-
     this.onAddUser.emit(newUser);
     // this.name = '';
     // this.genero = '';
     // this.email = '';
     // this.password = NaN;
+    this.register(newUser);
   }
 
   register(user: User) {

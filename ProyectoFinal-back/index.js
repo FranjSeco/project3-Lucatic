@@ -2,15 +2,13 @@ import express from 'express';
 
 import mongoose from 'mongoose';
 
-import fetch from "node-fetch";
-
 import { mockUsers } from './mockUsers/mockUsers.js';
-import UserModel from './models/users.js';
-
-import { celebrate, Joi } from 'celebrate';
+import userRoute from './routes/users.js';
 
 const app = express();
 
+import cors from 'cors';
+import bodyParser from 'body-parser';
 
 mongoose.connect('mongodb://localhost:27017/proyectoFinal', {
   useNewUrlParser: true,
@@ -18,29 +16,14 @@ mongoose.connect('mongodb://localhost:27017/proyectoFinal', {
   useFindAndModify: false,
   useUnifiedTopology: true,
 });
-
+app.use(bodyParser.json());
 app.use(express.json());
+app.use(cors());
 
 console.log(mockUsers);
 
 
-export const createUser = (req, res, next) => {
-  UserModel.create({
-    name: req.name,
-    genero: req.genero,
-    email: req.email,
-    password: req.password,
-  })
-};
-
-app.post('/register', celebrate({
-  body: Joi.object().keys({
-    email: Joi.string().required().email(),
-    password: Joi.string().required().min(5),
-    name: Joi.string().required().min(2),
-    genero: Joi.string().required()
-  }).unknown(true),
-}), createUser)
+app.post('/register', userRoute);
 
 
 // mockUsers.map(item => {
