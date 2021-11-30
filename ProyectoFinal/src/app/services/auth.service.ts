@@ -1,16 +1,4 @@
 import { Injectable } from '@angular/core';
-<<<<<<< HEAD
-import { User } from '../model/user-interface';
-import {
-  HttpClient,
-  HttpHeaders,
-  HttpErrorResponse,
-} from '@angular/common/http';
-
-import { catchError, map } from 'rxjs/operators';
-import { Observable, throwError } from 'rxjs';
-=======
->>>>>>> 523c5388bf5638f60a3d0b74337ce1fe6c2d4e69
 
 import { UserInterface } from '../model/user-interface';
 
