@@ -26,14 +26,13 @@ export class RegisterComponent implements OnInit {
   addUser() {
     this.auth.adduser(this.usuario).subscribe(
       () => {
-        console.log(this.usuario);
         this.ngZone.run(() => this.router.navigateByUrl('/adduser'));
       },
       (err) => {
         console.log(err);
       }
     );
-
+    console.log(this.usuario);
     this.usuario = {} as UserInterface;
   }
 }

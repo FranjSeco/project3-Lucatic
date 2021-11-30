@@ -24,6 +24,15 @@ export class AuthService {
       .post(API_URL, user)
       .pipe(catchError(this.handleError));
   }
+
+  login(email: string, password: any) {
+    let API_URL = `${this.REST_API}/login`;
+    console.log('Estamos en login Auth');
+    return this.httpClient
+      .post(API_URL, email, password)
+      .pipe(catchError(this.handleError));
+  }
+
   handleError(error: HttpErrorResponse) {
     let errorMessage = '';
     if (error.error instanceof ErrorEvent) {
