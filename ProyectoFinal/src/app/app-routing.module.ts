@@ -3,10 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { AppComponent } from './app.component';
 import { RegisterComponent } from './components/register/register.component';
 
-const routes: Routes = [
-  { path: '', component: AppComponent },
-  { path: 'register', component: RegisterComponent },
-];
+const routes: Routes = [{ path: 'register', component: RegisterComponent }];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],

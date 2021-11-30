@@ -15,8 +15,10 @@ const userSchema = new mongoose.Schema({
     type: String,
   },
   password: {
-    type: Number,
+    type: String || Number,
   }
+}, {
+  collection: 'proyectoFinal'
 });
 
 export default mongoose.model('user', userSchema);
