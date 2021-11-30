@@ -39,7 +39,7 @@
   justify-content: space-between;
   align-items: center;
   gap: 10px;
-  color: white;
+  color: #e9ebee;
   margin-left: 12px;
   padding: 5px;
   border-radius: 36px;
@@ -52,7 +52,7 @@
 
 .work {
   cursor: pointer;
-  background-color: rgba(0, 0, 0, 0.1);
+  background-color: rgba(0, 0, 0, 0.2);
   border-radius: 50%;
   padding: 4px;
   margin-right: 12px;
@@ -61,6 +61,8 @@
 .rateo {
   height: 24px;
   width: 24px;
+  color: white;
+  margin: 2px;
 }
 
 .fa-suitcase {

@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+<<<<<<< HEAD
 import { User } from '../model/user-interface';
 import {
   HttpClient,
@@ -8,32 +9,33 @@ import {
 
 import { catchError, map } from 'rxjs/operators';
 import { Observable, throwError } from 'rxjs';
+=======
+>>>>>>> 523c5388bf5638f60a3d0b74337ce1fe6c2d4e69
 
-const httpOptions = {
-  headers: new HttpHeaders({
-    Accept: 'application/json',
-    'Content-Type': 'application/json',
-  }),
-};
+import { UserInterface } from '../model/user-interface';
+
+import { Observable, throwError } from 'rxjs';
+import { catchError, map } from 'rxjs/operators';
+import {
+  HttpClient,
+  HttpHeaders,
+  HttpErrorResponse,
+} from '@angular/common/http';
 
 @Injectable({
   providedIn: 'root',
 })
 export class AuthService {
-  private apiUrl = 'localhost:8080';
+  REST_API: string = 'http://localhost:8080/api';
+  httpHeaders = new HttpHeaders().set('Content-Type', 'application/json');
+  constructor(private httpClient: HttpClient) {}
 
-  constructor(private http: HttpClient) {}
-
-  register(user: User): Observable<any> {
-    const url = `${this.apiUrl}/register`;
-    console.log(user);
-    console.log('Hemos llegado aqui');
-
-    return this.http
-      .post(url, user, httpOptions)
+  adduser(user: UserInterface): Observable<any> {
+    let API_URL = `${this.REST_API}/adduser`;
+    return this.httpClient
+      .post(API_URL, user)
       .pipe(catchError(this.handleError));
   }
-
   handleError(error: HttpErrorResponse) {
     let errorMessage = '';
     if (error.error instanceof ErrorEvent) {

@@ -34,9 +34,23 @@ $ProyectoFinal-theme: mat.define-light-theme((
 @include mat.all-component-themes($ProyectoFinal-theme);
 
 /* You can add global styles to this file, and also import other style files */
+<<<<<<< HEAD
 body {
   margin: 0px;
 }
 
+=======
+@import "~@angular/material/prebuilt-themes/indigo-pink.css";
+
+.icon-content{
+    display: flex;
+    flex-direction: row;
+    width: 300px;
+  }
+  
+  .logo-icon{
+   width: 100%;
+  }
+>>>>>>> 523c5388bf5638f60a3d0b74337ce1fe6c2d4e69
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
