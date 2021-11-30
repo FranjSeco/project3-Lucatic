@@ -14,30 +14,14 @@ const httpOptions = {
   providedIn: 'root',
 })
 export class AuthService {
-  private apiUrl = 'localhost:27017/proyectoFinal';
+  private apiUrl = 'localhost:8080';
 
   constructor(private http: HttpClient) {}
 
   register(user: User): Observable<User> {
-    const url = `${this.apiUrl}/signup`;
+    const url = `${this.apiUrl}/register`;
+    console.log(user);
     console.log('Hemos llegado aqui');
     return this.http.post<User>(url, user, httpOptions);
   }
-
-  // register(user: User) {
-  //   return fetch(`${this.BASE_URL}/signup`, {
-  //     method: 'POST',
-  //     headers: {
-  //       Accept: 'application/json',
-  //       'Content-Type': 'application/json',
-  //     },
-  //     body: JSON.stringify({ user }),
-  //   })
-  //     .then((res) => {
-  //       return res.json();
-  //     })
-  //     .then((res) => {
-  //       return res;
-  //     });
-  // }
 }
