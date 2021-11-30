@@ -1,16 +1,16 @@
-import express from 'express';
+import express from "express";
 
-import mongoose from 'mongoose';
+import mongoose from "mongoose";
 
-import { mockUsers } from './mockUsers/mockUsers.js';
-import userRoute from './routes/users.js';
+import { mockUsers } from "./mockUsers/mockUsers.js";
+import userRoute from "./routes/users.js";
 
 const app = express();
 
-import cors from 'cors';
-import bodyParser from 'body-parser';
+import cors from "cors";
+import bodyParser from "body-parser";
 
-mongoose.connect('mongodb://localhost:27017/proyectoFinal', {
+mongoose.connect("mongodb://localhost:27017/proyectoFinal", {
   useNewUrlParser: true,
   useCreateIndex: true,
   useFindAndModify: false,
@@ -22,19 +22,22 @@ app.use(cors());
 
 console.log(mockUsers);
 
+app.post("/register", userRoute);
 
-app.post('/register', userRoute);
-
-
-// mockUsers.map(item => {
+// mockUsers.map((item) => {
 //   createUser({
 //     name: item.user,
 //     genero: item.genero,
 //     email: item.email,
-//     password: item.password
+//     password: item.password,
 //   });
-// })
+// });
 
 app.listen(8080, () => {
-  console.log('Escuchando por el puerto 8080');
+  console.log("Escuchando por el puerto 8080");
+});
+
+app.get("/register", (req, res) => {
+  res.send("invalid endpoint");
+  console.log(res);
 });

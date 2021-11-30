@@ -29,7 +29,7 @@ export class RegisterComponent implements OnInit {
       name: this.name,
       genero: this.genero,
       email: this.email,
-      password: this.password,
+      password: 1,
     };
 
     console.log(newUser);

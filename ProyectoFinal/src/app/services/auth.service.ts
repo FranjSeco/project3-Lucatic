@@ -1,7 +1,13 @@
 import { Injectable } from '@angular/core';
 import { User } from '../model/user-interface';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { Observable } from 'rxjs';
+import {
+  HttpClient,
+  HttpHeaders,
+  HttpErrorResponse,
+} from '@angular/common/http';
+
+import { catchError, map } from 'rxjs/operators';
+import { Observable, throwError } from 'rxjs';
 
 const httpOptions = {
   headers: new HttpHeaders({
@@ -18,10 +24,26 @@ export class AuthService {
 
   constructor(private http: HttpClient) {}
 
-  register(user: User): Observable<User> {
+  register(user: User): Observable<any> {
     const url = `${this.apiUrl}/register`;
     console.log(user);
     console.log('Hemos llegado aqui');
-    return this.http.post<User>(url, user, httpOptions);
+
+    return this.http
+      .post(url, user, httpOptions)
+      .pipe(catchError(this.handleError));
+  }
+
+  handleError(error: HttpErrorResponse) {
+    let errorMessage = '';
+    if (error.error instanceof ErrorEvent) {
+      // Handle client error
+      errorMessage = error.error.message;
+    } else {
+      // Handle server error
+      errorMessage = `Error Code: ${error.status}\nMessage: ${error.message}`;
+    }
+    console.log(errorMessage);
+    return throwError(errorMessage);
   }
 }

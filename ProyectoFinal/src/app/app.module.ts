@@ -6,10 +6,12 @@ import { HttpClientModule } from '@angular/common/http';
 
 import { AppComponent } from './app.component';
 import { RegisterComponent } from './components/register/register.component';
+import { DisplayComponent } from './components/display/display.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
-  declarations: [AppComponent, RegisterComponent],
-  imports: [BrowserModule, AppRoutingModule, FormsModule, HttpClientModule],
+  declarations: [AppComponent, RegisterComponent, DisplayComponent],
+  imports: [BrowserModule, AppRoutingModule, FormsModule, HttpClientModule, BrowserAnimationsModule],
   providers: [],
   bootstrap: [AppComponent],
 })
