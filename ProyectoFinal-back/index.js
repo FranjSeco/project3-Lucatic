@@ -8,11 +8,10 @@ import user from "./models/users.js";
 mongoose.Promise = global.Promise;
 
 let dbData = user;
-//
 //mongodb://localhost:27017/proyectoFinal
 mongoose
   .connect(
-    "mongodb+srv://Admiche:AdmicheContraseña@cluster0.n80ht.mongodb.net/myFirstDatabase?retryWrites=true&w=majority",
+    "mongodb+srv://Admiche:AdmicheContraseÃ±a@cluster0.n80ht.mongodb.net/myFirstDatabase?retryWrites=true&w=majority",
     {
       useNewUrlParser: true,
       //useFindAndModify: false,
@@ -68,6 +67,7 @@ dbData.find((err, data) => {
     console.log(item);
   });
 });
+
 dbData.find(function (err, data) {
   if (data.length < 4) {
     mockUsers.map((item) => {
