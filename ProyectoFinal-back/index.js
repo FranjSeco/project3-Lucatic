@@ -56,11 +56,15 @@ const fakeUsers = (req, res, next) => {
   })
 }
 
-
+dbData.find((err, data) => {
+  data.map(item => {
+    console.log(item)
+  })
+})
 dbData.find(function (err, data) {
   if (data.length < 4) {
     mockUsers.map((item) => {
-      console.log(item)
+
       fakeUsers(item)
     });
     console.log('Relleno agregado')

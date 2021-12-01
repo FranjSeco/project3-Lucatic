@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { NgZone } from '@angular/core';
 import { UserInterface } from '../../model/user-interface';
 import { Router } from '@angular/router';
@@ -10,7 +10,7 @@ import { AuthService } from 'src/app/services/auth.service';
   styleUrls: ['./register.component.scss'],
 })
 export class RegisterComponent implements OnInit {
-  @Input() usuario!: UserInterface;
+  usuario!: UserInterface;
   constructor(
     private auth: AuthService,
     private ngZone: NgZone,

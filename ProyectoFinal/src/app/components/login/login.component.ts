@@ -21,7 +21,8 @@ export class LoginComponent implements OnInit {
   login() {
     console.log(this.email, this.password);
     this.auth.login(this.email, this.password).subscribe(
-      () => {
+      (data) => {
+        Object.keys(data).map((item) => console.log(item[0]));
         this.ngZone.run(() => this.router.navigateByUrl('/login'));
       },
       (err) => {
