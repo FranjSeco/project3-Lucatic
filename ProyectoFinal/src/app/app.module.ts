@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 
 import { MatButtonModule } from '@angular/material/button';
@@ -12,9 +12,10 @@ import { AppComponent } from './app.component';
 import { RegisterComponent } from './components/register/register.component';
 import { DisplayComponent } from './components/display/display.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { LoginComponent } from './components/login/login.component';
 
 @NgModule({
-  declarations: [AppComponent, RegisterComponent, DisplayComponent],
+  declarations: [AppComponent, RegisterComponent, DisplayComponent, LoginComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
@@ -24,6 +25,10 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     MatButtonModule,
     MatFormFieldModule,
     MatInputModule,
+<<<<<<< HEAD
+=======
+    ReactiveFormsModule,
+>>>>>>> d9cde88be89602631c947095f3ef10866d00a6e9
   ],
   providers: [],
   bootstrap: [AppComponent],

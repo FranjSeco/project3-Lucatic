@@ -24,6 +24,39 @@ export class AuthService {
       .post(API_URL, user)
       .pipe(catchError(this.handleError));
   }
+
+  login(email: string, password: any) {
+    let API_URL = `${this.REST_API}/login`;
+    console.log(email, password, 'Estamos en login Auth');
+    console.log(localStorage);
+    return this.httpClient
+      .post(API_URL, { email, password })
+      .pipe(catchError(this.handleError));
+  }
+  // authorize(email: string, password: any) {
+  //   let API_URL = `${this.REST_API}/login`;
+  //   return this.httpClient.post(API_URL, );
+  // }
+
+  //   authorize = (email, password) => {
+  //     return fetch(`${BASE_URL}/signin`, {
+  //         method: 'POST',
+  //         headers: {
+  //             'Accept': 'application/json',
+  //             'Content-Type': 'application/json'
+  //         },
+  //         body: JSON.stringify({ email, password })
+  //     })
+  //         .then((res) => {
+  //             return res.json()
+  //         })
+  //         .then((data) => {
+  //             localStorage.setItem('jwt', data.token);
+  //             return data;
+  //         })
+  //         .catch((err) => console.log(err));
+  // }
+
   handleError(error: HttpErrorResponse) {
     let errorMessage = '';
     if (error.error instanceof ErrorEvent) {
