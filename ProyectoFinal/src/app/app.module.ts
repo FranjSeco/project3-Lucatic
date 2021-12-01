@@ -14,7 +14,7 @@ import { DisplayComponent } from './components/display/display.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { LoginComponent } from './components/login/login.component';
 import { FormularioComponent } from './components/formulario/formulario.component';
-
+import { CardComponent } from './components/card/card.component';
 
 @NgModule({
   declarations: [
@@ -23,7 +23,7 @@ import { FormularioComponent } from './components/formulario/formulario.componen
     DisplayComponent,
     LoginComponent,
     FormularioComponent,
-   
+    CardComponent,
   ],
   imports: [
     BrowserModule,
