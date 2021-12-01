@@ -17,7 +17,7 @@ export class TakeUsersService {
   constructor(private httpClient: HttpClient) {}
 
   getAllUsers() {
-    let API_URL = `${this.REST_API}/display`;
+    let API_URL = `${this.REST_API}`;
     return this.httpClient.get(API_URL).pipe(catchError(this.handleError));
   }
 

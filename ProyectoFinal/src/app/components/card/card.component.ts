@@ -16,51 +16,46 @@ import{ UserInterface } from"../../model/user-interface";
 })
 export class CardComponent implements OnInit {
 
+todosPerfiles: any=[];
+PersonaVisualizada:UserInterface;
+
+
 Yo:UserInterface={
-  
+  id:   "" +localStorage.getItem("id"),
   name: ""+localStorage.getItem("name"),
   email: ""+localStorage.getItem("email"),
   password:""+localStorage.getItem("password"),
   genero: ""+localStorage.getItem("genero"),
 }; 
 
-PersonaVisualizada:UserInterface;
+
     
-
-
-
   constructor(private authservicio:AuthService, private router:Router, private ngZone:NgZone, private cogerUsuarios:TakeUsersService) { 
-    //recoger id de la persona visualizada
+    this.getAllUsers()
     this.PersonaVisualizada = {} as UserInterface  ;
   
- 
+   
    }
 
-
+  
 
 
   ngOnInit(): void {
+   
+ 
   }
 
 
   darLike(){
-    //coger el atributo de likes dados de yo
-    this.Yo.likesDado?.push(/*id de la otra persona*/);
-    this.authservicio.updateUser(localStorage.getItem("id"),this.Yo).subscribe(
-      () => {
-        console.log('Like dado');
-        this.ngZone.run(() => this.router.navigateByUrl('/updateUser'));
-        
-      },
-      (err) => {
-        console.log(err);
-      }
-    );
-    //coger el atributos de likes recividos de yo
-    this.PersonaVisualizada.likesRecivido?.push(localStorage.getItem("id")+"");
+    //ejemplo: cambiar luego
+    
+    this.PersonaVisualizada=this.todosPerfiles[3];
 
-      this.PersonaVisualizada.likesRecivido?.push(/*id de Yo*/);
-    this.authservicio.updateUser(localStorage.getItem("id"),this.PersonaVisualizada).subscribe(
+    console.log(this.PersonaVisualizada)
+
+    this.Yo.likesDado?.push(this.PersonaVisualizada.id+"");
+
+    this.authservicio.updateUser(localStorage.getItem("id"),this.Yo).subscribe(
       () => {
         console.log('Like dado');
         this.ngZone.run(() => this.router.navigateByUrl('/updateUser'));
@@ -70,9 +65,13 @@ PersonaVisualizada:UserInterface;
         console.log(err);
       }
     );
-//coger el atributos de likes recividos de yo
-    this.Yo.likesDado?.push(/*id de la otra persona*/);
-    this.authservicio.updateUser(localStorage.getItem("id"),this.Yo).subscribe(
+
+
+   
+    this.PersonaVisualizada.likesRecivido?.push(this.Yo.id+"");
+
+
+    this.authservicio.updateUser(this.PersonaVisualizada.id+"",this.PersonaVisualizada).subscribe(
       () => {
         console.log('Like dado');
         this.ngZone.run(() => this.router.navigateByUrl('/updateUser'));
@@ -90,4 +89,11 @@ PersonaVisualizada:UserInterface;
 
   }
 
+
+  getAllUsers() {
+
+    this.cogerUsuarios.getAllUsers().subscribe(res=>{ console.log(res)
+      this.todosPerfiles=res;} );
+    }
+ 
 }
