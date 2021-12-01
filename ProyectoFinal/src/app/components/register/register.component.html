@@ -10,7 +10,11 @@
         <mat-label class="title">Nombre</mat-label>
         <input matInput type="text" class="relleno" placeholder="Nombre" [(ngModel)]="usuario.name">
       </mat-form-field>
-<div class="gender">
+      <mat-form-field class="example-full-width" appearance="fill">
+        <mat-label class="title">Password</mat-label>
+        <input matInput type="password" class="relleno" placeholder="Nombre" [(ngModel)]="usuario.password">
+      </mat-form-field>
+      <div class="gender">
   <label>Genero</label><br><br>
   <input type="radio" id="Hombre" name="genero" value="Hombre" [(ngModel)]="usuario.genero" >
     <label class="italic" for="Hombre">Hombre</label>
