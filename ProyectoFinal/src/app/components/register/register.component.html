@@ -10,18 +10,13 @@
         <mat-label class="title">Nombre</mat-label>
         <input matInput type="text" class="relleno" placeholder="Nombre" [(ngModel)]="usuario.name">
       </mat-form-field>
-
-      <mat-form-field class="example-full-width" appearance="fill">
-        <mat-label class="title">Género</mat-label>
-        <input matInput type="text" class="relleno" placeholder="Genero" [(ngModel)]="usuario.genero">
-      </mat-form-field>
-
-  <label>Genero</label><br>
+<div class="gender">
+  <label>Genero</label><br><br>
   <input type="radio" id="Hombre" name="genero" value="Hombre" [(ngModel)]="usuario.genero" >
-    <label for="Hombre">Hombre</label><br>
+    <label class="italic" for="Hombre">Hombre</label>
     <input type="radio" id="Mujer" name="genero" value="Mujer" [(ngModel)]="usuario.genero">
-    <label for="Mujer">Mujer</label><br>
-
+    <label class="italic" for="Mujer">Mujer</label>
+</div><br>
       <mat-form-field class="example-full-width" appearance="fill">
         <mat-label class="title">Email</mat-label>
         <input matInput type="text" class="relleno" placeholder="Email" [(ngModel)]="usuario.email">
