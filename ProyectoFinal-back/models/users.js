@@ -58,22 +58,22 @@ const userSchema = new mongoose.Schema({
 
   },
   dislikeDado: {
-    type: [String],
+    type: String,
     required: false,
 
   },
   likesDado: {
-    type: [String],
+    type: String,
     required: false,
 
   },
   likesRecivido: {
-    type: [String],
+    type: String,
     required: false,
 
   },
   dislikeRecivido: {
-    type: [String],
+    type: String,
     required: false,
 
   },
