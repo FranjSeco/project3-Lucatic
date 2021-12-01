@@ -56,7 +56,26 @@ const userSchema = new mongoose.Schema({
     required: false,
       
   },
-
+  dislikeDado: {
+    type: [String],
+    required: false,
+      
+  },
+  likesDado: {
+    type: [String],
+    required: false,
+      
+  }, 
+  likesRecivido: {
+    type: [String],
+    required: false,
+      
+  },
+  dislikeRecivido: {
+    type: [String],
+    required: false,
+      
+  },
 
 }, {
   collection: 'proyectoFinal'
