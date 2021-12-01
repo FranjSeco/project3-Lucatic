@@ -1,5 +1,5 @@
+//TEST DE BDD
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-
 import { DisplayComponent } from './display.component';
 
 describe('DisplayComponent', () => {
