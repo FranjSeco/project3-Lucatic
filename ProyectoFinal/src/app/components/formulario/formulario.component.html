@@ -1,6 +1,12 @@
 
+
+
+<h2>Bienvenido {{datosPrevios.name}}</h2>
+<p>Correo:{{datosPrevios.email}} </p>
 <label >Nombre</label>
-<input matInput  type="text" placeholder="Nombre" [(ngModel)]="datosPersonales.name" >
+
+
+<input matInput  type="text" placeholder={{datosPrevios.name}} [(ngModel)]="datosPersonales.name" >
 
 
 <label >Edad</label>
@@ -17,9 +23,9 @@
 
 
 <label>Genero</label><br>
-<input type="radio" id="Hombre" name="genero" value="Hombre" [(ngModel)]="datosPersonales.genero" >
+<input type="radio" id="Hombre" name="genero" value="Hombre" [(ngModel)]="datosPersonales.genero"  >
   <label for="Hombre">Hombre</label><br>
-  <input type="radio" id="Mujer" name="genero" value="Mujer" [(ngModel)]="datosPersonales.genero">
+  <input type="radio" id="Mujer" name="genero" value="Mujer" [(ngModel)]="datosPersonales.genero"  [checked]="true">
   <label for="Mujer">Mujer</label><br>
 
 <label>Hobbies</label>
