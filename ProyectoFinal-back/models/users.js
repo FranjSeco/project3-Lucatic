@@ -24,57 +24,58 @@ const userSchema = new mongoose.Schema({
   edad: {
     type: String,
     required: false,
-      
+
   },
   localidad: {
     type: String,
     required: false,
-      
-  }, 
+
+  },
   fumador: {
     type: Boolean,
     required: false,
-      
+
   },
   deportista: {
     type: Boolean,
     required: false,
-      
+
   },
   cinefilo: {
     type: Boolean,
     required: false,
-      
+
   },
   playa: {
     type: Boolean,
     required: false,
-      
+
   },
-    foto: {
+  foto: {
     type: String,
+    default: 'https://images.unsplash.com/photo-1638349978185-b2556ec8436a?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1740&q=80',
     required: false,
-      
+
   },
   dislikeDado: {
     type: [String],
     required: false,
-      
+
   },
   likesDado: {
     type: [String],
     required: false,
-      
-  }, 
+
+  },
   likesRecivido: {
     type: [String],
     required: false,
-      
+
   },
   dislikeRecivido: {
     type: [String],
     required: false,
-      
+
   },
 
 }, {
