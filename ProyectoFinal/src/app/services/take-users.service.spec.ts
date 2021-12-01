@@ -1,16 +1,10 @@
-// import { TestBed } from '@angular/core/testing';
+//TEST DE BDD
+import { TakeUsersService } from './take-users.service';
 
-// import { TakeUsersService } from './take-users.service';
+describe('TakeUsersService', () => {
+  let service: TakeUsersService;
 
-// describe('TakeUsersService', () => {
-//   let service: TakeUsersService;
-
-//   beforeEach(() => {
-//     TestBed.configureTestingModule({});
-//     service = TestBed.inject(TakeUsersService);
-//   });
-
-//   it('should be created', () => {
-//     expect(service).toBeTruthy();
-//   });
-// });
+  it('should be created', () => {
+    expect(service).not.toBeNull();
+  });
+});

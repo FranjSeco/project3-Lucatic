@@ -1,7 +1,10 @@
-// import { UserInterface } from './user-interface';
+//TEST DE BDD
+import { UserInterface } from './user-interface';
 
-// describe('UserInterface', () => {
-//   it('should create an instance', () => {
-//     console.log("oli");
-//   });
-// });
+describe('UserInterface', () => {
+    let component: UserInterface;
+
+  it('should create an instance', () => {
+    expect(component).not.toBeNull();
+  });
+});
