@@ -2,7 +2,7 @@ export interface UserInterface {
   id?: number;
   name: string;
   genero?: string;
-  password: number;
+  password: string;
   email: string;
   edad?:number;
   localidad?:string;
@@ -12,4 +12,6 @@ export interface UserInterface {
   cinefilo?:boolean;
   playa?:boolean;
   montana?:boolean;
+  likes?:[];
+  dislike?:[];
 }
