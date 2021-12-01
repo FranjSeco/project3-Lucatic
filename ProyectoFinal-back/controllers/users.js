@@ -31,13 +31,17 @@ export const login = (req, res, next) => {
   console.log(dbData);
   return dbData.findUserByCredentials(email, password)
     .then((user) => {
+
       console.log(user, 'en login')
+
       if (!user) {
         throw new NotAuthorized('Not Authorized');
       }
 
       const userID = user._id;
+
       console.log(userID, 'id');
+
       res.cookie('ID', userID, {
         maxAge: 3600000 * 24 * 7,
         httpOnly: true,
