@@ -1,5 +1,5 @@
 export interface UserInterface {
-  id?: number;
+  id?: string;
   name: string;
   genero?: string;
   password: string;
@@ -12,6 +12,8 @@ export interface UserInterface {
   cinefilo?:boolean;
   playa?:boolean;
   montana?:boolean;
-  likes?:[];
-  dislike?:[];
+  likesDado?:[string];
+  dislikeDado?:[string];
+  likesRecivido?:[string];
+  dislikeRecivido?:[string];
 }
