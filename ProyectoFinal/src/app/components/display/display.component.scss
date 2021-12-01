@@ -171,13 +171,19 @@ button {
 .profiles {
   display: flex;
   flex-wrap: wrap;
-  gap: 16px;
-  width: 359px;
+  flex-basis: 33.333333%;
+  justify-content: space-evenly;
+  width: 100%;
   overflow-y: hidden;
 }
 
 .p-card {
-  width: 33%;
   padding: 8px;
   background: #e6ae16;
+}
+
+.p-card img {
+  height: 120px;
+  width: 103px;
+  border-radius: 5px;
 }
