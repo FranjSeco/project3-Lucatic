@@ -1,10 +1,11 @@
-// //TEST DE BDD
+//TEST DE BDD
 import { ComponentFixture} from '@angular/core/testing';
-import { ReactiveFormsModule, FormBuilder } from '@angular/forms';
+import { ReactiveFormsModule } from '@angular/forms';
 import { inject, TestBed } from '@angular/core/testing';
 import { FormsModule} from '@angular/forms';
 import { FormularioComponent } from './formulario.component';
 import { HttpClientTestingModule } from '@angular/common/http/testing';
+import { RouterTestingModule } from '@angular/router/testing';
 
 describe('FormularioComponent', () => {
   let component: FormularioComponent;
@@ -13,7 +14,7 @@ describe('FormularioComponent', () => {
   beforeEach(async () => {
     TestBed.configureTestingModule({
       declarations: [ FormularioComponent ],
-      imports: [ ReactiveFormsModule, FormsModule, HttpClientTestingModule ],
+      imports: [ ReactiveFormsModule, FormsModule, HttpClientTestingModule, RouterTestingModule],
       providers: [{provide: FormularioComponent}],
     })
     .compileComponents();
@@ -33,6 +34,6 @@ describe('FormularioComponent', () => {
   it('should detect form is valid', () => {
     fixture.nativeElement.querySelector('button').click();
 
-    expect(component.agregarDatosPersonales()).toEqual();
+    expect(component.agregarDatosPersonales()).not.toBeNull();
   });
   });
