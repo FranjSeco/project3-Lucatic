@@ -31,7 +31,7 @@
     align-content: center;
     align-self: center;
     background-color: rgba(0, 0, 0, 0.39);
-    padding: 3%;
+    padding: 1%;
     width: 300px;
     color: #fff;
   }
@@ -52,4 +52,11 @@
 
 .content-inside {
   position: relative;
+}
+
+.gender{
+  text-align: center;
+}
+.italic{
+  font-style: italic;
 }
