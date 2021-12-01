@@ -4,4 +4,12 @@ export interface UserInterface {
   genero: string;
   password: number;
   email: string;
+  edad?:number;
+  localidad?:string;
+  foto?:string;
+  fumador?:boolean;
+  deportista?:boolean;
+  cinefilo?:boolean;
+  playa?:boolean;
+  montana?:boolean;
 }
