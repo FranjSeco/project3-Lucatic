@@ -1,4 +1,4 @@
-// //TEST DE BDD
+//TEST DE BDD
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { CardComponent } from './card.component';
 import { HttpClientTestingModule } from '@angular/common/http/testing';
