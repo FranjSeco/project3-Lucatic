@@ -1,9 +1,9 @@
 <div class="content">
-  <div class="content-inside">
+  <div class="content-inside" *ngIf="hasRoute('/')">
     <div class="icon-content">
       <img class="logo-icon" src="../assets/Lucatinder(SinFondo).png" />
     </div>
-    <div class="register" *ngIf="hasRoute('/')">
+    <div class="register">
       <!-- <div class="bottom">
           <button id="myBtn" (click)="information()">oli</button>
         </div> -->
@@ -15,7 +15,7 @@
         Login
       </button>
     </div>
-    <router-outlet></router-outlet>
-  </div>
 
+  </div>
+  <router-outlet></router-outlet>
 </div>
