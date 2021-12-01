@@ -35,13 +35,11 @@ export const login = (req, res, next) => {
       if (!user) {
         throw new NotAuthorized('Not Authorized');
       }
-      const userID = user;
-      console.log(userID, 'id');
-      res.cookie('ID', userID, {
+      res.cookie('ID', user._id, {
         maxAge: 3600000 * 24 * 7,
         httpOnly: true,
       });
-      return res.send({ userID });
+      return res.send(user);
     })
     .catch(next);
 };

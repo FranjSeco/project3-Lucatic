@@ -12,8 +12,11 @@
 .module {
   min-width: 100vh;
   min-height: 100vh;
+
   background: #e9ebee91;
+
 }
+
 .module::before {
   content: "";
   top: 0;
