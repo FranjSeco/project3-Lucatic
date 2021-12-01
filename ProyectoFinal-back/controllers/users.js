@@ -63,3 +63,15 @@ export const  updateUser =(req, res, next) => {
   })
 }
 
+
+
+export const CogerUsuarios=(req, res) => {
+  dbData.find((error, data) => {
+  if (error) {
+    return next(error)
+  } else {
+    res.json(data)
+  }
+})
+}
+
