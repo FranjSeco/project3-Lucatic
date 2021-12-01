@@ -24,8 +24,6 @@ export const createUser = (req, res, next) => {
     .catch(next);
 };
 
-
-
 export const login = (req, res, next) => {
   const { email, password } = req.body;
   console.log(dbData);
@@ -43,4 +41,25 @@ export const login = (req, res, next) => {
     })
     .catch(next);
 };
+export const getAllUsers = (req, res, next) => {
+  dbData.find({})
+    .then((users) => {
+      res.status(200).send({ data: users })
+    })
+    .catch(next);
+}
+
+export const  updateUser =(req, res, next) => {
+  dbData.findByIdAndUpdate(req.params.id, {
+      $set: req.body
+  }, (error, data) => {
+      if (error) {
+          return next(error);
+          console.log(error)
+      } else {
+          res.json(data)
+          console.log('user updated successfully!')
+      }
+  })
+}
 

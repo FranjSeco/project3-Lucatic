@@ -20,7 +20,44 @@ const userSchema = new mongoose.Schema({
     required: true,
     minlength: 5,
     select: false,
-  }
+  },
+  edad: {
+    type: String,
+    required: false,
+      
+  },
+  localidad: {
+    type: String,
+    required: false,
+      
+  }, 
+  fumador: {
+    type: Boolean,
+    required: false,
+      
+  },
+  deportista: {
+    type: Boolean,
+    required: false,
+      
+  },
+  cinefilo: {
+    type: Boolean,
+    required: false,
+      
+  },
+  playa: {
+    type: Boolean,
+    required: false,
+      
+  },
+    foto: {
+    type: String,
+    required: false,
+      
+  },
+
+
 }, {
   collection: 'proyectoFinal'
 });
