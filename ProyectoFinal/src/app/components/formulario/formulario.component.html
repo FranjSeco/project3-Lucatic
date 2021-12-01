@@ -1,0 +1,39 @@
+
+<label >Nombre</label>
+<input matInput  type="text" placeholder="Nombre" [(ngModel)]="datosPersonales.name" >
+
+
+<label >Edad</label>
+<input matInput  type="number" placeholder="Edad"  [(ngModel)]="datosPersonales.edad" >
+
+
+<label >Localidad</label>
+<input matInput type="text" placeholder="Localidad"  [(ngModel)]="datosPersonales.localidad" >
+<br>
+
+<label >Foto</label>
+<input matInput type="text" placeholder="https://st2.depositphotos.com/2931363/6511/i/600/depositphotos_65116237-stock-photo-happy-young-man-in-shirt.jpg"  [(ngModel)]="datosPersonales.foto" >
+<br>
+
+
+<label>Genero</label><br>
+<input type="radio" id="Hombre" name="genero" value="Hombre" [(ngModel)]="datosPersonales.genero" >
+  <label for="Hombre">Hombre</label><br>
+  <input type="radio" id="Mujer" name="genero" value="Mujer" [(ngModel)]="datosPersonales.genero">
+  <label for="Mujer">Mujer</label><br>
+
+<label>Hobbies</label>
+<br>
+<input type="checkbox" id="Fumador" value="Fumador" [(ngModel)]="datosPersonales.fumador">
+<label for="Fumador">Fumador</label><br>
+<input type="checkbox" id="Deportista" value="Deportista" [(ngModel)]="datosPersonales.deportista">
+<label for="Deportista"> Deportista</label><br>
+<input type="checkbox" id="Cinefilo"value="Cinefilo" [(ngModel)]="datosPersonales.cinefilo">
+<label for="Cinefilo"> Cinefilo</label><br>
+<input type="checkbox" id="Playa" value="Playa" [(ngModel)]="datosPersonales.playa">
+<label for="Playa"> Playa</label><br>
+<input type="checkbox" id="Montana"value="Montana" [(ngModel)]="datosPersonales.montana">
+<label for="Montana"> Montaña</label><br>
+
+
+<button (click)="agregarDatosPersonales()" >Enviar</button>

@@ -27,7 +27,6 @@ export class AuthService {
 
   login(email: string, password: any) {
     let API_URL = `${this.REST_API}/login`;
-    console.log(email, password, 'Estamos en login Auth');
     return this.httpClient
       .post(API_URL, { email, password })
       .pipe(catchError(this.handleError));

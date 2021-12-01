@@ -8,13 +8,17 @@ import user from "./models/users.js";
 mongoose.Promise = global.Promise;
 
 let dbData = user;
-
+//
+//mongodb://localhost:27017/proyectoFinal
 mongoose
-  .connect("mongodb://localhost:27017/proyectoFinal", {
-    useNewUrlParser: true,
-    //useFindAndModify: false,
-    useUnifiedTopology: true,
-  })
+  .connect(
+    "mongodb+srv://Admiche:AdmicheContraseña@cluster0.n80ht.mongodb.net/myFirstDatabase?retryWrites=true&w=majority",
+    {
+      useNewUrlParser: true,
+      //useFindAndModify: false,
+      useUnifiedTopology: true,
+    }
+  )
   .then(
     () => {
       console.log("Database sucessfully connected ");
