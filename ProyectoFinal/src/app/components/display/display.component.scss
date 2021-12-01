@@ -1,3 +1,8 @@
+.module {
+  display: flex;
+  flex-direction: row-reverse;
+}
+
 .cosa {
   background-image: url();
 
@@ -7,7 +12,9 @@
 .module {
   min-width: 100vh;
   min-height: 100vh;
-  padding: 80px;
+
+  background: #e9ebee91;
+
 }
 
 .module::before {
@@ -16,7 +23,7 @@
   left: 0;
   width: 100%;
   height: 100%;
-  background: #b1ccd8;
+  background: #e9ebee91;
   background-size: cover;
   background-repeat: no-repeat;
 }
@@ -45,6 +52,7 @@
   margin-left: 12px;
   padding: 5px;
   border-radius: 36px;
+  transition: 0.3s;
 }
 
 .user:hover {
@@ -52,12 +60,23 @@
   transition: 0.3s;
 }
 
+.name {
+  font-size: 15px;
+  font-weight: 500;
+}
+
 .work {
   cursor: pointer;
-  background-color: rgba(0, 0, 0, 0.2);
+  background-color: rgba(0, 0, 0, 0.1);
   border-radius: 50%;
-  padding: 4px;
+  padding: 6px;
   margin-right: 12px;
+  transition: 0.3s;
+}
+
+.work:hover {
+  background-color: rgba(0, 0, 0, 0.3);
+  transition: 0.3s;
 }
 
 .rateo {
@@ -65,11 +84,104 @@
   width: 24px;
   color: white;
   margin: 2px;
+  display: flex;
+  align-content: center;
+  text-align: center;
+}
+
+.rateo path {
+  fill: white;
 }
 
 .fa-suitcase {
   color: white;
   font-size: 20px;
-
   margin: 2px;
+}
+
+.gold {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  height: 138px;
+  padding: 16px;
+}
+
+.gold svg {
+  padding-bottom: 16px;
+}
+
+.line {
+  height: 4.5px;
+  width: 160px;
+  background: linear-gradient(135deg, #c1920f, #e6ae16 42%, #f7d472);
+  border: none;
+  margin: 0px;
+  margin-top: -4px;
+}
+
+.fiftyOff {
+  padding: 12px 0px;
+  font-style: italic;
+  font-weight: 700;
+  font-size: 16px;
+  letter-spacing: 1px;
+}
+
+.getGold {
+  position: relative;
+  width: 260px;
+  min-height: 50px;
+  background: linear-gradient(135deg, #c1920f, #e6ae16 42%, #f7d472);
+  border: none;
+  padding: 12px 0;
+  border-radius: 100px;
+  transition: 0.2s;
+  z-index: 1;
+  color: white;
+  font-weight: 700;
+}
+
+.getGold::before {
+  position: absolute;
+  content: "";
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background: #e6ae16 42%;
+  border-radius: 100px;
+  transition: opacity 0.2s linear;
+  z-index: -1;
+  opacity: 0;
+}
+.getGold:hover::before {
+  opacity: 1;
+}
+
+.profiles {
+  background: white;
+  min-height: fit-content;
+  overflow-y: hidden;
+}
+
+.p-nav {
+  display: flex;
+  gap: 20px;
+  padding-left: 20px;
+  padding-top: 12px;
+  height: 50px;
+}
+
+.p-opt {
+  padding: 0 8px;
+  font-weight: 500;
+  cursor: pointer;
+  letter-spacing: 0.5px;
+}
+
+.p-opt div {
+  padding-bottom: 2px;
 }
