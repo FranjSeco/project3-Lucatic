@@ -19,15 +19,18 @@ export class LoginComponent implements OnInit {
   ngOnInit(): void {}
 
   login() {
-    console.log(this.email, this.password);
     this.auth.login(this.email, this.password).subscribe(
       (data: any) => {
-        console.log(data.userID);
-        localStorage.setItem('id', data.userID);
+        console.log(data, 'this is data');
+        localStorage.setItem('id', data.userID._id);
+        localStorage.setItem('name', data.userID.name);
+        localStorage.setItem('email', data.userID.email);
         this.ngZone.run(() => this.router.navigateByUrl('/login'));
+        this.router.navigate(['/display']);
       },
       (err) => {
-        console.log(err);
+        console.log(err, 'error');
+        alert('Usuario o contraseña equivocados');
       }
     );
     console.log(localStorage);
