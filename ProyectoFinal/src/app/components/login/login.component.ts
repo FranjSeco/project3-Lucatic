@@ -22,7 +22,7 @@ export class LoginComponent implements OnInit {
     console.log(this.email, this.password);
     this.auth.login(this.email, this.password).subscribe(
       (data: any) => {
-        console.log(data.userID);
+        console.log(data.userID, 'this is login');
         localStorage.setItem('id', data.userID);
         this.ngZone.run(() => this.router.navigateByUrl('/login'));
       },
