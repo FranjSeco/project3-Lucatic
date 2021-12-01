@@ -9,8 +9,9 @@ mongoose.Promise = global.Promise;
 
 
 let dbData = user;
-
-mongoose.connect('mongodb://localhost:27017/proyectoFinal', {
+//
+//mongodb://localhost:27017/proyectoFinal
+mongoose.connect('mongodb+srv://Admiche:AdmicheContraseña@cluster0.n80ht.mongodb.net/myFirstDatabase?retryWrites=true&w=majority', {
   useNewUrlParser: true,
   //useFindAndModify: false,
   useUnifiedTopology: true
