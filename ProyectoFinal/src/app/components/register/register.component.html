@@ -1,28 +1,28 @@
-<form class="form">
+<div class="form">
   <button class="register-but" mat-raised-button color="accent" routerLink='/'>Home</button><br />
 
-    <mat-form-field class="example-full-width" appearance="fill">
-      <mat-label class="title">Nombre</mat-label>
-      <input matInput class="relleno" placeholder="Nombre" [(ngModel)]="usuario.name">
-    </mat-form-field>
+  <mat-form-field class="example-full-width" appearance="fill">
+    <mat-label class="title">Nombre</mat-label>
+    <input matInput type="text" class="relleno" placeholder="Nombre" [(ngModel)]="usuario.name">
+  </mat-form-field>
 
-    <mat-form-field class="example-full-width" appearance="fill">
-      <mat-label class="title">Género</mat-label>
-      <input matInput class="relleno" placeholder="Genero" [(ngModel)]="usuario.genero">
-    </mat-form-field>
+  <mat-form-field class="example-full-width" appearance="fill">
+    <mat-label class="title">Género</mat-label>
+    <input matInput type="text" class="relleno" placeholder="Genero" [(ngModel)]="usuario.genero">
+  </mat-form-field>
 
-    <mat-form-field class="example-full-width" appearance="fill">
-      <mat-label class="title">Password</mat-label>
-      <input matInput class="relleno" placeholder="Password" [(ngModel)]="usuario.password">
-    </mat-form-field>
+  <mat-form-field class="example-full-width" appearance="fill">
+    <mat-label class="title">Password</mat-label>
+    <input matInput type="password" class="relleno" placeholder="Password" [(ngModel)]="usuario.password">
+  </mat-form-field>
 
-    <mat-form-field class="example-full-width" appearance="fill">
-      <mat-label class="title">Email</mat-label>
-      <input matInput class="relleno" placeholder="Email" [(ngModel)]="usuario.email">
-    </mat-form-field>
+  <mat-form-field class="example-full-width" appearance="fill">
+    <mat-label class="title">Email</mat-label>
+    <input matInput type="text" class="relleno" placeholder="Email" [(ngModel)]="usuario.email">
+  </mat-form-field>
 
   <button (click)="addUser()">Añadir</button>
-</form>
+</div>
 
 
 <!-- [(ngModel)]="name" -->
