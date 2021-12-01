@@ -41,7 +41,6 @@ export const login = (req, res, next) => {
     })
     .catch(next);
 };
-
 export const getAllUsers = (req, res, next) => {
   dbData.find({})
     .then((users) => {
@@ -49,3 +48,18 @@ export const getAllUsers = (req, res, next) => {
     })
     .catch(next);
 }
+
+export const  updateUser =(req, res, next) => {
+  dbData.findByIdAndUpdate(req.params.id, {
+      $set: req.body
+  }, (error, data) => {
+      if (error) {
+          return next(error);
+          console.log(error)
+      } else {
+          res.json(data)
+          console.log('user updated successfully!')
+      }
+  })
+}
+

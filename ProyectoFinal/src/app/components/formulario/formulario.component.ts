@@ -1,7 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit,NgZone } from '@angular/core';
 //import{DatosPersonales} from"../../model/datos-personales"
 
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+
+import { Router, ActivatedRoute } from '@angular/router';
 
 import { FormsModule } from '@angular/forms';
 
@@ -11,6 +13,7 @@ import{AuthService} from "../../services/auth.service";
 import{UserInterface} from"../../model/user-interface";
 
 
+
 @Component({
   selector: 'app-formulario',
   templateUrl: './formulario.component.html',
@@ -18,29 +21,46 @@ import{UserInterface} from"../../model/user-interface";
 })
 export class FormularioComponent implements OnInit {
 
-
+datosPrevios:UserInterface;
   datosPersonales:UserInterface;
 
-  constructor(private formBuilder:FormBuilder, private from: FormsModule,private servicio:AuthService) {
+  constructor(private formBuilder:FormBuilder, private from: FormsModule,private servicio:AuthService, private ngZone:NgZone,private activatedRoute: ActivatedRoute,private router: Router,) {
     
   this.datosPersonales = {} as UserInterface  ;
+
+  this.datosPrevios=  {
+    
+    name: ""+localStorage.getItem("name"),
+    email: ""+localStorage.getItem("email"),
+    password:""+localStorage.getItem("password"),
+    genero: ""+localStorage.getItem("genero"),
+  }
+
      }
 
   ngOnInit(): void {
-    this.getCorreo()
+   
   }
 
-  agregarDatosPersonales(){
-//poner el servicio para dar entrada a la base de datos
-    console.log(this.datosPersonales)
+  agregarDatosPersonales(): any{
+    
+this.servicio.updateUser(localStorage.getItem("id"),this.datosPersonales).subscribe(
+  () => {
+    console.log('Data updated successfully!');
+    this.ngZone.run(() => this.router.navigateByUrl('/updateUser'));
+    localStorage.setItem("name",this.datosPersonales.name);
+  },
+  (err) => {
+    console.log(err);
+  }
+);
+this.datosPersonales = {} as UserInterface  ;
+  
   }
 
-  getCorreo(){
-//poner en el back y en el servicio metodos para coger el correo de la base de datos
-var cogerUsuario;
 
 
-  }
+  
 
 /*
   angForm = this.formBuilder.group({
