@@ -1,6 +1,10 @@
 .module {
   display: flex;
   flex-direction: row-reverse;
+  min-width: 100vh;
+  min-height: 100vh;
+  background: #e9ebee91;
+  display: flex;
 }
 
 .cosa {
@@ -29,7 +33,7 @@
 }
 
 .navbar {
-  width: 375px;
+  width: 375px !important;
   min-height: 100vh;
   border-right: 1px solid #e9ebee;
 }
@@ -157,6 +161,7 @@
   z-index: -1;
   opacity: 0;
 }
+
 .getGold:hover::before {
   opacity: 1;
 }
