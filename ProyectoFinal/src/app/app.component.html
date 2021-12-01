@@ -4,13 +4,15 @@
       <img class="logo-icon" src="../assets/Lucatinder(SinFondo).png">
     </div>
     <div class="register">
-        <!-- <div class="bottom">
+      <!-- <div class="bottom">
           <button id="myBtn" (click)="information()">oli</button>
         </div> -->
       <!-- <button class="register-but" mat-raised-button routerLink="formulario" color="accent">Open file</button> -->
       <!-- <p>Holi</p> -->
-      <button class="register-but" mat-raised-button *ngIf="hasRoute('/')" color="accent" routerLink='/register'>Register</button><br/>
-      <button class="register-but" mat-raised-button *ngIf="hasRoute('/')" color="accent" routerLink='/register'>Login</button>
+      <button class="register-but" mat-raised-button *ngIf="hasRoute('/')" color="accent"
+        routerLink='/register'>Register</button><br />
+      <button class="register-but" mat-raised-button *ngIf="hasRoute('/')" color="accent"
+        routerLink='/login'>Login</button>
       <router-outlet></router-outlet>
     </div>
   </div>
