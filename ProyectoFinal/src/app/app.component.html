@@ -1,7 +1,7 @@
-<div class="content">
+<div class="content" *ngIf="hasRoute('/')">
   <div class="content-inside">
     <div class="icon-content">
-      <img class="logo-icon" src="../assets/Lucatinder(SinFondo).png">
+      <img class="logo-icon" src="../assets/Lucatinder(SinFondo).png" />
     </div>
     <div class="register">
       <!-- <div class="bottom">
@@ -9,11 +9,25 @@
         </div> -->
       <!-- <button class="register-but" mat-raised-button routerLink="formulario" color="accent">Open file</button> -->
       <!-- <p>Holi</p> -->
-      <button class="register-but" mat-raised-button *ngIf="hasRoute('/')" color="accent"
-        routerLink='/register'>Register</button><br />
-      <button class="register-but" mat-raised-button *ngIf="hasRoute('/')" color="accent"
-        routerLink='/login'>Login</button>
-      <router-outlet></router-outlet>
+      <button
+        class="register-but"
+        mat-raised-button
+        *ngIf="hasRoute('/')"
+        color="accent"
+        routerLink="/register"
+      >
+        Register</button
+      ><br />
+      <button
+        class="register-but"
+        mat-raised-button
+        *ngIf="hasRoute('/')"
+        color="accent"
+        routerLink="/login"
+      >
+        Login
+      </button>
     </div>
   </div>
 </div>
+<router-outlet></router-outlet>
