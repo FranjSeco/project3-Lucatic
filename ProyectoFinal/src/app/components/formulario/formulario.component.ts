@@ -36,9 +36,8 @@ export class FormularioComponent implements OnInit {
   }
 
   getCorreo(){
-//poner en el back y en el servicio metodos para coger el correo de la base de datos
-var cogerUsuario;
-
+    var id=localStorage.getItem("id");
+console.log(id);
 
   }
 
