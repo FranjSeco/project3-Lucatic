@@ -16,24 +16,16 @@
         <input matInput type="text" class="relleno" placeholder="Genero" [(ngModel)]="usuario.genero">
       </mat-form-field>
 
-<<<<<<< HEAD
-      <mat-form-field class="example-full-width" appearance="fill">
-        <mat-label class="title">Password</mat-label>
-        <input matInput type="password" class="relleno" placeholder="Password" [(ngModel)]="usuario.password">
-      </mat-form-field>
-=======
   <label>Genero</label><br>
   <input type="radio" id="Hombre" name="genero" value="Hombre" [(ngModel)]="usuario.genero" >
     <label for="Hombre">Hombre</label><br>
     <input type="radio" id="Mujer" name="genero" value="Mujer" [(ngModel)]="usuario.genero">
     <label for="Mujer">Mujer</label><br>
->>>>>>> 2260a7e866b9c792c5558a89bb6fa5cdb2a22896
 
       <mat-form-field class="example-full-width" appearance="fill">
         <mat-label class="title">Email</mat-label>
         <input matInput type="text" class="relleno" placeholder="Email" [(ngModel)]="usuario.email">
       </mat-form-field>
-
       <button (click)="addUser()">Añadir</button>
     </div>
   </div>
