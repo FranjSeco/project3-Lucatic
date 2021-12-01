@@ -187,3 +187,19 @@ button {
   width: 103px;
   border-radius: 5px;
 }
+
+// PROFILE CONTAINER
+
+.profile-container {
+  width: calc(100vw - 375px);
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.card-container {
+  width: 500px;
+  height: 500px;
+  background-color: red;
+}
