@@ -10,6 +10,7 @@ export const createUser = (req, res, next) => {
         genero: req.body.genero,
         email: req.body.email,
         password: hash,
+        edad: req.body.edad,
       })
     )
     // .then((user) =>
@@ -63,3 +64,19 @@ export const updateUser = (req, res, next) => {
   })
 }
 
+// likes
+
+export const likeUser = (req, res, next) => {
+  dbData.findByIdAndUpdate(req.params._id,
+    { $addToSet: { likes: req.user._id } }, // add _id to the array if it's not there yet
+    { new: true })
+    .then((user) => {
+      if (!user) {
+        throw new NotFoundError('User not found');
+      }
+      // const { _doc: { ...props } } = card;
+      console.log(user);
+      // return res.status(200).send(props);
+    })
+    .catch(next);
+};
