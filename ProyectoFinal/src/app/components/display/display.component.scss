@@ -1,9 +1,15 @@
+button {
+  border: none;
+  background: none;
+}
+
 .module {
   display: flex;
-  min-width: 100vw;
+
+  min-width: 100vh;
   min-height: 100vh;
-  justify-content: space-between;
-  align-content: center;
+
+
   background: #e9ebee91;
 }
 
@@ -141,38 +147,108 @@
   opacity: 1;
 }
 
-.profiles {
-  background: white;
-  min-height: fit-content;
-  overflow-y: hidden;
+.getGold:hover {
+  cursor: pointer;
 }
 
 .p-nav {
+  background: white;
+  min-height: fit-content;
   display: flex;
-  gap: 20px;
-  padding-left: 20px;
-  padding-top: 12px;
-  height: 50px;
+  justify-content: space-evenly;
+  gap: 10px;
+
+  padding-top: 14px;
+  height: 40px;
 }
 
 .p-opt {
+  text-align: center;
+  width: fit-content;
+}
+
+.p-opt button {
   padding: 0 8px;
   font-weight: 500;
   cursor: pointer;
   letter-spacing: 0.5px;
+  font: 500 14px / 20px Roboto, "Helvetica Neue", sans-serif;
 }
 
-.p-opt div {
-  padding-bottom: 2px;
+.invis {
+  height: 3px;
+  background: #ff4458;
+  border: none;
+  margin-bottom: 0px;
+  margin-top: 2px;
+  width: 100%;
+  transition: 0.4s;
+  align-self: center;
 }
 
+#iMatch {
+  opacity: 1;
+}
 
+#iMess {
+  translate: -120%;
+  opacity: 0;
+}
+
+#iLike {
+  translate: -375%;
+  opacity: 0;
+}
+
+#iDis {
+  translate: -400%;
+  opacity: 0;
+}
+
+.profiles {
+  display: flex;
+  flex-wrap: wrap;
+  flex-basis: 33.333333%;
+  justify-content: space-evenly;
+  width: 100%;
+  overflow-y: hidden;
+  background: white;
+}
+
+.p-card {
+  padding: 8px;
+
+  width: fit-content;
+  position: relative;
+}
+
+.pic {
+  height: 120px !important;
+  width: 103px !important;
+  border-radius: 5px;
+}
+
+.profileText {
+  position: absolute;
+  bottom: 0;
+  color: white;
+  font-size: 15px;
+  font-weight: 500;
+  height: 25%;
+  background-image: linear-gradient(
+    0deg,
+    rgba(0, 0, 0, 0.5),
+    hsla(0, 0%, 100%, 0)
+  );
+}
 
 // PROFILE CONTAINER
 
 .profile-container {
   width: calc(100vw - 375px);
+
   height: 100vh;
+
   display: flex;
   justify-content: center;
   align-items: center;
