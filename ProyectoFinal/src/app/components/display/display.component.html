@@ -52,33 +52,62 @@
       <button class="getGold">GET LUCATINDER GOLD</button>
     </div>
     <div class="p-nav">
-      <div class="p-opt" (click)="switchWindow()" id="matches">
+      <div class="p-opt" (click)="switchWindow('matches')" id="matches">
         <button id="matchesBut">Matches</button>
-        <hr id="move" />
+        <hr class="invis" id="iMatch" />
       </div>
-      <div class="p-opt">Messages</div>
+      <div class="p-opt" (click)="switchWindow('messages')" id="messages">
+        <button id="messBut">Messages</button>
+        <hr class="invis" id="iMess" />
+      </div>
+      <div class="p-opt" (click)="switchWindow('likes')" id="likes">
+        <button id="likesBut">Likes</button>
+        <hr class="invis" id="iLike" />
+      </div>
+      <div class="p-opt" (click)="switchWindow('dislikes')" id="dislikes">
+        <button id="dislikesBut">Dislikes</button>
+        <hr class="invis" id="iDis" />
+      </div>
     </div>
     <div class="profiles">
       <div class="p-card">
-        <img
-          src="https://images-ssl.gotinder.com/617b769d5566a10100e4f833/320x400_e7d852ce-6d2b-49ed-bdc8-d5f22e83f4c5.jpg"
-          alt=""
-          width="100%"
-        />
+        <div
+          class="pic"
+          style="
+            background-image: url('https://images-ssl.gotinder.com/617b769d5566a10100e4f833/320x400_e7d852ce-6d2b-49ed-bdc8-d5f22e83f4c5.jpg');
+            background-position: 50% 50%;
+            background-size: 100%;
+            width: 100%;
+            height: 100%;
+          "
+        ></div>
+        <div class="profileText">Antonio</div>
       </div>
       <div class="p-card">
-        <img
-          src="https://images-ssl.gotinder.com/617b769d5566a10100e4f833/320x400_e7d852ce-6d2b-49ed-bdc8-d5f22e83f4c5.jpg"
-          alt=""
-          width="100%"
-        />
+        <div
+          class="pic"
+          style="
+            background-image: url('https://images-ssl.gotinder.com/617b769d5566a10100e4f833/320x400_e7d852ce-6d2b-49ed-bdc8-d5f22e83f4c5.jpg');
+            background-position: 50% 50%;
+            background-size: 100%;
+            width: 100%;
+            height: 100%;
+          "
+        ></div>
+        <div class="profileText">Antonio</div>
       </div>
       <div class="p-card">
-        <img
-          src="https://images-ssl.gotinder.com/617b769d5566a10100e4f833/320x400_e7d852ce-6d2b-49ed-bdc8-d5f22e83f4c5.jpg"
-          alt=""
-          width="100%"
-        />
+        <a href="">
+          <div
+            class="pic"
+            style="
+              background-image: url('https://images-ssl.gotinder.com/617b769d5566a10100e4f833/320x400_e7d852ce-6d2b-49ed-bdc8-d5f22e83f4c5.jpg');
+              background-position: 50% 50%;
+              background-size: 100%;
+            "
+          ></div>
+          <div class="profileText">Antonio</div>
+        </a>
       </div>
     </div>
   </div>
