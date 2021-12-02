@@ -2,23 +2,22 @@ import { Component, OnInit } from '@angular/core';
 import { TakeUsersService } from 'src/app/services/take-users.service';
 import { NgZone } from '@angular/core';
 import { Router } from '@angular/router';
-import { first } from 'rxjs';
+import { Observable } from 'rxjs';
+
 @Component({
   selector: 'app-display',
   templateUrl: './display.component.html',
   styleUrls: ['./display.component.scss'],
 })
 export class DisplayComponent implements OnInit {
-  db: any[] = [];
+  db: any;
   constructor(
     private take: TakeUsersService,
     private ngZone: NgZone,
     private router: Router
   ) {}
 
-  ngOnInit(): void {
-    this.getAllUsers();
-  }
+  ngOnInit(): void {}
 
   switchWindow(window: string) {
     console.log(event?.target);
@@ -82,7 +81,7 @@ export class DisplayComponent implements OnInit {
     this.take.getAllUsers().subscribe((data: any) => {
       this.db = data;
       console.log(this.db);
-      this.ngZone.run(() => this.router.navigateByUrl('/adduser'));
+      this.ngZone.run(() => this.router.navigateByUrl('/display'));
     });
   }
 }

@@ -29,6 +29,7 @@ export class RegisterComponent implements OnInit {
         this.ngZone.run(() => this.router.navigateByUrl('/adduser'));
       },
       (err) => {
+        alert('Email o password incorrectos!');
         console.log(err);
       }
     );
