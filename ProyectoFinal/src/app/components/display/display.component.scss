@@ -9,7 +9,6 @@ button {
   min-width: 100vh;
   min-height: 100vh;
 
-
   background: #e9ebee91;
 }
 
@@ -149,6 +148,23 @@ button {
 
 .getGold:hover {
   cursor: pointer;
+}
+
+.windows {
+  display: flex;
+  position: relative;
+  flex-wrap: nowrap;
+}
+
+.profiles {
+  width: 100%;
+  position: absolute;
+}
+
+#likeList {
+  translate: 100%;
+  transition: 0.4s;
+  z-index: -1;
 }
 
 .p-nav {

@@ -26,6 +26,7 @@ export class DisplayComponent implements OnInit {
     let secondHr = <HTMLElement>document.getElementById('iMess');
     let thirdHr = <HTMLElement>document.getElementById('iLike');
     let fourthHr = <HTMLElement>document.getElementById('iDis');
+    let list = <HTMLElement>document.getElementById('likeList');
     let hr = <HTMLElement>option?.children.item(1);
 
     switch (window) {
@@ -48,6 +49,8 @@ export class DisplayComponent implements OnInit {
         fourthHr.style.translate = '-253%';
         hr.style.translate = '0';
         hr.style.opacity = '1';
+
+        list.style.translate = '0';
         break;
       case 'likes':
         firstHr.style.opacity = '0';
