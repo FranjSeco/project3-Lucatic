@@ -17,12 +17,7 @@ import { getTranslationDeclStmts } from '@angular/compiler/src/render3/view/temp
   styleUrls: ['./card.component.scss'],
 })
 export class CardComponent implements OnInit {
-  Yo: UserInterface = {
-    name: '' + localStorage.getItem('name'),
-    email: '' + localStorage.getItem('email'),
-    password: '' + localStorage.getItem('password'),
-    genero: '' + localStorage.getItem('genero'),
-  };
+  Yo: UserInterface;
 
   user!: UserInterface;
   perfil!: any;
@@ -43,13 +38,15 @@ export class CardComponent implements OnInit {
     //recoger id de la persona visualizada
     this.PersonaVisualizada = {} as UserInterface;
     this.VerDetalles=false;
-   
+    this.Yo= {} as UserInterface;
+    console.log(this.Yo+"Holis");
   }
 
   ngOnInit(): void {
     this.getAllUsers();
-    // this.getOneUser();
     this.VerDetalles=false;
+ 
+
   }
 
   getRandom() {
@@ -64,69 +61,81 @@ export class CardComponent implements OnInit {
   }
 
   likes() {
-    // this.addLike.likes().subscribe(() => {
+
+      // this.addLike.likes().subscribe(() => {
     // })
     //this.getRandom();
+  
   }
 
-  // getOneUser() {
-  //   this.cogerUsuarios.getAllUsers().subscribe(() => {
-  //     //console.log(res);
-  //     // this.perfiles[this.getRandom()] = res;
-  //     //console.log(this.perfiles[this.getRandom()]);
-  //     this.user = this.perfiles[this.getRandom()];
-  //   });
-  // }
 
-  // darLike() {
-  //   //coger el atributo de likes dados de yo
-  //   this.Yo.likesDado?.push(/*id de la otra persona*/);
-  //   this.authservicio.updateUser(localStorage.getItem('id'), this.Yo).subscribe(
-  //     () => {
-  //       console.log('Like dado');
-  //       this.ngZone.run(() => this.router.navigateByUrl('/updateUser'));
-  //     },
-  //     (err) => {
-  //       console.log(err);
-  //     }
-  //   );
-  //   //coger el atributos de likes recividos de yo
-  //   this.PersonaVisualizada.likesRecivido?.push(
-  //     localStorage.getItem('id') + ''
-  //   );
+  BuscarrmeAmi(){
+    let miNumero=0;
+for(let i=0;i<this.perfiles.length;i++){
 
-  //   this.PersonaVisualizada.likesRecivido?.push(/*id de Yo*/);
-  //   this.authservicio
-  //     .updateUser(localStorage.getItem('id'), this.PersonaVisualizada)
-  //     .subscribe(
-  //       () => {
-  //         console.log('Like dado');
-  //         this.ngZone.run(() => this.router.navigateByUrl('/updateUser'));
-  //       },
-  //       (err) => {
-  //         console.log(err);
-  //       }
-  //     );
-  //   //coger el atributos de likes recividos de yo
-  //   this.Yo.likesDado?.push(/*id de la otra persona*/);
-  //   this.authservicio.updateUser(localStorage.getItem('id'), this.Yo).subscribe(
-  //     () => {
-  //       console.log('Like dado');
-  //       this.ngZone.run(() => this.router.navigateByUrl('/updateUser'));
-  //     },
-  //     (err) => {
-  //       console.log(err);
-  //     }
-  //   );
-  // }
+if(  this.perfiles[i]._id==localStorage.getItem('id')){
+ 
 
-  darDislike() {}
+this.Yo=this.perfiles[i];
+miNumero=i;
+}
+
+}
+  return miNumero;
+
+  }
+
+
+  darLike() {
+    this.BuscarrmeAmi();
+   this.Yo.likesDado?.push(this.user._id+"");
+console.log(this.Yo);
+
+this.authservicio.updateUser(this.Yo._id, this.Yo).subscribe(
+  () => {
+    console.log('Like dado');
+    this.ngZone.run(() => this.router.navigateByUrl('/updateUser'));
+  },
+  (err) => {
+    console.log(err);
+  }
+);
+this.getRandom();
+this.getAllUsers();
+  }
+
+
+  darDislike() {
+    this.BuscarrmeAmi();
+    this.Yo.dislikeDado?.push(this.user._id+"");
+ console.log(this.Yo);
+ 
+ this.authservicio.updateUser(this.Yo._id, this.Yo).subscribe(
+   () => {
+     console.log('dislike dado');
+     this.ngZone.run(() => this.router.navigateByUrl('/updateUser'));
+   },
+   (err) => {
+     console.log(err);
+   }
+ );
+ this.getRandom();
+ this.getAllUsers();
+  }
 
   getAllUsers() {
     this.cogerUsuarios.getAllUsers().subscribe((res) => {
       //console.log(res);
+      
       this.perfiles = res;
-      this.user = this.perfiles[this.getRandom()];
+      let miNumero= this.BuscarrmeAmi();
+  
+      let numeroRandom=this.getRandom();
+      while(numeroRandom==miNumero){
+       numeroRandom=this.getRandom();
+      }
+   
+      this.user = this.perfiles[numeroRandom];
       console.log(this.user);
     });
   }
