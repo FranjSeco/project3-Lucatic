@@ -9,7 +9,8 @@ export const createUser = (req, res, next) => {
         name: req.body.name,
         genero: req.body.genero,
         email: req.body.email,
-        password: hash,
+        // password: hash,
+        password: req.body.password,
         edad: req.body.edad,
       })
     )

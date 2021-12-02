@@ -9,13 +9,13 @@ button {
   min-width: 100vh;
   min-height: 100vh;
 
-  background: #e9ebee91;
+  background: #f0f0f0;
 }
 
 .navbar {
   width: 375px !important;
   min-height: 100vh;
-  border-right: 1px solid #e9ebee;
+  border-right: 1px solid #d6d6d6;
 }
 
 .redNav {
@@ -161,10 +161,25 @@ button {
   position: absolute;
 }
 
+#messList {
+  translate: 100%;
+  transition: 0.4s;
+
+  background: aquamarine;
+}
+
 #likeList {
   translate: 100%;
   transition: 0.4s;
-  z-index: -1;
+
+  background: chartreuse;
+}
+
+#dislikeList {
+  translate: 100%;
+  transition: 0.4s;
+
+  background: orange;
 }
 
 .p-nav {
@@ -269,6 +284,8 @@ button {
   justify-content: center;
   align-items: center;
   position: relative;
+  background: #f0f0f0;
+  opacity: 1;
 }
 
 .card-container {

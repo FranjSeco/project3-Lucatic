@@ -1,7 +1,7 @@
 .card {
   width: 300px;
   height: 450px;
-  background-color: red;
+  background-color: rgb(121, 190, 202);
   border-radius: 5px;
   display: flex;
   flex-direction: column;
@@ -27,12 +27,11 @@
 
   .card__info-container {
     width: 300px;
-    height: 30%;
+    height: 100px;
     background-color: rgb(180, 180, 180);
     display: flex;
-    flex-direction: column;
-    justify-content: flex-start;
-    align-content: center;
+    flex-direction: row;
+    justify-content: space-between;
 
   }
 
@@ -46,5 +45,45 @@
     font-size: 1rem;
     margin: 0;
     padding: 15px 0 0 15px;
+  }
+}
+
+.icon-info{
+  font-size: 25px;
+  
+}
+
+.but{
+  background-color: transparent;
+  border: transparent;
+  margin-top: -35px;
+  cursor:pointer;
+  :hover{
+    color: #fd267a;
+  }
+}
+
+.but-fun{
+  font-size: 50px;
+  background-color: transparent;
+  border: transparent;
+  cursor:pointer;
+  .like{
+    color: #fd267a;
+    // background-color: #fd267a;
+    padding: 4px 5px;
+    border-radius: 1em;
+    :hover{
+      color: #701236;
+    }
+  }
+  .dislike{
+    color: #fd2626;
+    // background-color: #fd267a;
+    padding: 4px 5px;
+    border-radius: 1em;
+    :hover{
+      color: #701212;
+    }
   }
 }

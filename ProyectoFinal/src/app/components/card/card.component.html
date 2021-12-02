@@ -1,10 +1,22 @@
-<div class="card" >
-  <div class="card__image-container" >
+<div class="card">
+  <div class="card__image-container">
     <img class="card__image-element" src="{{user.foto}}" alt="">
   </div>
   <div class="card__info-container">
     <h2 class="card__user-name">{{user.name}}, {{user.edad}}</h2>
+    <button class="but" (click)="verDetalles()"><span class="icon-info"><i
+          class="fas fa-info-circle"></i></span></button>
   </div>
-  <button (click)="likes()">like</button>
-  <button (click)="darDislike()">dislike</button>
+  <div>
+    <button class="but-fun" (click)="likes()"><span class="like"><i class="far fa-heart"></i></span></button>
+    <button class="but-fun" (click)="darDislike()"><span class="dislike"><i class="far fa-times-circle"></i></span></button>
+  </div>
+</div>
+<div *ngIf="VerDetalles==true">
+  <p>{{user.genero}}</p>
+  <p *ngIf="user.localidad!=undefined">{{user.localidad}}</p>
+  <p *ngIf="user.cinefilo!=undefined">Cinefilo Lover</p>
+  <p *ngIf="user.playa!=undefined">Playa Lover</p>
+  <p *ngIf="user.fumador!=undefined">fumador Lover</p>
+  <p *ngIf="user.deportista!=undefined">Deportista</p>
 </div>

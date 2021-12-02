@@ -26,7 +26,9 @@ export class DisplayComponent implements OnInit {
     let secondHr = <HTMLElement>document.getElementById('iMess');
     let thirdHr = <HTMLElement>document.getElementById('iLike');
     let fourthHr = <HTMLElement>document.getElementById('iDis');
-    let list = <HTMLElement>document.getElementById('likeList');
+    let messList = <HTMLElement>document.getElementById('messList');
+    let likeList = <HTMLElement>document.getElementById('likeList');
+    let dislikeList = <HTMLElement>document.getElementById('dislikeList');
     let hr = <HTMLElement>option?.children.item(1);
 
     switch (window) {
@@ -39,6 +41,10 @@ export class DisplayComponent implements OnInit {
         fourthHr.style.translate = '-400%';
         hr.style.translate = '0';
         hr.style.opacity = '1';
+
+        messList.style.translate = '100%';
+        likeList.style.translate = '100%';
+        dislikeList.style.translate = '100%';
         break;
       case 'messages':
         firstHr.style.opacity = '0';
@@ -50,7 +56,9 @@ export class DisplayComponent implements OnInit {
         hr.style.translate = '0';
         hr.style.opacity = '1';
 
-        list.style.translate = '0';
+        messList.style.translate = '0';
+        likeList.style.translate = '100%';
+        dislikeList.style.translate = '100%';
         break;
       case 'likes':
         firstHr.style.opacity = '0';
@@ -61,6 +69,10 @@ export class DisplayComponent implements OnInit {
         fourthHr.style.translate = '-120%';
         hr.style.translate = '0';
         hr.style.opacity = '1';
+
+        messList.style.translate = '100%';
+        likeList.style.translate = '0';
+        dislikeList.style.translate = '100%';
         break;
       case 'dislikes':
         firstHr.style.opacity = '0';
@@ -72,6 +84,9 @@ export class DisplayComponent implements OnInit {
         hr.style.translate = '0';
         hr.style.opacity = '1';
 
+        messList.style.translate = '100%';
+        likeList.style.translate = '100%';
+        dislikeList.style.translate = '0';
         break;
 
       default:
