@@ -1,10 +1,10 @@
-<div class="card">
-  <div class="card__image-container">
+<div class="card" >
+  <div class="card__image-container" >
+    <img class="card__image-element" src="{{user.foto}}" alt="">
   </div>
   <div class="card__info-container">
-    <h2 class="card__user-name">{{perfiles[10].name}}</h2>
-    <p class="card__user-info">{{perfiles[10].email}}</p>
+    <h2 class="card__user-name">{{user.name}}, {{user.edad}}</h2>
   </div>
-  <button (click)="darLike()">like</button>
+  <button (click)="likes()">like</button>
   <button (click)="darDislike()">dislike</button>
 </div>
