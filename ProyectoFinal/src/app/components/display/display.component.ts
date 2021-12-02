@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { TakeUsersService } from 'src/app/services/take-users.service';
+import { AuthService } from '../../services/auth.service';
 import { NgZone } from '@angular/core';
 import { Router } from '@angular/router';
+import { UserInterface } from '../../model/user-interface';
 import { Observable } from 'rxjs';
 
 @Component({
@@ -10,17 +12,23 @@ import { Observable } from 'rxjs';
   styleUrls: ['./display.component.scss'],
 })
 export class DisplayComponent implements OnInit {
-  db: any;
+  Yo!: UserInterface;
+  likes!: any;
+  perfiles!: any;
   constructor(
-    private take: TakeUsersService,
+    private authservicio: AuthService,
+    private router: Router,
     private ngZone: NgZone,
-    private router: Router
-  ) {}
+    private cogerUsuarios: TakeUsersService
+  ) {
+    console.log(this.Yo);
+  }
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.getAllUsers();
+  }
 
   switchWindow(window: string) {
-    console.log(event?.target);
     let option = document.getElementById(window);
     let firstHr = <HTMLElement>document.getElementById('iMatch');
     let secondHr = <HTMLElement>document.getElementById('iMess');
@@ -73,6 +81,8 @@ export class DisplayComponent implements OnInit {
         messList.style.translate = '100%';
         likeList.style.translate = '0';
         dislikeList.style.translate = '100%';
+
+        this.findLikes();
         break;
       case 'dislikes':
         firstHr.style.opacity = '0';
@@ -92,14 +102,42 @@ export class DisplayComponent implements OnInit {
       default:
         break;
     }
-    let options = ['matches', 'messages', ''];
   }
 
   getAllUsers() {
-    this.take.getAllUsers().subscribe((data: any) => {
-      this.db = data;
-      console.log(this.db);
-      this.ngZone.run(() => this.router.navigateByUrl('/display'));
+    this.cogerUsuarios.getAllUsers().subscribe((res) => {
+      //console.log(res);
+
+      this.perfiles = res;
+
+      console.log(this.perfiles);
     });
+  }
+
+  BuscarrmeAmi(id: string) {
+    let perfilBuscado!: UserInterface;
+    for (let i = 0; i < this.perfiles.length; i++) {
+      if (this.perfiles[i]._id == id) {
+        this.Yo = this.perfiles[i];
+        perfilBuscado = this.perfiles[i];
+      }
+    }
+    return perfilBuscado;
+  }
+
+  findLikes() {
+    this.BuscarrmeAmi(localStorage.getItem('id') + '');
+    console.log('ssss');
+    let pepe!: any;
+    pepe = this.Yo.likesDado;
+    console.log(pepe);
+    this.likes = pepe;
+    for (let index = 0; index < pepe.length; index++) {
+      console.log(this.likes[index]);
+      this.likes.push(this.BuscarrmeAmi(this.likes[index]));
+      if (pepe[index] == this.perfiles[index].id) {
+        console.log(this.perfiles[index].name);
+      }
+    }
   }
 }
