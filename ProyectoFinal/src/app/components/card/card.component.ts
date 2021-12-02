@@ -24,9 +24,7 @@ export class CardComponent implements OnInit {
   perfiles!: any;
   PersonaVisualizada: UserInterface;
 
-  VerDetalles:Boolean;
-
-
+  VerDetalles: Boolean;
 
   constructor(
     private authservicio: AuthService,
@@ -37,16 +35,14 @@ export class CardComponent implements OnInit {
   ) {
     //recoger id de la persona visualizada
     this.PersonaVisualizada = {} as UserInterface;
-    this.VerDetalles=false;
-    this.Yo= {} as UserInterface;
-    console.log(this.Yo+"Holis");
+    this.VerDetalles = false;
+    this.Yo = {} as UserInterface;
+    console.log(this.Yo + 'Holis');
   }
 
   ngOnInit(): void {
     this.getAllUsers();
-    this.VerDetalles=false;
- 
-
+    this.VerDetalles = false;
   }
 
   getRandom() {
@@ -54,103 +50,87 @@ export class CardComponent implements OnInit {
     // console.log(this.perfil);
     // return this.perfil;
 
-    let numero = Math.floor(Math.random() * (this.perfiles.length));
+    let numero = Math.floor(Math.random() * this.perfiles.length);
     console.log(numero);
     console.log(this.perfiles.length);
     return numero;
   }
 
   likes() {
-
-      // this.addLike.likes().subscribe(() => {
+    // this.addLike.likes().subscribe(() => {
     // })
     //this.getRandom();
-  
   }
 
-
-  BuscarrmeAmi(){
-    let miNumero=0;
-for(let i=0;i<this.perfiles.length;i++){
-
-if(  this.perfiles[i]._id==localStorage.getItem('id')){
- 
-
-this.Yo=this.perfiles[i];
-miNumero=i;
-}
-
-}
-  return miNumero;
-
+  BuscarrmeAmi() {
+    let miNumero = 0;
+    for (let i = 0; i < this.perfiles.length; i++) {
+      if (this.perfiles[i]._id == localStorage.getItem('id')) {
+        this.Yo = this.perfiles[i];
+        miNumero = i;
+      }
+    }
+    return miNumero;
   }
-
 
   darLike() {
     this.BuscarrmeAmi();
-   this.Yo.likesDado?.push(this.user._id+"");
-console.log(this.Yo);
+    this.Yo.likesDado?.push(this.user._id + '');
+    console.log(this.Yo);
 
-this.authservicio.updateUser(this.Yo._id, this.Yo).subscribe(
-  () => {
-    console.log('Like dado');
-    this.ngZone.run(() => this.router.navigateByUrl('/updateUser'));
-  },
-  (err) => {
-    console.log(err);
+    this.authservicio.updateUser(this.Yo._id, this.Yo).subscribe(
+      () => {
+        console.log('Like dado');
+        this.ngZone.run(() => this.router.navigateByUrl('/updateUser'));
+      },
+      (err) => {
+        console.log(err);
+      }
+    );
+    this.getRandom();
+    this.getAllUsers();
   }
-);
-this.getRandom();
-this.getAllUsers();
-  }
-
 
   darDislike() {
     this.BuscarrmeAmi();
-    this.Yo.dislikeDado?.push(this.user._id+"");
- console.log(this.Yo);
- 
- this.authservicio.updateUser(this.Yo._id, this.Yo).subscribe(
-   () => {
-     console.log('dislike dado');
-     this.ngZone.run(() => this.router.navigateByUrl('/updateUser'));
-   },
-   (err) => {
-     console.log(err);
-   }
- );
- this.getRandom();
- this.getAllUsers();
+    this.Yo.dislikeDado?.push(this.user._id + '');
+    console.log(this.Yo);
+
+    this.authservicio.updateUser(this.Yo._id, this.Yo).subscribe(
+      () => {
+        console.log('dislike dado');
+        this.ngZone.run(() => this.router.navigateByUrl('/updateUser'));
+      },
+      (err) => {
+        console.log(err);
+      }
+    );
+    this.getRandom();
+    this.getAllUsers();
   }
 
   getAllUsers() {
     this.cogerUsuarios.getAllUsers().subscribe((res) => {
       //console.log(res);
-      
+
       this.perfiles = res;
-      let miNumero= this.BuscarrmeAmi();
-  
-      let numeroRandom=this.getRandom();
-      while(numeroRandom==miNumero){
-       numeroRandom=this.getRandom();
+      let miNumero = this.BuscarrmeAmi();
+
+      let numeroRandom = this.getRandom();
+      while (numeroRandom == miNumero) {
+        numeroRandom = this.getRandom();
       }
-   
+
       this.user = this.perfiles[numeroRandom];
       console.log(this.user);
     });
   }
 
-  verDetalles(){
-
-
-    if(this.VerDetalles==false){
-      this.VerDetalles=true;
+  verDetalles() {
+    if (this.VerDetalles == false) {
+      this.VerDetalles = true;
+    } else {
+      this.VerDetalles = false;
     }
-    else{
-      this.VerDetalles=false;
-    }
-
   }
-
-
 }
