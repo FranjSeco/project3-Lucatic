@@ -1,9 +1,10 @@
 export interface UserInterface {
+  _id?:string;
   name: string;
   genero?: string;
   password: string;
   email: string;
-  edad?: number;
+  edad?: string;
   localidad?: string;
   foto?: string;
   fumador?: boolean;

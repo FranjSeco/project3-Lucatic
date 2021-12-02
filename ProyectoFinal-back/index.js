@@ -53,6 +53,8 @@ const fakeUsers = (req, res, next) => {
     genero: req.genero,
     email: req.email,
     password: req.password,
+    edad: req.edad,
+    foto: req.foto
   })
 }
 
