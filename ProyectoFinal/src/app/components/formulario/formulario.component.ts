@@ -48,7 +48,7 @@ this.servicio.updateUser(localStorage.getItem("id"),this.datosPersonales).subscr
   () => {
     console.log('Data updated successfully!');
     this.ngZone.run(() => this.router.navigateByUrl('/updateUser'));
-    localStorage.setItem("name",this.datosPersonales.name);
+    localStorage.setItem("name",this.datosPersonales.name+"");
   },
   (err) => {
     console.log(err);

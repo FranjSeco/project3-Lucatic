@@ -57,14 +57,14 @@ const userSchema = new mongoose.Schema({
     required: false,
 
   },
-  likes: {
-    type: [mongoose.Schema.Types.ObjectId],
-    default: [],
+  likesDado: {
+    type: [String], //[mongoose.Schema.Types.ObjectId],
+   // default: [],
 
   },
-  dislike: {
-    type: [mongoose.Schema.Types.ObjectId],
-    default: [],
+  dislikeDado: {
+    type: [String],//[mongoose.Schema.Types.ObjectId],
+    //default: [],
   },
 
 }, {
