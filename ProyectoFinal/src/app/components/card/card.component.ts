@@ -100,7 +100,8 @@ this.authservicio.updateUser(this.Yo._id, this.Yo).subscribe(
     console.log(err);
   }
 );
-
+this.getRandom();
+this.getAllUsers();
   }
 
 
@@ -118,8 +119,8 @@ this.authservicio.updateUser(this.Yo._id, this.Yo).subscribe(
      console.log(err);
    }
  );
-
-
+ this.getRandom();
+ this.getAllUsers();
   }
 
   getAllUsers() {
