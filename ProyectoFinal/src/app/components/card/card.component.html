@@ -7,4 +7,13 @@
   </div>
   <button (click)="likes()">like</button>
   <button (click)="darDislike()">dislike</button>
+  <button (click)="verDetalles()">Detalles</button>
+</div>
+<div *ngIf="VerDetalles==true" >
+  <p >{{user.genero}}</p>
+<p *ngIf="user.localidad!=undefined">{{user.localidad}}</p>
+<p *ngIf="user.cinefilo!=undefined">Cinefilo Lover</p>
+<p *ngIf="user.playa!=undefined">Playa Lover</p>
+<p *ngIf="user.fumador!=undefined">fumador Lover</p>
+<p *ngIf="user.deportista!=undefined">Deportista</p>
 </div>

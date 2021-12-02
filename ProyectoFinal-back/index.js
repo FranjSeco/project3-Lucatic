@@ -60,7 +60,11 @@ const fakeUsers = (req, res, next) => {
     email: req.email,
     password: req.password,
     edad: req.edad,
-    foto: req.foto
+    foto: req.foto,
+    playa: req.playa,
+    fumador: req.fumador,
+    deportista: req.deportista,
+    cinefilo:req.cinefilo,
   })
 }
 

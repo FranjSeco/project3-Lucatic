@@ -29,6 +29,10 @@ export class CardComponent implements OnInit {
   perfiles!: any;
   PersonaVisualizada: UserInterface;
 
+  VerDetalles:Boolean;
+
+
+
   constructor(
     private authservicio: AuthService,
     private router: Router,
@@ -38,11 +42,14 @@ export class CardComponent implements OnInit {
   ) {
     //recoger id de la persona visualizada
     this.PersonaVisualizada = {} as UserInterface;
+    this.VerDetalles=false;
+   
   }
 
   ngOnInit(): void {
     this.getAllUsers();
     // this.getOneUser();
+    this.VerDetalles=false;
   }
 
   getRandom() {
@@ -123,4 +130,18 @@ export class CardComponent implements OnInit {
       console.log(this.user);
     });
   }
+
+  verDetalles(){
+
+
+    if(this.VerDetalles==false){
+      this.VerDetalles=true;
+    }
+    else{
+      this.VerDetalles=false;
+    }
+
+  }
+
+
 }
