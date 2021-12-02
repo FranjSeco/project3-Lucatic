@@ -13,7 +13,7 @@ import { Observable } from 'rxjs';
 })
 export class DisplayComponent implements OnInit {
   Yo!: UserInterface;
-  likes!: any;
+  likesLista: UserInterface[]=[];
   perfiles!: any;
   constructor(
     private authservicio: AuthService,
@@ -21,7 +21,7 @@ export class DisplayComponent implements OnInit {
     private ngZone: NgZone,
     private cogerUsuarios: TakeUsersService
   ) {
-    console.log(this.Yo);
+    
   }
 
   ngOnInit(): void {
@@ -127,17 +127,16 @@ export class DisplayComponent implements OnInit {
 
   findLikes() {
     this.BuscarrmeAmi(localStorage.getItem('id') + '');
-    console.log('ssss');
-    let pepe!: any;
-    pepe = this.Yo.likesDado;
-    console.log(pepe);
-    this.likes = pepe;
-    for (let index = 0; index < pepe.length; index++) {
-      console.log(this.likes[index]);
-      this.likes.push(this.BuscarrmeAmi(this.likes[index]));
-      if (pepe[index] == this.perfiles[index].id) {
-        console.log(this.perfiles[index].name);
-      }
+   
+    let todosarray!: any;
+    todosarray = this.Yo.likesDado;
+   console.log(todosarray);
+ 
+    for (let index = 0; index < todosarray.length; index++) {
+    
+      this.likesLista[index]=this.BuscarrmeAmi(todosarray[index]);
+
     }
+    console.log(this.likesLista);
   }
 }
