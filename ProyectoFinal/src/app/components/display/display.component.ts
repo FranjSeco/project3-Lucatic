@@ -27,13 +27,8 @@ export class DisplayComponent implements OnInit {
     private router: Router,
     private ngZone: NgZone,
     private cogerUsuarios: TakeUsersService
-  ) {}
-
-  resolve(
-    route: ActivatedRouteSnapshot,
-    state: RouterStateSnapshot
-  ): Observable<any> | Promise<any> | any {
-    return this.likesLista;
+  ) {
+  
   }
 
   ngOnInit(): void {
@@ -165,16 +160,22 @@ export class DisplayComponent implements OnInit {
     return perfilBuscado;
   }
 
-  async findLikes() {
+    findLikes() {
     this.BuscarrmeAmi(localStorage.getItem('id') + '');
 
     let todosarray!: any;
     todosarray = this.Yo.likesDado;
-    console.log(todosarray);
+   console.log(todosarray);
+ 
+   
 
     for (let index = 0; index < todosarray.length; index++) {
       this.likesLista[index] = this.BuscarrmeAmi(todosarray[index]);
     }
     console.log(this.likesLista);
+
+
+
+    
   }
 }
