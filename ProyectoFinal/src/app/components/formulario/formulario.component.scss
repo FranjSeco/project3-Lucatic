@@ -17,14 +17,14 @@
   padding-top: 2%;
   padding-bottom: 2%;
   text-align: center;
-  margin: 25vh auto;
+  margin: 10vh auto;
   position: relative;
   background-color: #ff4081;
   border: solid 2px black;
   border-radius: 5em;
   background: linear-gradient(260deg, #ff6036, #fd267a);
   box-shadow: 2px 2px 22px 2px rgb(66, 64, 64);
-  width: 35%;
+  width: 35vh;
   font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
 }
 
@@ -35,4 +35,12 @@
 .correo{
     font-style: italic;
     margin-top: -15px;
+}
+
+.separate{
+    margin-left: 10px;
+}
+
+.icon{
+    font-size: 20px;
 }
