@@ -34,6 +34,7 @@ datosPrevios:UserInterface;
     email: ""+localStorage.getItem("email"),
     password:""+localStorage.getItem("password"),
     genero: ""+localStorage.getItem("genero"),
+    foto: ""+localStorage.getItem("foto"),
   }
 
      }

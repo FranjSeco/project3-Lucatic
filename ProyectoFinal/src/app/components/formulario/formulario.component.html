@@ -1,43 +1,60 @@
-<h2>Bienvenido {{datosPrevios.name}}</h2>
-<p>Correo:{{datosPrevios.email}} </p>
-<label>Nombre</label>
+<div class="body">
+  <div class="form">
+    <h2>Bienvenido {{datosPrevios.name}}</h2>
+    <p>Correo:{{datosPrevios.email}} </p>
 
-<input matInput type="text" placeholder={{datosPrevios.name}} [(ngModel)]="datosPersonales.name">
+    <mat-form-field class="example-full-width" appearance="fill">
+      <mat-label class="title">Nombre</mat-label>
+      <input matInput type="text" class="relleno" placeholder={{datosPrevios.name}} [(ngModel)]="datosPersonales.name">
+    </mat-form-field><br />
 
-<label>Edad</label>
-<input matInput type="number" placeholder="Edad" [(ngModel)]="datosPersonales.edad">
+    <mat-form-field class="example-full-width" appearance="fill">
+      <mat-label class="title">Edad</mat-label>
+      <input matInput type="text" class="relleno" placeholder=0 [(ngModel)]="datosPersonales.edad">
+    </mat-form-field><br />
 
-<label>Localidad</label>
-<input matInput type="text" placeholder="Localidad" [(ngModel)]="datosPersonales.localidad">
-<br>
+    <mat-form-field class="example-full-width" appearance="fill">
+      <mat-label class="title">Localidad</mat-label>
+      <input matInput type="text" class="relleno" placeholder=Localidad [(ngModel)]="datosPersonales.localidad">
+    </mat-form-field><br />
 
-<label>Foto</label>
-<input matInput type="text"
-  placeholder="https://st2.depositphotos.com/2931363/6511/i/600/depositphotos_65116237-stock-photo-happy-young-man-in-shirt.jpg"
-  [(ngModel)]="datosPersonales.foto">
-<br>
-
-<label>Genero</label><br>
-<input type="radio" id="Hombre" name="genero" value="Hombre" [(ngModel)]="datosPersonales.genero">
-  <label for="Hombre">Hombre</label><br>
-  <input type="radio" id="Mujer" name="genero" value="Mujer" [(ngModel)]="datosPersonales.genero" [checked]="true">
-  <label for="Mujer">Mujer</label><br>
-
-<label>Hobbies</label>
-<br>
-<input type="checkbox" id="Fumador" value="Fumador" [(ngModel)]="datosPersonales.fumador">
-<label for="Fumador">Fumador</label><br>
-<input type="checkbox" id="Deportista" value="Deportista" [(ngModel)]="datosPersonales.deportista">
-<label for="Deportista"> Deportista</label><br>
-<input type="checkbox" id="Cinefilo" value="Cinefilo" [(ngModel)]="datosPersonales.cinefilo">
-<label for="Cinefilo"> Cinefilo</label><br>
-<input type="checkbox" id="Playa" value="Playa" [(ngModel)]="datosPersonales.playa">
-<label for="Playa"> Playa</label><br>
-<input type="checkbox" id="Montana" value="Montana" [(ngModel)]="datosPersonales.montana">
-<label for="Montana"> Montaña</label><br>
+    <mat-form-field class="example-full-width" appearance="fill">
+      <mat-label class="title">Foto</mat-label>
+      <input matInput type="text" class="relleno" placeholder="https://url.jpg" [(ngModel)]="datosPersonales.foto">
+    </mat-form-field><br />
 
 
-<button (click)="agregarDatosPersonales()">Enviar</button>
 
 
-<img src="{{datosPrevios.foto}}" alt="">
+
+    <label class="content-input">Genero<br />
+      <input type="radio" id="Hombre" name="genero" value="Hombre" [(ngModel)]="datosPersonales.genero">
+      <i></i> 
+      <label for="Hombre">Hombre</label>
+       <input type="radio" id="Mujer" name="genero" value="Mujer" [(ngModel)]="datosPersonales.genero" [checked]="true">
+      <i></i>   
+      <label for="Mujer">Mujer</label>
+    </label><br>
+
+    <label>Hobbies</label>
+    <br>
+
+
+
+
+    <input type="checkbox" id="Fumador" value="Fumador" [(ngModel)]="datosPersonales.fumador">
+    <label for="Fumador">Fumador</label><br>
+    <input type="checkbox" id="Deportista" value="Deportista" [(ngModel)]="datosPersonales.deportista">
+    <label for="Deportista"> Deportista</label><br>
+    <input type="checkbox" id="Cinefilo" value="Cinefilo" [(ngModel)]="datosPersonales.cinefilo">
+    <label for="Cinefilo"> Cinefilo</label><br>
+    <input type="checkbox" id="Playa" value="Playa" [(ngModel)]="datosPersonales.playa">
+    <label for="Playa"> Playa</label><br>
+    <input type="checkbox" id="Montana" value="Montana" [(ngModel)]="datosPersonales.montana">
+    <label for="Montana"> Montaña</label><br>
+    <br />
+    <button class="register-but" mat-raised-button color="accent" (click)="agregarDatosPersonales()"
+      routerLink='/display'>Enviar</button><br />
+
+  </div>
+</div>

@@ -127,22 +127,6 @@ export class DisplayComponent implements OnInit {
 
   findLikes() {
     this.BuscarrmeAmi(localStorage.getItem('id') + '');
-<<<<<<< HEAD
-    //console.log('ssss');
-    let pepe!: any;
-    pepe = this.Yo.likesDado;
-    //console.log(pepe);
-    this.likes = pepe;
-    for (let index = 0; index < pepe.length; index++) {
-      // console.log(this.likes[index]);
-      // this.likes.push(this.BuscarrmeAmi(this.likes[index]));
-      console.log(this.perfiles[index].name);
-      return this.perfiles[index].name;
-      // if (pepe[index] == this.perfiles[index].id) {
-      //   console.log("oli");
-      //   console.log(this.perfiles[index].name);
-      // }
-=======
    
     let todosarray!: any;
     todosarray = this.Yo.likesDado;
@@ -152,7 +136,6 @@ export class DisplayComponent implements OnInit {
     
       this.likesLista[index]=this.BuscarrmeAmi(todosarray[index]);
 
->>>>>>> 35003d1a714f8afa94d82fb81af1b080c5ae23b1
     }
     console.log(this.likesLista);
   }
