@@ -51,8 +51,8 @@ export class CardComponent implements OnInit {
     // return this.perfil;
 
     let numero = Math.floor(Math.random() * this.perfiles.length);
-    console.log(numero);
-    console.log(this.perfiles.length);
+    //console.log(numero);
+    //console.log(this.perfiles.length);
     return numero;
   }
 
@@ -76,15 +76,15 @@ export class CardComponent implements OnInit {
   darLike() {
     this.BuscarrmeAmi();
     this.Yo.likesDado?.push(this.user._id + '');
-    console.log(this.Yo);
+    //console.log(this.Yo);
 
     this.authservicio.updateUser(this.Yo._id, this.Yo).subscribe(
       () => {
-        console.log('Like dado');
+        //console.log('Like dado');
         this.ngZone.run(() => this.router.navigateByUrl('/updateUser'));
       },
       (err) => {
-        console.log(err);
+        //console.log(err);
       }
     );
     this.getRandom();
@@ -94,15 +94,15 @@ export class CardComponent implements OnInit {
   darDislike() {
     this.BuscarrmeAmi();
     this.Yo.dislikeDado?.push(this.user._id + '');
-    console.log(this.Yo);
+    //console.log(this.Yo);
 
     this.authservicio.updateUser(this.Yo._id, this.Yo).subscribe(
       () => {
-        console.log('dislike dado');
+        //console.log('dislike dado');
         this.ngZone.run(() => this.router.navigateByUrl('/updateUser'));
       },
       (err) => {
-        console.log(err);
+        //console.log(err);
       }
     );
     this.getRandom();
@@ -122,7 +122,7 @@ export class CardComponent implements OnInit {
       }
 
       this.user = this.perfiles[numeroRandom];
-      console.log(this.user);
+      //console.log(this.user);
     });
   }
 

@@ -127,17 +127,20 @@ export class DisplayComponent implements OnInit {
 
   findLikes() {
     this.BuscarrmeAmi(localStorage.getItem('id') + '');
-    console.log('ssss');
+    //console.log('ssss');
     let pepe!: any;
     pepe = this.Yo.likesDado;
-    console.log(pepe);
+    //console.log(pepe);
     this.likes = pepe;
     for (let index = 0; index < pepe.length; index++) {
-      console.log(this.likes[index]);
-      this.likes.push(this.BuscarrmeAmi(this.likes[index]));
-      if (pepe[index] == this.perfiles[index].id) {
-        console.log(this.perfiles[index].name);
-      }
+      // console.log(this.likes[index]);
+      // this.likes.push(this.BuscarrmeAmi(this.likes[index]));
+      console.log(this.perfiles[index].name);
+      return this.perfiles[index].name;
+      // if (pepe[index] == this.perfiles[index].id) {
+      //   console.log("oli");
+      //   console.log(this.perfiles[index].name);
+      // }
     }
   }
 }
