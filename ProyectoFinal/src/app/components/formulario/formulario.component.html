@@ -1,4 +1,3 @@
-
 <div class="body">
   <div class="form">
     <h2>Bienvenido {{datosPrevios.name}}</h2>
@@ -29,60 +28,40 @@
       <form action="" class="formulario">
         <div class="radio">
           <p>Género
-          
-          <input type="radio" id="Hombre" name="genero" value="Hombre" [(ngModel)]="datosPersonales.genero">
-          <label class="icon" for="hombre"><i class="fas fa-male"></i></label>
-      
-          <input class="separate" type="radio" id="Mujer" name="genero" value="Mujer" [(ngModel)]="datosPersonales.genero">
-          <label class="icon" for="mujer"><i class="fas fa-female"></i></label>
-        </p>
+
+            <input type="radio" id="Hombre" name="genero" value="Hombre" [(ngModel)]="datosPersonales.genero">
+            <label class="icon" for="hombre"><i class="fas fa-male"></i></label>
+
+            <input class="separate" type="radio" id="Mujer" name="genero" value="Mujer"
+              [(ngModel)]="datosPersonales.genero">
+            <label class="icon" for="mujer"><i class="fas fa-female"></i></label>
+          </p>
         </div>
-      
-        <!-- <div class="checkbox">
-          <h2>Checkboxines :D</h2>
-          <input type="checkbox" name="checkbox" id="checkbox1">
-          <label for="checkbox1">Checkboxin 1</label>
-      
-          <input type="checkbox" name="checkbox2" id="checkbox2">
-          <label for="checkbox2">Checkboxin 2</label>
-        </div> -->
       </form>
     </div>
 
-
-    <!-- <label class="content-input">Genero<br />
-      <input type="radio" id="Hombre" name="genero" value="Hombre" [(ngModel)]="datosPersonales.genero">
-      <i></i> 
-      <label for="Hombre">Hombre</label>
-       <input type="radio" id="Mujer" name="genero" value="Mujer" [(ngModel)]="datosPersonales.genero" [checked]="true">
-      <i></i>   
-      <label for="Mujer">Mujer</label>
-    </label><br> -->
-
-
-
-
-
-
-
-
-
-    <label>Hobbies</label>
+    <p class="title">Hobbies</p>
     <br>
-
-
-
-
-    <input type="checkbox" id="Fumador" value="Fumador" [(ngModel)]="datosPersonales.fumador">
-    <label for="Fumador">Fumador</label><br>
-    <input type="checkbox" id="Deportista" value="Deportista" [(ngModel)]="datosPersonales.deportista">
-    <label for="Deportista"> Deportista</label><br>
-    <input type="checkbox" id="Cinefilo" value="Cinefilo" [(ngModel)]="datosPersonales.cinefilo">
-    <label for="Cinefilo"> Cinefilo</label><br>
-    <input type="checkbox" id="Playa" value="Playa" [(ngModel)]="datosPersonales.playa">
-    <label for="Playa"> Playa</label><br>
-    <input type="checkbox" id="Montana" value="Montana" [(ngModel)]="datosPersonales.montana">
-    <label for="Montana"> Montaña</label><br>
+    <span class="hobbie title">
+      <input type="checkbox" id="Fumador" value="Fumador" [(ngModel)]="datosPersonales.fumador">
+      <label for="Fumador">Fumador</label>
+    </span>
+    <span class="hobbie">
+      <input type="checkbox" id="Deportista" value="Deportista" [(ngModel)]="datosPersonales.deportista">
+      <label for="Deportista"> Deportista</label><br>
+    </span><br>
+    <span class="hobbie">
+      <input type="checkbox" id="Cinefilo" value="Cinefilo" [(ngModel)]="datosPersonales.cinefilo">
+      <label for="Cinefilo"> Cinefilo</label>
+    </span>
+    <span class="hobbie">
+      <input type="checkbox" id="Playa" value="Playa" [(ngModel)]="datosPersonales.playa">
+      <label for="Playa"> Playa</label><br>
+    </span><br>
+    <span class="hobbie">
+      <input type="checkbox" id="Montana" value="Montana" [(ngModel)]="datosPersonales.montana">
+      <label for="Montana"> Montaña</label><br>
+    </span>
     <br />
     <button class="register-but" mat-raised-button color="accent" (click)="agregarDatosPersonales()"
       routerLink='/display'>Enviar</button><br />
