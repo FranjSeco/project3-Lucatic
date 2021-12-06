@@ -19,6 +19,7 @@ export class DisplayComponent implements OnInit {
   Yo!: UserInterface;
   likesLista: UserInterface[] = [];
   perfiles!: any;
+  name!: any;
   matches!: any;
   constructor(
     private authservicio: AuthService,
@@ -31,9 +32,10 @@ export class DisplayComponent implements OnInit {
 
   ngOnInit(): void {
     this.getAllUsers();
-    this.findLikes();
-   
+    this.name = localStorage.getItem('name');
   }
+
+ 
 
   switchWindow(window: string) {
     let option = document.getElementById(window);

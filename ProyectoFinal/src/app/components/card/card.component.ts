@@ -51,8 +51,8 @@ export class CardComponent implements OnInit {
     // return this.perfil;
 
     let numero = Math.floor(Math.random() * this.perfiles.length);
-    console.log(numero);
-    console.log(this.perfiles.length);
+    //console.log(numero);
+    //console.log(this.perfiles.length);
     return numero;
   }
 
@@ -88,15 +88,15 @@ export class CardComponent implements OnInit {
   darLike() {
     this.BuscarmeAmi();
     this.Yo.likesDado?.push(this.user._id + '');
-    console.log(this.Yo);
+    //console.log(this.Yo);
 
     this.authservicio.updateUser(this.Yo._id, this.Yo).subscribe(
       () => {
-        console.log('Like dado');
+        //console.log('Like dado');
         this.ngZone.run(() => this.router.navigateByUrl('/updateUser'));
       },
       (err) => {
-        console.log(err);
+        //console.log(err);
       }
     );
   
@@ -106,15 +106,15 @@ export class CardComponent implements OnInit {
   darDislike() {
     this.BuscarmeAmi();
     this.Yo.dislikeDado?.push(this.user._id + '');
-    console.log(this.Yo);
+    //console.log(this.Yo);
 
     this.authservicio.updateUser(this.Yo._id, this.Yo).subscribe(
       () => {
-        console.log('dislike dado');
+        //console.log('dislike dado');
         this.ngZone.run(() => this.router.navigateByUrl('/updateUser'));
       },
       (err) => {
-        console.log(err);
+        //console.log(err);
       }
     );
  
@@ -139,9 +139,9 @@ export class CardComponent implements OnInit {
         repetido=this.BuscarUsuariosVistos( this.perfiles[numeroRandom]._id);
         console.log(this.BuscarUsuariosVistos(this.perfiles[numeroRandom]._id));
       }
-    
-      this.user =this.perfiles[numeroRandom];
-      console.log(this.user);
+
+      this.user = this.perfiles[numeroRandom];
+      //console.log(this.user);
     });
   }
 

@@ -34,6 +34,7 @@ datosPrevios:UserInterface;
     email: ""+localStorage.getItem("email"),
     password:""+localStorage.getItem("password"),
     genero: ""+localStorage.getItem("genero"),
+    foto: ""+localStorage.getItem("foto"),
   }
 
      }
@@ -54,7 +55,6 @@ this.servicio.updateUser(localStorage.getItem("id"),this.datosPersonales).subscr
     console.log(err);
   }
 );
-console.log(this.datosPersonales.name);
 localStorage.setItem("name",this.datosPersonales.name+"");
 this.datosPersonales = {} as UserInterface  ;
   
