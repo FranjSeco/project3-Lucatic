@@ -34,6 +34,7 @@ datosPrevios:UserInterface;
     email: ""+localStorage.getItem("email"),
     password:""+localStorage.getItem("password"),
     genero: ""+localStorage.getItem("genero"),
+    foto: ""+localStorage.getItem("foto"),
   }
 
      }
@@ -48,12 +49,13 @@ this.servicio.updateUser(localStorage.getItem("id"),this.datosPersonales).subscr
   () => {
     console.log('Data updated successfully!');
     this.ngZone.run(() => this.router.navigateByUrl('/updateUser'));
-    localStorage.setItem("name",this.datosPersonales.name+"");
+    
   },
   (err) => {
     console.log(err);
   }
 );
+localStorage.setItem("name",this.datosPersonales.name+"");
 this.datosPersonales = {} as UserInterface  ;
   
   }
