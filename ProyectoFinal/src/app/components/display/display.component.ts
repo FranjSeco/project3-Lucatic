@@ -21,11 +21,13 @@ export class DisplayComponent implements OnInit {
     private ngZone: NgZone,
     private cogerUsuarios: TakeUsersService
   ) {
-    
+  
   }
 
   ngOnInit(): void {
     this.getAllUsers();
+    this.findLikes();
+   
   }
 
   switchWindow(window: string) {
@@ -125,7 +127,7 @@ export class DisplayComponent implements OnInit {
     return perfilBuscado;
   }
 
-  findLikes() {
+    findLikes() {
     this.BuscarrmeAmi(localStorage.getItem('id') + '');
    
     let todosarray!: any;
@@ -134,9 +136,13 @@ export class DisplayComponent implements OnInit {
  
     for (let index = 0; index < todosarray.length; index++) {
     
-      this.likesLista[index]=this.BuscarrmeAmi(todosarray[index]);
+      this.likesLista[index] =  this.BuscarrmeAmi(todosarray[index]);
 
     }
     console.log(this.likesLista);
+
+
+
+    
   }
 }

@@ -62,7 +62,7 @@ export class CardComponent implements OnInit {
     //this.getRandom();
   }
 
-  BuscarrmeAmi() {
+  BuscarmeAmi() {
     let miNumero = 0;
     for (let i = 0; i < this.perfiles.length; i++) {
       if (this.perfiles[i]._id == localStorage.getItem('id')) {
@@ -73,8 +73,20 @@ export class CardComponent implements OnInit {
     return miNumero;
   }
 
+  
+  BuscarID(id: string) {
+    let perfilBuscado!: UserInterface;
+    for (let i = 0; i < this.perfiles.length; i++) {
+      if (this.perfiles[i]._id == id) {
+        this.Yo = this.perfiles[i];
+        perfilBuscado = this.perfiles[i];
+      }
+    }
+    return perfilBuscado;
+  }
+
   darLike() {
-    this.BuscarrmeAmi();
+    this.BuscarmeAmi();
     this.Yo.likesDado?.push(this.user._id + '');
     console.log(this.Yo);
 
@@ -87,12 +99,12 @@ export class CardComponent implements OnInit {
         console.log(err);
       }
     );
-    this.getRandom();
+  
     this.getAllUsers();
   }
 
   darDislike() {
-    this.BuscarrmeAmi();
+    this.BuscarmeAmi();
     this.Yo.dislikeDado?.push(this.user._id + '');
     console.log(this.Yo);
 
@@ -105,7 +117,7 @@ export class CardComponent implements OnInit {
         console.log(err);
       }
     );
-    this.getRandom();
+ 
     this.getAllUsers();
   }
 
@@ -114,17 +126,58 @@ export class CardComponent implements OnInit {
       //console.log(res);
 
       this.perfiles = res;
-      let miNumero = this.BuscarrmeAmi();
+      let miNumero = this.BuscarmeAmi();
 
+      let repetido:boolean=true;
+     
+//no salir nosotros y no repetidos
       let numeroRandom = this.getRandom();
-      while (numeroRandom == miNumero) {
+      while (numeroRandom == miNumero && repetido == false) {
         numeroRandom = this.getRandom();
+        this.perfiles[numeroRandom];
+      
+        repetido=this.BuscarUsuariosVistos( this.perfiles[numeroRandom]._id);
+        console.log(this.BuscarUsuariosVistos(this.perfiles[numeroRandom]._id));
       }
-
-      this.user = this.perfiles[numeroRandom];
+    
+      this.user =this.perfiles[numeroRandom];
       console.log(this.user);
     });
   }
+
+
+BuscarUsuariosVistos(id:string){
+ let repetido:boolean=false;
+ 
+
+if(this.Yo.likesDado?.length!== undefined ){
+  
+for(let i=0; this.Yo.likesDado?.length <i;i++ ){
+  console.log(this.Yo.likesDado[i]);
+  if(this.Yo.likesDado[i]==id){
+    repetido=true;
+   
+  }
+}
+}
+
+if(this.Yo.dislikeDado?.length!== undefined ){
+  
+for(let i=0; this.Yo.dislikeDado?.length <i;i++ ){
+  if(this.Yo.dislikeDado[i]==id){
+    repetido=true;
+   
+  }
+
+
+}
+}
+return repetido;
+
+}
+
+
+
 
   verDetalles() {
     if (this.VerDetalles == false) {
