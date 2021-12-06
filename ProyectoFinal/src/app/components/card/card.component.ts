@@ -132,14 +132,14 @@ export class CardComponent implements OnInit {
      
 //no salir nosotros y no repetidos
       let numeroRandom = this.getRandom();
-      while (numeroRandom == miNumero && repetido == false) {
+      while (numeroRandom == miNumero || repetido == true) {
         numeroRandom = this.getRandom();
         this.perfiles[numeroRandom];
       
         repetido=this.BuscarUsuariosVistos( this.perfiles[numeroRandom]._id);
-        console.log(this.BuscarUsuariosVistos(this.perfiles[numeroRandom]._id));
+        
       }
-
+      
       this.user = this.perfiles[numeroRandom];
       //console.log(this.user);
     });
@@ -151,11 +151,13 @@ BuscarUsuariosVistos(id:string){
  
 
 if(this.Yo.likesDado?.length!== undefined ){
-  
-for(let i=0; this.Yo.likesDado?.length <i;i++ ){
+  //console.log(id);
+for(let i=0;  i<this.Yo.likesDado?.length;i++ ){
+ 
   console.log(this.Yo.likesDado[i]);
   if(this.Yo.likesDado[i]==id){
     repetido=true;
+  
    
   }
 }
@@ -163,7 +165,7 @@ for(let i=0; this.Yo.likesDado?.length <i;i++ ){
 
 if(this.Yo.dislikeDado?.length!== undefined ){
   
-for(let i=0; this.Yo.dislikeDado?.length <i;i++ ){
+for(let i=0; i <this.Yo.dislikeDado?.length;i++ ){
   if(this.Yo.dislikeDado[i]==id){
     repetido=true;
    
