@@ -33,11 +33,11 @@ export class CardComponent implements OnInit {
     private cogerUsuarios: TakeUsersService,
     private addLike: LikesService
   ) {
-    //recoger id de la persona visualizada
+   
     this.PersonaVisualizada = {} as UserInterface;
     this.VerDetalles = false;
     this.Yo = {} as UserInterface;
-    console.log(this.Yo + 'Holis');
+   
   }
 
   ngOnInit(): void {
