@@ -13,16 +13,14 @@ import { Observable } from 'rxjs';
 })
 export class DisplayComponent implements OnInit {
   Yo!: UserInterface;
-  likesLista: UserInterface[]=[];
+  likesLista: UserInterface[] = [];
   perfiles!: any;
   constructor(
     private authservicio: AuthService,
     private router: Router,
     private ngZone: NgZone,
     private cogerUsuarios: TakeUsersService
-  ) {
-    
-  }
+  ) {}
 
   ngOnInit(): void {
     this.getAllUsers();
@@ -36,6 +34,7 @@ export class DisplayComponent implements OnInit {
     let fourthHr = <HTMLElement>document.getElementById('iDis');
     let messList = <HTMLElement>document.getElementById('messList');
     let likeList = <HTMLElement>document.getElementById('likeList');
+    console.log(likeList);
     let dislikeList = <HTMLElement>document.getElementById('dislikeList');
     let hr = <HTMLElement>option?.children.item(1);
 
@@ -127,15 +126,13 @@ export class DisplayComponent implements OnInit {
 
   findLikes() {
     this.BuscarrmeAmi(localStorage.getItem('id') + '');
-   
+
     let todosarray!: any;
     todosarray = this.Yo.likesDado;
-   console.log(todosarray);
- 
-    for (let index = 0; index < todosarray.length; index++) {
-    
-      this.likesLista[index]=this.BuscarrmeAmi(todosarray[index]);
+    console.log(todosarray);
 
+    for (let index = 0; index < todosarray.length; index++) {
+      this.likesLista[index] = this.BuscarrmeAmi(todosarray[index]);
     }
     console.log(this.likesLista);
   }
