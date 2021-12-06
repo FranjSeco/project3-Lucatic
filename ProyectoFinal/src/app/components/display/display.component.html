@@ -3,7 +3,7 @@
     <div class="redNav">
       <div class="user">
         <i class="fas fa-user-circle fa-2x"></i>
-        <div class="name">Daniel</div>
+        <div class="name"><a routerLink="/formulario">Daniel</a></div>
       </div>
       <div class="work">
         <svg class="rateo" focusable="false" aria-hidden="true" role="presentation">
@@ -59,11 +59,12 @@
     </div>
     <div class="windows">
       <div class="profiles">
-        <div class="p-card">
+        <div class="p-card" *ngFor="let cliente of likesLista">
           <a href="" class="pic">
             <div class="innerPic">
-              <div style="
-                  background-image: url('https://images-ssl.gotinder.com/617b769d5566a10100e4f833/320x400_e7d852ce-6d2b-49ed-bdc8-d5f22e83f4c5.jpg');
+              <div
+                style="
+                  background-image: url('{{ cliente.foto }}');
                   background-position: 50% 50%;
                   background-size: 100%;
                   width: 100%;
@@ -100,7 +101,7 @@
           </a>
         </div>
       </div>
-      <!-- *ngFor="let cliente of clientes" -->
+      <!--  -->
       <div class="profiles" id="likeList">
         <div class="p-card">
           <a href="" class="pic">

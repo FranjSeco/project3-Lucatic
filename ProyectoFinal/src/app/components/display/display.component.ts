@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { TakeUsersService } from 'src/app/services/take-users.service';
 import { AuthService } from '../../services/auth.service';
 import { NgZone } from '@angular/core';
-import { Router } from '@angular/router';
+import { ActivatedRouteSnapshot, Router } from '@angular/router';
 import { UserInterface } from '../../model/user-interface';
 import { Observable } from 'rxjs';
 
@@ -13,15 +13,20 @@ import { Observable } from 'rxjs';
 })
 export class DisplayComponent implements OnInit {
   Yo!: UserInterface;
-  likesLista: UserInterface[]=[];
+  likesLista: UserInterface[] = [];
   perfiles!: any;
+  matches!: any;
   constructor(
     private authservicio: AuthService,
     private router: Router,
     private ngZone: NgZone,
     private cogerUsuarios: TakeUsersService
-  ) {
-    
+  ) {}
+
+  resolve(route: ActivatedRouteSnapshot): Promise<boolean> | boolean {
+    let id = +route.params['id'];
+    console.log(this.likesLista);
+    return true;
   }
 
   ngOnInit(): void {
@@ -36,6 +41,7 @@ export class DisplayComponent implements OnInit {
     let fourthHr = <HTMLElement>document.getElementById('iDis');
     let messList = <HTMLElement>document.getElementById('messList');
     let likeList = <HTMLElement>document.getElementById('likeList');
+    console.log(option);
     let dislikeList = <HTMLElement>document.getElementById('dislikeList');
     let hr = <HTMLElement>option?.children.item(1);
 
@@ -81,7 +87,6 @@ export class DisplayComponent implements OnInit {
         messList.style.translate = '100%';
         likeList.style.translate = '0';
         dislikeList.style.translate = '100%';
-
         this.findLikes();
         break;
       case 'dislikes':
@@ -127,15 +132,13 @@ export class DisplayComponent implements OnInit {
 
   findLikes() {
     this.BuscarrmeAmi(localStorage.getItem('id') + '');
-   
+
     let todosarray!: any;
     todosarray = this.Yo.likesDado;
-   console.log(todosarray);
- 
-    for (let index = 0; index < todosarray.length; index++) {
-    
-      this.likesLista[index]=this.BuscarrmeAmi(todosarray[index]);
+    console.log(todosarray);
 
+    for (let index = 0; index < todosarray.length; index++) {
+      this.likesLista[index] = this.BuscarrmeAmi(todosarray[index]);
     }
     console.log(this.likesLista);
   }
