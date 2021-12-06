@@ -159,6 +159,8 @@ button {
 .profiles {
   width: 100%;
   position: absolute;
+  display: flex;
+  flex-wrap: wrap;
 }
 
 #messList {
