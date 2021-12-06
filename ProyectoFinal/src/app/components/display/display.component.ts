@@ -21,6 +21,7 @@ export class DisplayComponent implements OnInit {
   perfiles!: any;
   name!: any;
   matches!: any;
+  funciona!: false;
   constructor(
     private authservicio: AuthService,
     private router: Router,
@@ -36,11 +37,26 @@ export class DisplayComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.getAllUsers();
     this.name = localStorage.getItem('name');
-  }
+    this.likesLista.push({
+      name: 'Angie Jolie',
+      email: 'jolie@g.es',
+      password: '12345',
+      genero: 'Mujer',
+      edad: '46',
+      foto: 'https://hips.hearstapps.com/hmg-prod.s3.amazonaws.com/images/angelina-jolie-vestido-negro-1570091726.jpg?crop=1.00xw:0.503xh;0,0&resize=640:*',
+      localidad: 'trebujena',
+      fumador: false,
+      deportista: true,
+      cinefilo: true,
+      playa: true,
+    });
 
- 
+    this.getAllUsers();
+
+    this.findLikes();
+    console.log(this.likesLista);
+  }
 
   switchWindow(window: string) {
     let option = document.getElementById(window);
@@ -48,9 +64,9 @@ export class DisplayComponent implements OnInit {
     let secondHr = <HTMLElement>document.getElementById('iMess');
     let thirdHr = <HTMLElement>document.getElementById('iLike');
     let fourthHr = <HTMLElement>document.getElementById('iDis');
+    let matchList = <HTMLElement>document.getElementById('matchList');
     let messList = <HTMLElement>document.getElementById('messList');
     let likeList = <HTMLElement>document.getElementById('likeList');
-    console.log(option);
     let dislikeList = <HTMLElement>document.getElementById('dislikeList');
     let hr = <HTMLElement>option?.children.item(1);
 
@@ -65,9 +81,11 @@ export class DisplayComponent implements OnInit {
         hr.style.translate = '0';
         hr.style.opacity = '1';
 
+        matchList.style.translate = '0';
         messList.style.translate = '100%';
         likeList.style.translate = '100%';
         dislikeList.style.translate = '100%';
+        this.findLikes();
         break;
       case 'messages':
         firstHr.style.opacity = '0';
@@ -79,9 +97,11 @@ export class DisplayComponent implements OnInit {
         hr.style.translate = '0';
         hr.style.opacity = '1';
 
+        matchList.style.translate = '100%';
         messList.style.translate = '0';
         likeList.style.translate = '100%';
         dislikeList.style.translate = '100%';
+        this.findLikes();
         break;
       case 'likes':
         firstHr.style.opacity = '0';
@@ -93,6 +113,7 @@ export class DisplayComponent implements OnInit {
         hr.style.translate = '0';
         hr.style.opacity = '1';
 
+        matchList.style.translate = '100%';
         messList.style.translate = '100%';
         likeList.style.translate = '0';
         dislikeList.style.translate = '100%';
@@ -108,9 +129,11 @@ export class DisplayComponent implements OnInit {
         hr.style.translate = '0';
         hr.style.opacity = '1';
 
+        matchList.style.translate = '100%';
         messList.style.translate = '100%';
         likeList.style.translate = '100%';
         dislikeList.style.translate = '0';
+        this.findLikes();
         break;
 
       default:
@@ -118,14 +141,17 @@ export class DisplayComponent implements OnInit {
     }
   }
 
-  getAllUsers() {
-    this.cogerUsuarios.getAllUsers().subscribe((res) => {
-      //console.log(res);
+  async getAllUsers() {
+    let hola!: any;
+    while (hola != undefined) {
+      hola = this.cogerUsuarios.getAllUsers().subscribe((res) => {
+        //console.log(res);
 
-      this.perfiles = res;
+        this.perfiles = res;
 
-      console.log(this.perfiles);
-    });
+        console.log(res);
+      });
+    }
   }
 
   BuscarrmeAmi(id: string) {

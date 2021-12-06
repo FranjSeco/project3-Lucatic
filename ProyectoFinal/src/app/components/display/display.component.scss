@@ -49,6 +49,11 @@ button {
   font-weight: 500;
 }
 
+.name a {
+  text-decoration: none !important;
+  color: white !important;
+}
+
 .work {
   cursor: pointer;
   background-color: rgba(0, 0, 0, 0.1);
@@ -162,7 +167,11 @@ button {
   position: absolute;
   display: flex;
   flex-wrap: wrap;
-  padding-left: 12px;
+}
+
+#matchList {
+  translate: 0%;
+  transition: 0.4s;
 }
 
 #messList {
@@ -257,6 +266,15 @@ button {
 
 .p-card:hover {
   transform: scale(1.1);
+}
+
+.p-message {
+  height: 100px;
+  width: 100%;
+  background: white;
+  border-top: 1px solid #d6d6d6;
+  border-bottom: 1px solid #d6d6d6;
+  display: flex;
 }
 
 .pic {
