@@ -154,6 +154,7 @@ button {
   display: flex;
   position: relative;
   flex-wrap: nowrap;
+  justify-content: center;
 }
 
 .profiles {
@@ -161,6 +162,7 @@ button {
   position: absolute;
   display: flex;
   flex-wrap: wrap;
+  padding-left: 12px;
 }
 
 #messList {
