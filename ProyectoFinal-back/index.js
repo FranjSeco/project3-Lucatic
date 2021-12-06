@@ -7,6 +7,10 @@ import rutas from "./routes/users.js";
 import user from "./models/users.js";
 mongoose.Promise = global.Promise;
 
+import bcrypt from 'bcryptjs';
+
+import { createUser } from './controllers/users.js'
+
 let dbData = user;
 //mongodb://localhost:27017/proyectoFinal
 mongoose
@@ -53,20 +57,20 @@ app.use("/api", rutas);
 //   })
 // };
 
-const fakeUsers = (req, res, next) => {
-  user.create({
-    name: req.name,
-    genero: req.genero,
-    email: req.email,
-    password: req.password,
-    edad: req.edad,
-    foto: req.foto,
-    playa: req.playa,
-    fumador: req.fumador,
-    deportista: req.deportista,
-    cinefilo:req.cinefilo,
-  })
-}
+// const fakeUsers = (req, res, next) => {
+//   user.create({
+//     name: req.name,
+//     genero: req.genero,
+//     email: req.email,
+//     password: req.password,
+//     edad: req.edad,
+//     foto: req.foto,
+//     playa: req.playa,
+//     fumador: req.fumador,
+//     deportista: req.deportista,
+//     cinefilo: req.cinefilo,
+//   })
+// }
 
 dbData.find((err, data) => {
   data.map((item) => {
@@ -76,8 +80,22 @@ dbData.find((err, data) => {
 
 dbData.find(function (err, data) {
   if (data.length < 4) {
-    mockUsers.map((item) => {
-      fakeUsers(item);
+    mockUsers.map((req) => {
+      bcrypt.hash(req.password, 10)
+        .then((hash) =>
+          dbData.create({
+            password: hash,
+            name: req.name,
+            genero: req.genero,
+            email: req.email,
+            edad: req.edad,
+            foto: req.foto,
+            playa: req.playa,
+            fumador: req.fumador,
+            deportista: req.deportista,
+            cinefilo: req.cinefilo,
+          })
+        )
     });
     console.log("Relleno agregado");
   } else {
