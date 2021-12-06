@@ -2,7 +2,11 @@ import { Component, OnInit } from '@angular/core';
 import { TakeUsersService } from 'src/app/services/take-users.service';
 import { AuthService } from '../../services/auth.service';
 import { NgZone } from '@angular/core';
-import { ActivatedRouteSnapshot, Router } from '@angular/router';
+import {
+  ActivatedRouteSnapshot,
+  Router,
+  RouterStateSnapshot,
+} from '@angular/router';
 import { UserInterface } from '../../model/user-interface';
 import { Observable } from 'rxjs';
 
@@ -23,14 +27,16 @@ export class DisplayComponent implements OnInit {
     private cogerUsuarios: TakeUsersService
   ) {}
 
-  resolve(route: ActivatedRouteSnapshot): Promise<boolean> | boolean {
-    let id = +route.params['id'];
-    console.log(this.likesLista);
-    return true;
+  resolve(
+    route: ActivatedRouteSnapshot,
+    state: RouterStateSnapshot
+  ): Observable<any> | Promise<any> | any {
+    return this.likesLista;
   }
 
   ngOnInit(): void {
     this.getAllUsers();
+    this.findLikes();
   }
 
   switchWindow(window: string) {
@@ -87,7 +93,7 @@ export class DisplayComponent implements OnInit {
         messList.style.translate = '100%';
         likeList.style.translate = '0';
         dislikeList.style.translate = '100%';
-        this.findLikes();
+
         break;
       case 'dislikes':
         firstHr.style.opacity = '0';
@@ -130,7 +136,7 @@ export class DisplayComponent implements OnInit {
     return perfilBuscado;
   }
 
-  findLikes() {
+  async findLikes() {
     this.BuscarrmeAmi(localStorage.getItem('id') + '');
 
     let todosarray!: any;
