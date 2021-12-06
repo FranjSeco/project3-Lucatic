@@ -36,7 +36,6 @@ export class DisplayComponent implements OnInit {
 
   ngOnInit(): void {
     this.getAllUsers();
-    this.findLikes();
   }
 
   switchWindow(window: string) {
@@ -93,7 +92,7 @@ export class DisplayComponent implements OnInit {
         messList.style.translate = '100%';
         likeList.style.translate = '0';
         dislikeList.style.translate = '100%';
-
+        this.findLikes();
         break;
       case 'dislikes':
         firstHr.style.opacity = '0';
