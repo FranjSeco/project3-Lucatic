@@ -1,7 +1,8 @@
+
 <div class="body">
   <div class="form">
     <h2>Bienvenido {{datosPrevios.name}}</h2>
-    <p>Correo:{{datosPrevios.email}} </p>
+    <p class="correo">({{datosPrevios.email}})</p>
 
     <mat-form-field class="example-full-width" appearance="fill">
       <mat-label class="title">Nombre</mat-label>
@@ -24,17 +25,47 @@
     </mat-form-field><br />
 
 
+    <div class="wrap">
+      <form action="" class="formulario">
+        <div class="radio">
+          <p>Género
+          
+          <input type="radio" id="Hombre" name="genero" value="Hombre" [(ngModel)]="datosPersonales.genero">
+          <label for="hombre"><i class="fas fa-male"></i></label>
+      
+          <input class="" type="radio" id="Mujer" name="genero" value="Mujer" [(ngModel)]="datosPersonales.genero">
+          <label for="mujer"><i class="fas fa-female"></i></label>
+        </p>
+        </div>
+      
+        <!-- <div class="checkbox">
+          <h2>Checkboxines :D</h2>
+          <input type="checkbox" name="checkbox" id="checkbox1">
+          <label for="checkbox1">Checkboxin 1</label>
+      
+          <input type="checkbox" name="checkbox2" id="checkbox2">
+          <label for="checkbox2">Checkboxin 2</label>
+        </div> -->
+      </form>
+    </div>
 
 
-
-    <label class="content-input">Genero<br />
+    <!-- <label class="content-input">Genero<br />
       <input type="radio" id="Hombre" name="genero" value="Hombre" [(ngModel)]="datosPersonales.genero">
       <i></i> 
       <label for="Hombre">Hombre</label>
        <input type="radio" id="Mujer" name="genero" value="Mujer" [(ngModel)]="datosPersonales.genero" [checked]="true">
       <i></i>   
       <label for="Mujer">Mujer</label>
-    </label><br>
+    </label><br> -->
+
+
+
+
+
+
+
+
 
     <label>Hobbies</label>
     <br>
