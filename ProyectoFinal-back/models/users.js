@@ -66,6 +66,14 @@ const userSchema = new mongoose.Schema({
     type: [String],//[mongoose.Schema.Types.ObjectId],
     //default: [],
   },
+  match: {
+    type: [String],//[mongoose.Schema.Types.ObjectId],
+    //default: [],
+  },
+  likeRecivido: {
+    type: [String],//[mongoose.Schema.Types.ObjectId],
+    //default: [],
+  },
 
 }, {
   collection: 'proyectoFinal'
