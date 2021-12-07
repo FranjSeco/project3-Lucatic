@@ -14,6 +14,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { LoginComponent } from './components/login/login.component';
 import { FormularioComponent } from './components/formulario/formulario.component';
 import { CardComponent } from './components/card/card.component';
+import { LogoutComponent } from './components/logout/logout.component';
 
 
 
@@ -25,6 +26,7 @@ import { CardComponent } from './components/card/card.component';
     LoginComponent,
     FormularioComponent,
     CardComponent,
+    LogoutComponent,
   ],
   imports: [
     BrowserModule,
