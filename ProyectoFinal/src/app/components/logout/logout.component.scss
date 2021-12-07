@@ -1,0 +1,22 @@
+.logout__container {
+  width: 100px;
+  height: 30px;
+  background-color: green;
+  position: absolute;
+  right: 0;
+  top: 0;
+  display: flex;
+  justify-content: center;
+  align-content: center;
+}
+
+
+.logout__button {
+  background-color: honeydew;
+  height: 20px;
+  align-self: center;
+
+  &:hover {
+    cursor: pointer;
+  }
+}
