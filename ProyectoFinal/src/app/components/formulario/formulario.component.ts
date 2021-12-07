@@ -21,7 +21,8 @@ import{UserInterface} from"../../model/user-interface";
 })
 export class FormularioComponent implements OnInit {
 
-datosPrevios:UserInterface;
+
+  datosPrevios:UserInterface;
   datosPersonales:UserInterface;
 
   constructor(private formBuilder:FormBuilder, private from: FormsModule,private servicio:AuthService, private ngZone:NgZone,private activatedRoute: ActivatedRoute,private router: Router,) {
@@ -49,13 +50,14 @@ this.servicio.updateUser(localStorage.getItem("id"),this.datosPersonales).subscr
   () => {
     console.log('Data updated successfully!');
     this.ngZone.run(() => this.router.navigateByUrl('/updateUser'));
-    
   },
   (err) => {
     console.log(err);
   }
 );
+if(this.datosPersonales.name!=undefined){
 localStorage.setItem("name",this.datosPersonales.name+"");
+}
 this.datosPersonales = {} as UserInterface  ;
   
   }
