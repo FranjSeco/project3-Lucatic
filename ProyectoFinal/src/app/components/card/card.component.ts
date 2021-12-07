@@ -99,7 +99,7 @@ export class CardComponent implements OnInit {
 console.log( this.user)
     this.authservicio.updateUser(this.user._id, this.user).subscribe(
       () => {
-        console.log('holi');
+       
         this.ngZone.run(() => this.router.navigateByUrl('/updateUser'));
       },
       (err) => {

@@ -9,6 +9,8 @@ import {
 } from '@angular/router';
 import { UserInterface } from '../../model/user-interface';
 import { Observable } from 'rxjs';
+//probando el alert
+import swal from'sweetalert2';
 
 @Component({
   selector: 'app-display',
@@ -18,12 +20,15 @@ import { Observable } from 'rxjs';
 export class DisplayComponent implements OnInit {
   Yo!: UserInterface;
   likesLista: UserInterface[] = [];
-
   matchLista: UserInterface[] = [];
   perfiles!: any;
   name!: any;
   matches!: any;
   funciona!: false;
+
+///alerta
+titularAlerta:string="";
+
   constructor(
     private authservicio: AuthService,
     private router: Router,
