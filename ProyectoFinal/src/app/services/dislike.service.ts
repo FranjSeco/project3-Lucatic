@@ -16,9 +16,12 @@ export class DislikeService {
   httpHeaders = new HttpHeaders().set('Content-Type', 'application/json');
   constructor(private httpClient: HttpClient) {}
 
-  dislikes(id: string) {
-    let API_URL = `${this.REST_API}/${id}/dislikes`;
-    return this.httpClient.put(API_URL, id).pipe(catchError(this.handleError));
+  dislikes(thatUser: any, id: any) {
+    let API_URL = `${this.REST_API}/dislikes/${id}`;
+    console.log(thatUser._id, 'that user');
+    return this.httpClient
+      .put(API_URL, thatUser._id)
+      .pipe(catchError(this.handleError));
   }
 
   handleError(error: HttpErrorResponse) {

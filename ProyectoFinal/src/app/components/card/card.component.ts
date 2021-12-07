@@ -121,9 +121,7 @@ export class CardComponent implements OnInit {
     //   window.location.reload();
     // } else {
     // }
-    console.log(this.user);
-    const dislikedUserId: any = this.user._id;
-    this.dislike.dislikes(dislikedUserId);
+    this.dislike.dislikes(this.user, this.Yo._id);
   }
 
   getAllUsers() {

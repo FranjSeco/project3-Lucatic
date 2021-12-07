@@ -75,9 +75,22 @@ export const likeUser = (req, res, next) => {
       if (!user) {
         throw new NotFoundError('User not found');
       }
-      // const { _doc: { ...props } } = card;
       console.log(user);
-      // return res.status(200).send(props);
     })
     .catch(next);
 };
+
+export const dislikeUser = (req, res, next) => {
+  console.log(req.body, 'en dislike back');
+  dbData.findByIdAndUpdate(req.params.id,
+    { $addToSet: { dislikeDado: req.body } }, // add _id to the array if it's not there yet
+    { new: true })
+    .then(user => {
+      if (!user) {
+        throw new NotFoundError('User not found');
+      } else {
+        console.log('tuto bene')
+      }
+    })
+    .catch(next);
+}

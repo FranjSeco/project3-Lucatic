@@ -45,6 +45,7 @@ app.use(
 ///seguridad; permite accesder a servidores de terceros; elegir proveedores en especifico por ej
 app.use(cors());
 
+
 // API root
 app.use("/api", rutas);
 
@@ -72,11 +73,11 @@ app.use("/api", rutas);
 //   })
 // }
 
-dbData.find((err, data) => {
-  data.map((item) => {
-    console.log(item);
-  });
-});
+// dbData.find((err, data) => {
+//   data.map((item) => {
+//     console.log(item);
+//   });
+// });
 
 dbData.find(function (err, data) {
   if (data.length < 4) {
@@ -102,6 +103,8 @@ dbData.find(function (err, data) {
     console.log("Hay suficientes usuarios");
   }
 });
+
+
 
 // PORT
 const port = process.env.PORT || 8080;
