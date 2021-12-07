@@ -1,13 +1,18 @@
 .logout__container {
   width: 100px;
   height: 30px;
-  background-color: green;
+  // background-color: green;
   position: absolute;
   right: 0;
   top: 0;
   display: flex;
   justify-content: center;
   align-content: center;
+  background: linear-gradient(260deg, #ff6036, #fd267a);
+  :hover{
+    color:#7e133c;
+    font-weight: bold;
+  }
 }
 
 
@@ -15,6 +20,9 @@
   background-color: honeydew;
   height: 20px;
   align-self: center;
+  background-color: transparent;
+  border-color: transparent;
+  color: white;
 
   &:hover {
     cursor: pointer;

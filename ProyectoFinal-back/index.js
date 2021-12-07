@@ -91,6 +91,7 @@ dbData.find(function (err, data) {
             edad: req.edad,
             localidad:req.localidad,
             foto: req.foto,
+            localidad: req.localidad,
             playa: req.playa,
             fumador: req.fumador,
             deportista: req.deportista,
