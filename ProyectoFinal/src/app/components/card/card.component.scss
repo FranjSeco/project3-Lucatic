@@ -127,27 +127,9 @@
   scroll-behavior: smooth;
   background: linear-gradient(260deg, #ff6036, #fd267a);
   border-radius: 0px;
+  margin-top: -90px;
+  
 }
 
-button.but:checked ~ div.icons {
-	display:none !important;
-}
-
-// div.icons{
-//   display:none;
-// }
-
-button{
-  visibility: visible;
-}
-button:checked ~ .icons{
-  display: none;
-}
-button:checked ~ .icons{
-  display: block;
-}
-.icons{
-  display: block;
-}
 
 

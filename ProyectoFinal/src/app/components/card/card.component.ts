@@ -25,6 +25,7 @@ export class CardComponent implements OnInit {
   PersonaVisualizada: UserInterface;
 
   VerDetalles: Boolean;
+  VerIcons: Boolean;
 
   constructor(
     private authservicio: AuthService,
@@ -36,6 +37,7 @@ export class CardComponent implements OnInit {
    
     this.PersonaVisualizada = {} as UserInterface;
     this.VerDetalles = false;
+    this.VerIcons = true;
     this.Yo = {} as UserInterface;
    
   }
@@ -228,6 +230,14 @@ console.log(contador-this.perfiles.length)
       this.VerDetalles = true;
     } else {
       this.VerDetalles = false;
+    }
+  }
+
+  verIcons() {
+    if (this.VerIcons == false) {
+      this.VerIcons = true;
+    } else {
+      this.VerIcons = false;
     }
   }
 }

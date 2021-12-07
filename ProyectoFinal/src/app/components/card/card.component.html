@@ -5,10 +5,10 @@
     </div>
     <div class="card__info-container">
       <h2 class="card__user-name">{{user.name}}, {{user.edad}}</h2>
-      <button class="but" (click)="verDetalles()"><span class="icon-info"><i
+      <button class="but" (click)="verDetalles()" (click)="verIcons()"><span class="icon-info"><i
             class="fas fa-info-circle"></i></span></button>
     </div>
-    <div class="icons">
+    <div class="icons" *ngIf="VerIcons==true">
       <button class="but-fun"><span class="superlike"><i class="fas fa-star"></i></span></button>
       <button class="but-fun" (click)="darLike()"><span class="like"><i class="far fa-heart"></i></span></button>
       <button class="but-fun" (click)="darDislike()"><span class="dislike"><i
@@ -17,7 +17,7 @@
     </div>
   </div>
     <div class="info" *ngIf="VerDetalles==true">
-      <p>{{user.genero}}</p>
+      <p *ngIf="user.genero!=undefined">{{user.genero}}</p>
       <p *ngIf="user.localidad!=undefined">{{user.localidad}}</p>
       <p *ngIf="user.cinefilo!=undefined">Cinefilo Lover</p>
       <p *ngIf="user.playa!=undefined">Playa Lover</p>
