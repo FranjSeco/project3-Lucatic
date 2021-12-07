@@ -24,6 +24,7 @@ export class CardComponent implements OnInit {
   PersonaVisualizada: UserInterface;
 
   VerDetalles: Boolean;
+  VerIcons: Boolean;
 
   constructor(
     private authservicio: AuthService,
@@ -35,6 +36,7 @@ export class CardComponent implements OnInit {
     this.PersonaVisualizada = {} as UserInterface;
     this.VerDetalles = false;
     this.Yo = {} as UserInterface;
+    this.VerIcons = true;
   }
 
   ngOnInit(): void {
@@ -51,12 +53,6 @@ export class CardComponent implements OnInit {
     //console.log(numero);
     //console.log(this.perfiles.length);
     return numero;
-  }
-
-  likes() {
-    // this.addLike.likes().subscribe(() => {
-    // })
-    //this.getRandom();
   }
 
   BuscarmeAmi() {
@@ -84,8 +80,9 @@ export class CardComponent implements OnInit {
   darLike() {
     if (this.UsuariosSinVer() == false) {
       this.BuscarmeAmi();
+      this.matches();
       this.Yo.likesDado?.push(this.user._id + '');
-      //console.log(this.Yo);
+      this.user?.likeRecivido?.push(this.Yo._id + '');
 
       this.authservicio.updateUser(this.Yo._id, this.Yo).subscribe(
         () => {
@@ -98,6 +95,22 @@ export class CardComponent implements OnInit {
       );
 
       window.location.reload();
+      console.log(this.user);
+      this.authservicio.updateUser(this.user._id, this.user).subscribe(
+        () => {
+          console.log('holi');
+          this.ngZone.run(() => this.router.navigateByUrl('/updateUser'));
+        },
+        (err) => {
+          console.log(err);
+        }
+      );
+
+      this.router
+        .navigateByUrl('/card', { skipLocationChange: true })
+        .then(() => {
+          this.router.navigate(['/display']);
+        });
     } else {
     }
   }
@@ -192,11 +205,43 @@ export class CardComponent implements OnInit {
     return noQuedan;
   }
 
+  matches() {
+    if (
+      this.Yo.likesDado?.length !== undefined &&
+      this.Yo.likeRecivido?.length !== undefined
+    ) {
+      for (let i = 0; i < this.Yo.likesDado?.length; i++) {
+        for (let j = 0; j < this.Yo.likeRecivido?.length; j++) {
+          if (this.Yo.likesDado[i] == this.Yo.likeRecivido[j]) {
+            let matchAnterior = false;
+            if (this.Yo.match?.length !== undefined) {
+              for (let k = 0; k < this.Yo.match?.length; k++) {
+                if (this.Yo.match[k] == this.Yo.likesDado[i]) {
+                  matchAnterior = true;
+                }
+              }
+            }
+            if (matchAnterior == false) {
+              this.Yo.match?.push(this.Yo.likesDado[i]);
+            }
+          }
+        }
+      }
+    }
+  }
+
   verDetalles() {
     if (this.VerDetalles == false) {
       this.VerDetalles = true;
     } else {
       this.VerDetalles = false;
+    }
+  }
+  verIcons() {
+    if (this.VerIcons == false) {
+      this.VerIcons = true;
+    } else {
+      this.VerIcons = false;
     }
   }
 }

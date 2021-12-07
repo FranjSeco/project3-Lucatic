@@ -18,6 +18,8 @@ import { Observable } from 'rxjs';
 export class DisplayComponent implements OnInit {
   Yo!: UserInterface;
   likesLista: UserInterface[] = [];
+
+  matchLista: UserInterface[] = [];
   perfiles!: any;
   name!: any;
   matches!: any;
@@ -147,11 +149,30 @@ export class DisplayComponent implements OnInit {
 
     let todosarray!: any;
     todosarray = this.Yo.likesDado;
-    console.log(todosarray);
+
 
     for (let index = 0; index < todosarray.length; index++) {
       this.likesLista[index] = this.BuscarrmeAmi(todosarray[index]);
     }
     console.log(this.likesLista);
   }
+
+findMatches(){
+
+  this.BuscarrmeAmi(localStorage.getItem('id') + '');
+
+  let todosarray!: any;
+  todosarray = this.Yo.match;
+ 
+
+ 
+
+  for (let index = 0; index < todosarray.length; index++) {
+    this.matchLista[index] = this.BuscarrmeAmi(todosarray[index]);
+  }
+  console.log(this.matchLista);
+
+
+}
+
 }

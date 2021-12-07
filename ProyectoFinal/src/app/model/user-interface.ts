@@ -14,6 +14,6 @@ export interface UserInterface {
   montana?: boolean;
   likesDado?: [string];
   dislikeDado?: [string];
-  likesRecivido?: [string];
-  dislikeRecivido?: [string];
+  match?: [string];
+  likeRecivido?: [string];
 }
