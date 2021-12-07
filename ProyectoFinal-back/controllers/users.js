@@ -80,21 +80,6 @@ export const likeUser = (req, res, next) => {
     .catch(next);
 };
 
-// export const dislikeUser = (req, res, next) => {
-//   console.log(req.body, 'en dislike back');
-//   dbData.findByIdAndUpdate(req.params.id,
-//     { $addToSet: { dislikeDado: req.body } }, // add _id to the array if it's not there yet
-//     { new: true })
-//     .then(user => {
-//       if (!user) {
-//         throw new NotFoundError('User not found');
-//       } else {
-//         console.log('tuto bene')
-//       }
-//     })
-//     .catch(next);
-// }
-
 export const dislikeUser = (req, res, next) => {
   dbData.findByIdAndUpdate(req.params.id,
     { $addToSet: { dislikeDado: req.body._id } }, // add _id to the array if it's not there yet

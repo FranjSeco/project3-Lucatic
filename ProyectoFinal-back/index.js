@@ -49,30 +49,8 @@ app.use(cors());
 // API root
 app.use("/api", rutas);
 
-// export const createUser = (req, res, next) => {
-//   UserModel.create({
-//     name: req.name,
-//     genero: req.genero,
-//     email: req.email,
-//     password: req.password,
-//   })
-// };
 
-// const fakeUsers = (req, res, next) => {
-//   user.create({
-//     name: req.name,
-//     genero: req.genero,
-//     email: req.email,
-//     password: req.password,
-//     edad: req.edad,
-//     foto: req.foto,
-//     playa: req.playa,
-//     fumador: req.fumador,
-//     deportista: req.deportista,
-//     cinefilo: req.cinefilo,
-//   })
-// }
-
+// PRINTING FAKE USERS
 // dbData.find((err, data) => {
 //   data.map((item) => {
 //     console.log(item);
