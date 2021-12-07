@@ -1,12 +1,13 @@
-.content{
+.content {
   box-shadow: 2px 2px 22px 2px rgb(66, 64, 64);
   border-radius: 20px;
 }
 
 .card {
   width: 300px;
-  height: 450px;
-  background-color: rgb(121, 190, 202);
+  height: 500px;
+  // background-color: rgb(121, 190, 202);
+  background: linear-gradient(260deg, #ff6036, #fd267a);
   border-radius: 5px;
   display: flex;
   flex-direction: column;
@@ -14,7 +15,7 @@
   align-items: center;
   overflow: hidden;
 
-  .card__image-element{
+  .card__image-element {
     width: 300px;
     height: 100%;
     object-fit: cover;
@@ -33,7 +34,7 @@
   .card__info-container {
     width: 300px;
     height: 100px;
-    background-color: rgb(180, 180, 180);
+    // background-color: rgb(180, 180, 180);
     display: flex;
     flex-direction: row;
     justify-content: space-between;
@@ -44,6 +45,7 @@
     font-size: 2rem;
     margin: 0 0 10px 0;
     padding: 15px 0 0 15px;
+    color: white;
   }
 
   .card__user-info {
@@ -53,42 +55,99 @@
   }
 }
 
-.icon-info{
+.icon-info {
   font-size: 25px;
-  
+  color: white;
 }
 
-.but{
+.but {
   background-color: transparent;
   border: transparent;
   margin-top: -35px;
-  cursor:pointer;
-  :hover{
+  cursor: pointer;
+
+  :hover {
     color: #fd267a;
   }
 }
 
-.but-fun{
+
+.but-fun {
   font-size: 50px;
   background-color: transparent;
   border: transparent;
-  cursor:pointer;
-  .like{
-    color: #fd267a;
+  cursor: pointer;
+
+  .like {
+    color: #effd26;
     // background-color: #fd267a;
     padding: 4px 5px;
     border-radius: 1em;
-    :hover{
-      color: #701236;
+
+    :hover {
+      color: #606613;
     }
   }
-  .dislike{
-    color: #fd2626;
+
+  .dislike {
+    color: #1f60aa;
     // background-color: #fd267a;
     padding: 4px 5px;
     border-radius: 1em;
-    :hover{
-      color: #701212;
+
+    :hover {
+      color: #070833;
+    }
+  }
+
+  .turbo {
+    color: #7826fd;
+    // background-color: #fd267a;
+    padding: 4px 6px;
+    border-radius: 1em;
+    font-size: 45px;
+    :hover {
+      color: #2a0e57;
+    }
+  }
+  .superlike {
+    color: #26fdab;
+    // background-color: #fd267a;
+    margin-bottom: 2px;
+    // padding: 4px 3px;
+    border-radius: 1em;
+    font-size: 45px;
+    :hover {
+      color: #0f5037;
     }
   }
 }
+
+.info{
+  scroll-behavior: smooth;
+  background: linear-gradient(260deg, #ff6036, #fd267a);
+  border-radius: 0px;
+}
+
+button.but:checked ~ div.icons {
+	display:none !important;
+}
+
+// div.icons{
+//   display:none;
+// }
+
+button{
+  visibility: visible;
+}
+button:checked ~ .icons{
+  display: none;
+}
+button:checked ~ .icons{
+  display: block;
+}
+.icons{
+  display: block;
+}
+
+

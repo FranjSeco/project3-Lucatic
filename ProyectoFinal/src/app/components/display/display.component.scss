@@ -1,3 +1,7 @@
+.module {
+  overflow-y: hidden;
+}
+
 button {
   border: none;
   background: none;
@@ -47,6 +51,11 @@ button {
 .name {
   font-size: 15px;
   font-weight: 500;
+}
+
+.name a {
+  text-decoration: none !important;
+  color: white !important;
 }
 
 .work {
@@ -157,18 +166,14 @@ button {
   justify-content: center;
 }
 
-.profiles {
-  width: 100%;
-  position: absolute;
-  display: flex;
-  flex-wrap: wrap;
-  padding-left: 12px;
+#matchList {
+  translate: 0%;
+  transition: 0.4s;
 }
 
 #messList {
   translate: 100%;
   transition: 0.4s;
-
   background: aquamarine;
 }
 
@@ -242,21 +247,86 @@ button {
 
 .profiles {
   display: flex;
-
+  flex-wrap: wrap;
+  align-content: flex-start;
+  justify-content: space-evenly;
+  gap: 0px;
+  position: absolute;
   width: 100%;
-  overflow-y: hidden;
+  height: 100vh;
+  overflow-y: auto !important;
   overflow-x: hidden;
   background: white;
+}
+
+.profiles::-webkit-scrollbar {
+  display: none;
+}
+
+.profiles {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
 }
 
 .p-card {
   padding: 8px;
   transition: all 0.2s ease-in-out;
   width: 103px;
+  height: 120px;
 }
 
 .p-card:hover {
   transform: scale(1.1);
+}
+
+.p-message {
+  width: 100%;
+  background: white;
+  display: flex;
+  align-items: center;
+}
+
+.messImg {
+  flex-grow: 0;
+  padding-bottom: 12px;
+  padding-top: 12px;
+  padding-left: 24px;
+  padding-right: 24px;
+}
+
+.messSize {
+  width: 74px;
+  height: 74px;
+  position: relative;
+  border-radius: 50%;
+}
+
+.messText {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  padding-right: 10px;
+  overflow: hidden;
+}
+
+.messName {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.innerName {
+  margin: 0;
+  font-weight: 600;
+}
+
+.innerCheck {
+  display: inline-block;
+  flex-shrink: 0;
+  height: 18px;
+  line-height: 0;
+  margin-left: 4px;
+  width: 18px;
 }
 
 .pic {

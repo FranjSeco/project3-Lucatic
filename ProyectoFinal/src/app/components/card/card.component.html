@@ -8,18 +8,20 @@
       <button class="but" (click)="verDetalles()"><span class="icon-info"><i
             class="fas fa-info-circle"></i></span></button>
     </div>
-    <div>
+    <div class="icons">
+      <button class="but-fun"><span class="superlike"><i class="fas fa-star"></i></span></button>
       <button class="but-fun" (click)="darLike()"><span class="like"><i class="far fa-heart"></i></span></button>
       <button class="but-fun" (click)="darDislike()"><span class="dislike"><i
             class="far fa-times-circle"></i></span></button>
+      <button class="but-fun"><span class="turbo"><i class="fas fa-bolt"></i></span></button>
     </div>
   </div>
-  <div *ngIf="VerDetalles==true">
-    <p>{{user.genero}}</p>
-    <p *ngIf="user.localidad!=undefined">{{user.localidad}}</p>
-    <p *ngIf="user.cinefilo!=undefined">Cinefilo Lover</p>
-    <p *ngIf="user.playa!=undefined">Playa Lover</p>
-    <p *ngIf="user.fumador!=undefined">fumador Lover</p>
-    <p *ngIf="user.deportista!=undefined">Deportista</p>
-  </div>
+    <div class="info" *ngIf="VerDetalles==true">
+      <p>{{user.genero}}</p>
+      <p *ngIf="user.localidad!=undefined">{{user.localidad}}</p>
+      <p *ngIf="user.cinefilo!=undefined">Cinefilo Lover</p>
+      <p *ngIf="user.playa!=undefined">Playa Lover</p>
+      <p *ngIf="user.fumador!=undefined">fumador Lover</p>
+      <p *ngIf="user.deportista!=undefined">Deportista</p>
+    </div>
 </div>
