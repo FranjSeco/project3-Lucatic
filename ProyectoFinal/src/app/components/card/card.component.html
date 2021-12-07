@@ -17,11 +17,11 @@
     </div>
   </div>
     <div class="info" *ngIf="VerDetalles==true">
-      <p *ngIf="user.genero!=undefined">{{user.genero}}</p>
-      <p *ngIf="user.localidad!=undefined">{{user.localidad}}</p>
-      <p *ngIf="user.cinefilo!=undefined">Cinefilo Lover</p>
-      <p *ngIf="user.playa!=undefined">Playa Lover</p>
-      <p *ngIf="user.fumador!=undefined">fumador Lover</p>
-      <p *ngIf="user.deportista!=undefined">Deportista</p>
+      <p *ngIf="user.localidad!=undefined"><span><i class="fas fa-home"></i></span>Vive en {{user.localidad}} (<span *ngIf="user.genero!=undefined">{{user.genero}}</span>)</p>
+      
+      <p class="hobbie" *ngIf="user.cinefilo!=undefined"><span><i class="fas fa-film"></i></span> Cinefilo Lover</p>
+      <p class="hobbie" *ngIf="user.playa!=undefined"><span><i class="fas fa-umbrella-beach"></i></span> Playa Lover</p>
+      <p class="hobbie" *ngIf="user.fumador!=undefined"><span><i class="fas fa-smoking"></i></span> Fumador Lover</p>
+      <p class="hobbie" *ngIf="user.deportista!=undefined"><span><i class="fas fa-running"></i></span> Deportista</p>
     </div>
 </div>

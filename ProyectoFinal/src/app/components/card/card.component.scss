@@ -5,7 +5,7 @@
 
 .card {
   width: 300px;
-  height: 500px;
+  height: 450px;
   // background-color: rgb(121, 190, 202);
   background: linear-gradient(260deg, #ff6036, #fd267a);
   border-radius: 5px;
@@ -63,7 +63,8 @@
 .but {
   background-color: transparent;
   border: transparent;
-  margin-top: -35px;
+  margin-top: 0.1vh;
+  margin-right: 1vh;
   cursor: pointer;
 
   :hover {
@@ -77,6 +78,7 @@
   background-color: transparent;
   border: transparent;
   cursor: pointer;
+  opacity: 0.7;
 
   .like {
     color: #effd26;
@@ -106,30 +108,43 @@
     padding: 4px 6px;
     border-radius: 1em;
     font-size: 45px;
+
     :hover {
       color: #2a0e57;
     }
   }
+
   .superlike {
     color: #26fdab;
     // background-color: #fd267a;
-    margin-bottom: 2px;
+    // margin-bottom: 2px;
     // padding: 4px 3px;
+    padding-bottom: 2px;
     border-radius: 1em;
     font-size: 45px;
+
     :hover {
       color: #0f5037;
     }
   }
 }
 
-.info{
+.info {
   scroll-behavior: smooth;
   background: linear-gradient(260deg, #ff6036, #fd267a);
   border-radius: 0px;
-  margin-top: -90px;
-  
+  margin-top: -85px;
+  padding: 0px 12px 5px 10px;
+  color: white;
+
+  .hobbie {
+    border: solid 2px rgb(80, 74, 74);
+    width: 13vh;
+    text-align: center;
+    border-radius: 20px;
+  }
 }
 
-
-
+.icons {
+  margin-bottom: 2%;
+}

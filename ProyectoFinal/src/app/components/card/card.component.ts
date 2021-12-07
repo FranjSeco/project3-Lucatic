@@ -37,8 +37,8 @@ export class CardComponent implements OnInit {
    
     this.PersonaVisualizada = {} as UserInterface;
     this.VerDetalles = false;
-    this.VerIcons = true;
     this.Yo = {} as UserInterface;
+    this.VerIcons = true;
    
   }
 
@@ -58,7 +58,12 @@ export class CardComponent implements OnInit {
     return numero;
   }
 
-  
+  likes() {
+    // this.addLike.likes().subscribe(() => {
+    // })
+    //this.getRandom();
+  }
+
   BuscarmeAmi() {
     let miNumero = 0;
     for (let i = 0; i < this.perfiles.length; i++) {
@@ -83,11 +88,9 @@ export class CardComponent implements OnInit {
   }
 
   darLike() {
-    if(this.UsuariosSinVer()==false){
     this.BuscarmeAmi();
-    this.matches();
     this.Yo.likesDado?.push(this.user._id + '');
-    this.user?.likeRecivido?.push(this.Yo._id+"");
+    //console.log(this.Yo);
 
     this.authservicio.updateUser(this.Yo._id, this.Yo).subscribe(
       () => {
@@ -95,30 +98,14 @@ export class CardComponent implements OnInit {
         this.ngZone.run(() => this.router.navigateByUrl('/updateUser'));
       },
       (err) => {
-        console.log(err);
+        //console.log(err);
       }
     );
-console.log( this.user)
-    this.authservicio.updateUser(this.user._id, this.user).subscribe(
-      () => {
-        console.log('holi');
-        this.ngZone.run(() => this.router.navigateByUrl('/updateUser'));
-      },
-      (err) => {
-        console.log(err);
-      }
-    );
-
-   
-    //window.location.reload();
-  }
-  else{
-
-  }
+  
+    this.getAllUsers();
   }
 
   darDislike() {
-    if(this.UsuariosSinVer()==false){
     this.BuscarmeAmi();
     this.Yo.dislikeDado?.push(this.user._id + '');
     //console.log(this.Yo);
@@ -133,38 +120,21 @@ console.log( this.user)
       }
     );
  
-    window.location.reload();
-    }
-    else{
-
-    }
+    this.getAllUsers();
   }
 
   getAllUsers() {
     this.cogerUsuarios.getAllUsers().subscribe((res) => {
-     
+      //console.log(res);
 
       this.perfiles = res;
       let miNumero = this.BuscarmeAmi();
 
-      if(this.UsuariosSinVer()==true){
-        this.user={
-          name: "No te quedan Usuarios",
-          email: "caca@gmail.com",
-          password: "12345",
-          genero: "Vuelve mas tarde",
-          edad: '404',
-          foto: 'https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_640.png',
-              
-        };
-      } 
-     else{
+      let repetido:boolean=true;
+     
 //no salir nosotros y no repetidos
-    let repetido:boolean=true;
-     let numeroRandom = this.getRandom();
-
-    
-     while (numeroRandom == miNumero || repetido == true) {
+      let numeroRandom = this.getRandom();
+      while (numeroRandom == miNumero || repetido == true) {
         numeroRandom = this.getRandom();
         this.perfiles[numeroRandom];
       
@@ -173,7 +143,7 @@ console.log( this.user)
       }
       
       this.user = this.perfiles[numeroRandom];
-    }
+      //console.log(this.user);
     });
   }
 
@@ -183,10 +153,10 @@ BuscarUsuariosVistos(id:string){
  
 
 if(this.Yo.likesDado?.length!== undefined ){
- 
+  //console.log(id);
 for(let i=0;  i<this.Yo.likesDado?.length;i++ ){
  
-
+  console.log(this.Yo.likesDado[i]);
   if(this.Yo.likesDado[i]==id){
     repetido=true;
   
@@ -200,7 +170,7 @@ if(this.Yo.dislikeDado?.length!== undefined ){
 for(let i=0; i <this.Yo.dislikeDado?.length;i++ ){
   if(this.Yo.dislikeDado[i]==id){
     repetido=true;
-  
+   
   }
 
 
@@ -211,62 +181,6 @@ return repetido;
 }
 
 
-UsuariosSinVer(){
-  let contador=1;
-  let noQuedan=false;
-  
-  for(let i=0;i<this.perfiles.length;i++){
-    
-  if((this.BuscarUsuariosVistos(this.perfiles[i]._id))==true){
-  contador++;
-  
-  }
-  
-  }
-  if(contador==this.perfiles.length){
-noQuedan=true;
-  }
-console.log(contador-this.perfiles.length)
-  return noQuedan;
-}
-
-matches(){
-if(this.Yo.likesDado?.length!== undefined && this.Yo.likeRecivido?.length!== undefined){
-
-for(let i=0; i<this.Yo.likesDado?.length;i++){
-for(let j=0;j <this.Yo.likeRecivido?.length;j++){
-
-
-
-
-if(this.Yo.likesDado[i]==this.Yo.likeRecivido[j]){
-  let matchAnterior=false;
-  if(this.Yo.match?.length!== undefined){
-
-
-for(let k=0;k<this.Yo.match?.length;k++){
-  if(this.Yo.match[k]==this.Yo.likesDado[i]){
-    matchAnterior=true;
-  }
-}
-
-  }
-  if(matchAnterior==false){
-
-    this.Yo.match?.push(this.Yo.likesDado[i]);
-  
-  }
-
-}
-
-}
-
-}
-}
-
-
-}
-
 
 
   verDetalles() {
@@ -276,7 +190,6 @@ for(let k=0;k<this.Yo.match?.length;k++){
       this.VerDetalles = false;
     }
   }
-
   verIcons() {
     if (this.VerIcons == false) {
       this.VerIcons = true;
