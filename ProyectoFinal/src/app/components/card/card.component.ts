@@ -108,7 +108,7 @@ console.log( this.user)
     );
 
    
-    //window.location.reload();
+    window.location.reload();
   }
   else{
 
@@ -127,7 +127,7 @@ console.log( this.user)
         this.ngZone.run(() => this.router.navigateByUrl('/updateUser'));
       },
       (err) => {
-        //console.log(err);
+        console.log(err);
       }
     );
  
