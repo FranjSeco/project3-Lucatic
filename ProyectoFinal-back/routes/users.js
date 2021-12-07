@@ -25,6 +25,6 @@ rutas.put('/updateUser/:id', updateUser);
 
 rutas.put('/:_id/likes', likeUser);
 
-rutas.use('/dislikes/:id', dislikeUser);
+rutas.put('/dislikes/:id', dislikeUser);
 
 export default rutas;

@@ -5,8 +5,7 @@ import {
   HttpErrorResponse,
 } from '@angular/common/http';
 import { Observable, throwError } from 'rxjs';
-import { catchError, map } from 'rxjs/operators';
-import { UserInterface } from '../model/user-interface';
+import { catchError } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root',
@@ -16,11 +15,11 @@ export class DislikeService {
   httpHeaders = new HttpHeaders().set('Content-Type', 'application/json');
   constructor(private httpClient: HttpClient) {}
 
-  dislikes(thatUser: any, id: any) {
+  dislikes(thatUser: any, id: any): Observable<any> {
     let API_URL = `${this.REST_API}/dislikes/${id}`;
     console.log(thatUser._id, 'that user');
     return this.httpClient
-      .put(API_URL, thatUser._id)
+      .put(API_URL, thatUser, { headers: this.httpHeaders })
       .pipe(catchError(this.handleError));
   }
 

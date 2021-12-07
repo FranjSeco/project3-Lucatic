@@ -116,25 +116,20 @@ export class CardComponent implements OnInit {
   }
 
   darDislike() {
-    // if (this.UsuariosSinVer() == false) {
-    //   this.BuscarmeAmi();
-    //   this.Yo.dislikeDado?.push(this.user._id + '');
-    //   //console.log(this.Yo);
-
-    //   this.authservicio.updateUser(this.Yo._id, this.Yo).subscribe(
-    //     () => {
-    //       //console.log('dislike dado');
-    //       this.ngZone.run(() => this.router.navigateByUrl('/updateUser'));
-    //     },
-    //     (err) => {
-    //       //console.log(err);
-    //     }
-    //   );
-
-    //   window.location.reload();
-    // } else {
-    // }
-    this.dislike.dislikes(this.user, this.Yo._id);
+    this.dislike.dislikes(this.user, this.Yo._id).subscribe(
+      () => {
+        this.ngZone.run(() => this.router.navigateByUrl('/dislikes'));
+        window.location.reload();
+      },
+      (err) => {
+        console.log(err);
+      }
+    );
+    this.router
+      .navigateByUrl('/card', { skipLocationChange: true })
+      .then(() => {
+        this.router.navigate(['/display']);
+      });
   }
 
   getAllUsers() {
