@@ -9,9 +9,20 @@ import { Router } from '@angular/router';
 export class AppComponent {
   title = 'ProyectoFinal';
 
-  constructor(private router: Router) {}
+  constructor(private router: Router) {
+    this.isUser();
+  }
 
   hasRoute(route: string) {
     return this.router.url === route;
+  }
+
+  isUser() {
+    console.log(localStorage);
+    if (localStorage.length > 0) {
+      this.router.navigate(['/display']);
+    } else {
+      console.log('The user needs to login manually.');
+    }
   }
 }
