@@ -1,6 +1,6 @@
 <div class="body">
   <div class="form">
-    <h2>Bienvenido {{datosPrevios.name}}</h2>
+    <h2>Modificar datos de {{datosPrevios.name}}</h2>
     <p class="correo">({{datosPrevios.email}})</p>
 
     <mat-form-field class="example-full-width" appearance="fill">
@@ -58,10 +58,6 @@
       <input type="checkbox" id="Playa" value="Playa" [(ngModel)]="datosPersonales.playa">
       <label for="Playa"> Playa</label><br>
     </span><br>
-    <span class="hobbie">
-      <input type="checkbox" id="Montana" value="Montana" [(ngModel)]="datosPersonales.montana">
-      <label for="Montana"> Montaña</label><br>
-    </span>
     <br />
     <button class="register-but" mat-raised-button color="accent" (click)="agregarDatosPersonales()"
       routerLink='/display'>Enviar</button><br />
