@@ -55,6 +55,7 @@ this.servicio.updateUser(localStorage.getItem("id"),this.datosPersonales).subscr
     console.log(err);
   }
 );
+
 localStorage.setItem("name",this.datosPersonales.name+"");
 this.datosPersonales = {} as UserInterface  ;
   
