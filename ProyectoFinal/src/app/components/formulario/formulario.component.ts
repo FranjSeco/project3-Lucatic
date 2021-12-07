@@ -55,8 +55,9 @@ this.servicio.updateUser(localStorage.getItem("id"),this.datosPersonales).subscr
     console.log(err);
   }
 );
-
+if(this.datosPersonales.name!=undefined){
 localStorage.setItem("name",this.datosPersonales.name+"");
+}
 this.datosPersonales = {} as UserInterface  ;
   
   }
