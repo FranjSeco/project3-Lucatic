@@ -280,12 +280,53 @@ button {
 }
 
 .p-message {
-  height: 100px;
   width: 100%;
   background: white;
-  border-top: 1px solid #d6d6d6;
-  border-bottom: 1px solid #d6d6d6;
   display: flex;
+  align-items: center;
+}
+
+.messImg {
+  flex-grow: 0;
+  padding-bottom: 12px;
+  padding-top: 12px;
+  padding-left: 24px;
+  padding-right: 24px;
+}
+
+.messSize {
+  width: 74px;
+  height: 74px;
+  position: relative;
+  border-radius: 50%;
+}
+
+.messText {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  padding-right: 10px;
+  overflow: hidden;
+}
+
+.messName {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.innerName {
+  margin: 0;
+  font-weight: 600;
+}
+
+.innerCheck {
+  display: inline-block;
+  flex-shrink: 0;
+  height: 18px;
+  line-height: 0;
+  margin-left: 4px;
+  width: 18px;
 }
 
 .pic {
