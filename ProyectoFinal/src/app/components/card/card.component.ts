@@ -170,17 +170,12 @@ if(this.Yo.dislikeDado?.length!== undefined ){
 for(let i=0; i <this.Yo.dislikeDado?.length;i++ ){
   if(this.Yo.dislikeDado[i]==id){
     repetido=true;
-   
   }
-
-
 }
 }
 return repetido;
 
 }
-
-
 
 
   verDetalles() {
