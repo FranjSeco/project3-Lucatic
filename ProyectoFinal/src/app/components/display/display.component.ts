@@ -27,25 +27,10 @@ export class DisplayComponent implements OnInit {
     private router: Router,
     private ngZone: NgZone,
     private cogerUsuarios: TakeUsersService
-  ) {
-  
-  }
+  ) {}
 
   ngOnInit(): void {
     this.name = localStorage.getItem('name');
-    this.likesLista.push({
-      name: 'Angie Jolie',
-      email: 'jolie@g.es',
-      password: '12345',
-      genero: 'Mujer',
-      edad: '46',
-      foto: 'https://hips.hearstapps.com/hmg-prod.s3.amazonaws.com/images/angelina-jolie-vestido-negro-1570091726.jpg?crop=1.00xw:0.503xh;0,0&resize=640:*',
-      localidad: 'trebujena',
-      fumador: false,
-      deportista: true,
-      cinefilo: true,
-      playa: true,
-    });
 
     this.getAllUsers();
 
@@ -137,16 +122,13 @@ export class DisplayComponent implements OnInit {
   }
 
   async getAllUsers() {
-    let hola!: any;
-    while (hola != undefined) {
-      hola = this.cogerUsuarios.getAllUsers().subscribe((res) => {
-        //console.log(res);
+    this.cogerUsuarios.getAllUsers().subscribe((res) => {
+      //console.log(res);
 
-        this.perfiles = res;
+      this.perfiles = res;
 
-        console.log(res);
-      });
-    }
+      console.log(res);
+    });
   }
 
   BuscarrmeAmi(id: string) {
@@ -160,22 +142,16 @@ export class DisplayComponent implements OnInit {
     return perfilBuscado;
   }
 
-    findLikes() {
+  findLikes() {
     this.BuscarrmeAmi(localStorage.getItem('id') + '');
 
     let todosarray!: any;
     todosarray = this.Yo.likesDado;
-   console.log(todosarray);
- 
-   
+    console.log(todosarray);
 
     for (let index = 0; index < todosarray.length; index++) {
       this.likesLista[index] = this.BuscarrmeAmi(todosarray[index]);
     }
     console.log(this.likesLista);
-
-
-
-    
   }
 }

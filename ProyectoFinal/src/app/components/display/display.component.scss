@@ -1,3 +1,7 @@
+.module {
+  overflow-y: hidden;
+}
+
 button {
   border: none;
   background: none;
@@ -162,13 +166,6 @@ button {
   justify-content: center;
 }
 
-.profiles {
-  width: 100%;
-  position: absolute;
-  display: flex;
-  flex-wrap: wrap;
-}
-
 #matchList {
   translate: 0%;
   transition: 0.4s;
@@ -251,17 +248,31 @@ button {
 
 .profiles {
   display: flex;
-
+  flex-wrap: wrap;
+  align-content: flex-start;
+  gap: 0px;
+  position: absolute;
   width: 100%;
-  overflow-y: hidden;
+  height: 100vh;
+  overflow-y: auto !important;
   overflow-x: hidden;
   background: white;
+}
+
+.profiles::-webkit-scrollbar {
+  display: none;
+}
+
+.profiles {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
 }
 
 .p-card {
   padding: 8px;
   transition: all 0.2s ease-in-out;
   width: 103px;
+  height: 120px;
 }
 
 .p-card:hover {
