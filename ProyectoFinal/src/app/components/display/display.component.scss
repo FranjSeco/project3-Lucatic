@@ -174,7 +174,6 @@ button {
 #messList {
   translate: 100%;
   transition: 0.4s;
-
   background: aquamarine;
 }
 
@@ -250,6 +249,7 @@ button {
   display: flex;
   flex-wrap: wrap;
   align-content: flex-start;
+  justify-content: space-evenly;
   gap: 0px;
   position: absolute;
   width: 100%;
