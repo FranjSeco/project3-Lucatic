@@ -109,7 +109,7 @@ console.log( this.user)
     );
 
    
-    //window.location.reload();
+    window.location.reload();
   }
   else{
 
@@ -135,10 +135,12 @@ console.log( this.user)
     this.router.navigateByUrl('/display', { skipLocationChange: true }).then(() => {
       this.router.navigate(['/display']);
   }); 
+  window.location.reload();
     }
     else{
 
     }
+    
   }
 
   getAllUsers() {
