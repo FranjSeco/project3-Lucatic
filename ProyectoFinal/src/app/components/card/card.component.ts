@@ -3,8 +3,7 @@ import { Component, OnInit, NgZone } from '@angular/core';
 import { AuthService } from '../../services/auth.service';
 
 import { TakeUsersService } from '../../services/take-users.service';
-import { LikesService } from 'src/app/services/likes.service';
-
+import { DislikeService } from 'src/app/services/dislike.service';
 import { Router, ActivatedRoute } from '@angular/router';
 
 import { UserInterface } from '../../model/user-interface';
@@ -31,13 +30,11 @@ export class CardComponent implements OnInit {
     private router: Router,
     private ngZone: NgZone,
     private cogerUsuarios: TakeUsersService,
-    private addLike: LikesService
+    private dislike: DislikeService
   ) {
-   
     this.PersonaVisualizada = {} as UserInterface;
     this.VerDetalles = false;
     this.Yo = {} as UserInterface;
-   
   }
 
   ngOnInit(): void {
@@ -73,7 +70,6 @@ export class CardComponent implements OnInit {
     return miNumero;
   }
 
-  
   BuscarID(id: string) {
     let perfilBuscado!: UserInterface;
     for (let i = 0; i < this.perfiles.length; i++) {
@@ -86,142 +82,117 @@ export class CardComponent implements OnInit {
   }
 
   darLike() {
-    if(this.UsuariosSinVer()==false){
-    this.BuscarmeAmi();
-    this.Yo.likesDado?.push(this.user._id + '');
-    //console.log(this.Yo);
+    if (this.UsuariosSinVer() == false) {
+      this.BuscarmeAmi();
+      this.Yo.likesDado?.push(this.user._id + '');
+      //console.log(this.Yo);
 
-    this.authservicio.updateUser(this.Yo._id, this.Yo).subscribe(
-      () => {
-        //console.log('Like dado');
-        this.ngZone.run(() => this.router.navigateByUrl('/updateUser'));
-      },
-      (err) => {
-        console.log(err);
-      }
-    );
-  
-    window.location.reload();
-  }
-  else{
+      this.authservicio.updateUser(this.Yo._id, this.Yo).subscribe(
+        () => {
+          //console.log('Like dado');
+          this.ngZone.run(() => this.router.navigateByUrl('/updateUser'));
+        },
+        (err) => {
+          console.log(err);
+        }
+      );
 
-  }
+      window.location.reload();
+    } else {
+    }
   }
 
   darDislike() {
-    if(this.UsuariosSinVer()==false){
-    this.BuscarmeAmi();
-    this.Yo.dislikeDado?.push(this.user._id + '');
-    //console.log(this.Yo);
+    // if (this.UsuariosSinVer() == false) {
+    //   this.BuscarmeAmi();
+    //   this.Yo.dislikeDado?.push(this.user._id + '');
+    //   //console.log(this.Yo);
 
-    this.authservicio.updateUser(this.Yo._id, this.Yo).subscribe(
-      () => {
-        //console.log('dislike dado');
-        this.ngZone.run(() => this.router.navigateByUrl('/updateUser'));
-      },
-      (err) => {
-        //console.log(err);
-      }
-    );
- 
-    window.location.reload();
-    }
-    else{
+    //   this.authservicio.updateUser(this.Yo._id, this.Yo).subscribe(
+    //     () => {
+    //       //console.log('dislike dado');
+    //       this.ngZone.run(() => this.router.navigateByUrl('/updateUser'));
+    //     },
+    //     (err) => {
+    //       //console.log(err);
+    //     }
+    //   );
 
-    }
+    //   window.location.reload();
+    // } else {
+    // }
+    console.log(this.user);
+    const dislikedUserId: any = this.user._id;
+    this.dislike.dislikes(dislikedUserId);
   }
 
   getAllUsers() {
     this.cogerUsuarios.getAllUsers().subscribe((res) => {
-     
-
       this.perfiles = res;
       let miNumero = this.BuscarmeAmi();
 
-      if(this.UsuariosSinVer()==true){
-        this.user={
-          name: "No te quedan Usuarios",
-          email: "caca@gmail.com",
-          password: "12345",
-          genero: "Vuelve mas tarde",
+      if (this.UsuariosSinVer() == true) {
+        this.user = {
+          name: 'No te quedan Usuarios',
+          email: 'caca@gmail.com',
+          password: '12345',
+          genero: 'Vuelve mas tarde',
           edad: '404',
           foto: 'https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_640.png',
-              
         };
-      } 
-     else{
-//no salir nosotros y no repetidos
-    let repetido:boolean=true;
-     let numeroRandom = this.getRandom();
+      } else {
+        //no salir nosotros y no repetidos
+        let repetido: boolean = true;
+        let numeroRandom = this.getRandom();
 
-    
-     while (numeroRandom == miNumero || repetido == true) {
-        numeroRandom = this.getRandom();
-        this.perfiles[numeroRandom];
-      
-        repetido=this.BuscarUsuariosVistos( this.perfiles[numeroRandom]._id);
-        
+        while (numeroRandom == miNumero || repetido == true) {
+          numeroRandom = this.getRandom();
+          this.perfiles[numeroRandom];
+
+          repetido = this.BuscarUsuariosVistos(this.perfiles[numeroRandom]._id);
+        }
+
+        this.user = this.perfiles[numeroRandom];
       }
-      
-      this.user = this.perfiles[numeroRandom];
-    }
     });
   }
 
+  BuscarUsuariosVistos(id: string) {
+    let repetido: boolean = false;
 
-BuscarUsuariosVistos(id:string){
- let repetido:boolean=false;
- 
+    if (this.Yo.likesDado?.length !== undefined) {
+      for (let i = 0; i < this.Yo.likesDado?.length; i++) {
+        if (this.Yo.likesDado[i] == id) {
+          repetido = true;
+        }
+      }
+    }
 
-if(this.Yo.likesDado?.length!== undefined ){
- 
-for(let i=0;  i<this.Yo.likesDado?.length;i++ ){
- 
-
-  if(this.Yo.likesDado[i]==id){
-    repetido=true;
-  
-   
-  }
-}
-}
-
-if(this.Yo.dislikeDado?.length!== undefined ){
-  
-for(let i=0; i <this.Yo.dislikeDado?.length;i++ ){
-  if(this.Yo.dislikeDado[i]==id){
-    repetido=true;
-  
+    if (this.Yo.dislikeDado?.length !== undefined) {
+      for (let i = 0; i < this.Yo.dislikeDado?.length; i++) {
+        if (this.Yo.dislikeDado[i] == id) {
+          repetido = true;
+        }
+      }
+    }
+    return repetido;
   }
 
+  UsuariosSinVer() {
+    let contador = 1;
+    let noQuedan = false;
 
-}
-}
-return repetido;
-
-}
-
-
-UsuariosSinVer(){
-  let contador=1;
-  let noQuedan=false;
-  
-  for(let i=0;i<this.perfiles.length;i++){
-    
-  if((this.BuscarUsuariosVistos(this.perfiles[i]._id))==true){
-  contador++;
-  
+    for (let i = 0; i < this.perfiles.length; i++) {
+      if (this.BuscarUsuariosVistos(this.perfiles[i]._id) == true) {
+        contador++;
+      }
+    }
+    if (contador == this.perfiles.length) {
+      noQuedan = true;
+    }
+    console.log(contador - this.perfiles.length);
+    return noQuedan;
   }
-  
-  }
-  if(contador==this.perfiles.length){
-noQuedan=true;
-  }
-console.log(contador-this.perfiles.length)
-  return noQuedan;
-}
-
-
 
   verDetalles() {
     if (this.VerDetalles == false) {
