@@ -126,17 +126,16 @@ export class DisplayComponent implements OnInit {
   async getAllUsers() {
     this.cogerUsuarios.getAllUsers().subscribe((res) => {
       this.perfiles = res;
+
       const myId = localStorage.getItem('id');
 
       const dislikesLista = this.perfiles.find((item: any) => {
         return item._id == myId;
       }).dislikeDado;
 
-      this.dislikedUsers = this.perfiles.filter(
-        ({ _id }: any) => !dislikesLista.includes(_id)
+      this.dislikedUsers = this.perfiles.filter(({ _id }: any) =>
+        dislikesLista.includes(_id)
       );
-      console.log(dislikesLista, 'this is disliked users');
-      console.log(res);
     });
   }
 
