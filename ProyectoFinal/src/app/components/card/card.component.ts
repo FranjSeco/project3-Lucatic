@@ -4,11 +4,9 @@ import { AuthService } from '../../services/auth.service';
 
 import { TakeUsersService } from '../../services/take-users.service';
 import { DislikeService } from 'src/app/services/dislike.service';
-import { Router, ActivatedRoute } from '@angular/router';
+import { Router } from '@angular/router';
 
 import { UserInterface } from '../../model/user-interface';
-import { NumberFormatStyle } from '@angular/common';
-import { getTranslationDeclStmts } from '@angular/compiler/src/render3/view/template';
 
 @Component({
   selector: 'app-card',
