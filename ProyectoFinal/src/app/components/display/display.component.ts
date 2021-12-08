@@ -2,15 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { TakeUsersService } from 'src/app/services/take-users.service';
 import { AuthService } from '../../services/auth.service';
 import { NgZone } from '@angular/core';
-import {
-  ActivatedRouteSnapshot,
-  Router,
-  RouterStateSnapshot,
-} from '@angular/router';
+import { Router } from '@angular/router';
 import { UserInterface } from '../../model/user-interface';
-import { Observable } from 'rxjs';
-//probando el alert
-import swal from'sweetalert2';
 
 @Component({
   selector: 'app-display',
@@ -27,9 +20,6 @@ export class DisplayComponent implements OnInit {
   matches!: any;
   funciona!: false;
 
-///alerta
-titularAlerta:string="";
-
   constructor(
     private authservicio: AuthService,
     private router: Router,
@@ -43,7 +33,6 @@ titularAlerta:string="";
     this.getAllUsers();
 
     //this.findLikes();
-    
   }
 
   switchWindow(window: string) {
@@ -132,18 +121,8 @@ titularAlerta:string="";
   async getAllUsers() {
     this.cogerUsuarios.getAllUsers().subscribe((res) => {
       this.perfiles = res;
-
-      const myId = localStorage.getItem('id');
-
-      const dislikesLista = this.perfiles.find((item: any) => {
-        return item._id == myId;
-      }).dislikeDado;
-
-      this.dislikedUsers = this.perfiles.filter(({ _id }: any) =>
-        dislikesLista.includes(_id)
-      );
+      this.findDislikes();
     });
-    
   }
 
   BuscarrmeAmi(id: string) {
@@ -179,5 +158,17 @@ titularAlerta:string="";
       this.matchLista[index] = this.BuscarrmeAmi(todosarray[index]);
     }
     console.log(this.matchLista);
+  }
+
+  findDislikes() {
+    const myId = localStorage.getItem('id');
+
+    const dislikesLista = this.perfiles.find((item: any) => {
+      return item._id == myId;
+    }).dislikeDado;
+
+    this.dislikedUsers = this.perfiles.filter(({ _id }: any) =>
+      dislikesLista.includes(_id)
+    );
   }
 }
