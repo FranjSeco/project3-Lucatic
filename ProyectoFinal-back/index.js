@@ -50,6 +50,13 @@ app.use(cors());
 app.use("/api", rutas);
 
 
+//Swagger
+const swaggerUi = require(‘swagger-ui-express’),
+swaggerDocument = require(‘./swagger.json’);
+
+
+
+
 // PRINTING FAKE USERS
 // dbData.find((err, data) => {
 //   data.map((item) => {

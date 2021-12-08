@@ -219,7 +219,7 @@ export const mockUsers = [
   },
   {
     name: "Elsa",
-    email: "pepa@gmail.com",
+    email: "elsa@gmail.com",
     password: "12345",
     genero: "Mujer",
     edad: '27',
