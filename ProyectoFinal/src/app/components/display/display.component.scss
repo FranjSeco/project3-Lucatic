@@ -164,6 +164,7 @@ button {
   position: relative;
   flex-wrap: nowrap;
   justify-content: center;
+  height: 1000px;
 }
 
 #matchList {
@@ -174,21 +175,16 @@ button {
 #messList {
   translate: 100%;
   transition: 0.4s;
-  background: aquamarine;
 }
 
 #likeList {
   translate: 100%;
   transition: 0.4s;
-
-  background: chartreuse;
 }
 
 #dislikeList {
   translate: 100%;
   transition: 0.4s;
-
-  background: orange;
 }
 
 .p-nav {
@@ -257,6 +253,7 @@ button {
   overflow-y: auto !important;
   overflow-x: hidden;
   background: white;
+  border-right: 1px solid #d6d6d6;
 }
 
 .profiles::-webkit-scrollbar {
@@ -434,7 +431,7 @@ button {
   align-items: center;
 }
 
-.enlace{
+.enlace {
   text-decoration: none;
   color: white;
 }
