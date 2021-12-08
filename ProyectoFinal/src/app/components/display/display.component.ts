@@ -126,16 +126,7 @@ export class DisplayComponent implements OnInit {
   async getAllUsers() {
     this.cogerUsuarios.getAllUsers().subscribe((res) => {
       this.perfiles = res;
-
-      const myId = localStorage.getItem('id');
-
-      const dislikesLista = this.perfiles.find((item: any) => {
-        return item._id == myId;
-      }).dislikeDado;
-
-      this.dislikedUsers = this.perfiles.filter(({ _id }: any) =>
-        dislikesLista.includes(_id)
-      );
+      this.findDislikes();
     });
   }
 
@@ -172,5 +163,17 @@ export class DisplayComponent implements OnInit {
       this.matchLista[index] = this.BuscarrmeAmi(todosarray[index]);
     }
     console.log(this.matchLista);
+  }
+
+  findDislikes() {
+    const myId = localStorage.getItem('id');
+
+    const dislikesLista = this.perfiles.find((item: any) => {
+      return item._id == myId;
+    }).dislikeDado;
+
+    this.dislikedUsers = this.perfiles.filter(({ _id }: any) =>
+      dislikesLista.includes(_id)
+    );
   }
 }
