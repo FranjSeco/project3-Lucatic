@@ -18,7 +18,7 @@ import { Observable } from 'rxjs';
 export class DisplayComponent implements OnInit {
   Yo!: UserInterface;
   likesLista: UserInterface[] = [];
-
+  dislikedUsers: UserInterface[] = [];
   matchLista: UserInterface[] = [];
   perfiles!: any;
   name!: any;
@@ -37,7 +37,7 @@ export class DisplayComponent implements OnInit {
     this.getAllUsers();
 
     this.findLikes();
-    console.log(this.likesLista);
+    console.log(localStorage.getItem('id'));
   }
 
   switchWindow(window: string) {
@@ -125,11 +125,17 @@ export class DisplayComponent implements OnInit {
 
   async getAllUsers() {
     this.cogerUsuarios.getAllUsers().subscribe((res) => {
-      //console.log(res);
-
       this.perfiles = res;
 
-      console.log(res);
+      const myId = localStorage.getItem('id');
+
+      const dislikesLista = this.perfiles.find((item: any) => {
+        return item._id == myId;
+      }).dislikeDado;
+
+      this.dislikedUsers = this.perfiles.filter(({ _id }: any) =>
+        dislikesLista.includes(_id)
+      );
     });
   }
 
@@ -150,29 +156,21 @@ export class DisplayComponent implements OnInit {
     let todosarray!: any;
     todosarray = this.Yo.likesDado;
 
-
     for (let index = 0; index < todosarray.length; index++) {
       this.likesLista[index] = this.BuscarrmeAmi(todosarray[index]);
     }
     console.log(this.likesLista);
   }
 
-findMatches(){
+  findMatches() {
+    this.BuscarrmeAmi(localStorage.getItem('id') + '');
 
-  this.BuscarrmeAmi(localStorage.getItem('id') + '');
+    let todosarray!: any;
+    todosarray = this.Yo.match;
 
-  let todosarray!: any;
-  todosarray = this.Yo.match;
- 
-
- 
-
-  for (let index = 0; index < todosarray.length; index++) {
-    this.matchLista[index] = this.BuscarrmeAmi(todosarray[index]);
+    for (let index = 0; index < todosarray.length; index++) {
+      this.matchLista[index] = this.BuscarrmeAmi(todosarray[index]);
+    }
+    console.log(this.matchLista);
   }
-  console.log(this.matchLista);
-
-
-}
-
 }

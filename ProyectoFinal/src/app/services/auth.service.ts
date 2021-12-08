@@ -32,17 +32,12 @@ export class AuthService {
       .pipe(catchError(this.handleError));
   }
 
-
-  updateUser(id:any, data:any): Observable<any> {
+  updateUser(id: any, data: any): Observable<any> {
     let API_URL = `${this.REST_API}/updateUser/${id}`;
-    return this.httpClient.put(API_URL, data, { headers: this.httpHeaders })
-      .pipe(
-        catchError(this.handleError)
-      )
+    return this.httpClient
+      .put(API_URL, data, { headers: this.httpHeaders })
+      .pipe(catchError(this.handleError));
   }
- 
-
-
 
   // authorize(email: string, password: any) {
   //   let API_URL = `${this.REST_API}/login`;
