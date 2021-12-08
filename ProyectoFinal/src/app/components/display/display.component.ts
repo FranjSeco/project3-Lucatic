@@ -2,8 +2,13 @@ import { Component, OnInit } from '@angular/core';
 import { TakeUsersService } from 'src/app/services/take-users.service';
 import { AuthService } from '../../services/auth.service';
 import { NgZone } from '@angular/core';
-import { Router } from '@angular/router';
+import {
+  ActivatedRouteSnapshot,
+  Router,
+  RouterStateSnapshot,
+} from '@angular/router';
 import { UserInterface } from '../../model/user-interface';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-display',
@@ -13,30 +18,26 @@ import { UserInterface } from '../../model/user-interface';
 export class DisplayComponent implements OnInit {
   Yo!: UserInterface;
   likesLista: UserInterface[] = [];
-  dislikedUsers: UserInterface[] = [];
+
   matchLista: UserInterface[] = [];
   perfiles!: any;
   name!: any;
   matches!: any;
   funciona!: false;
-  
-  VerPopUp: Boolean;
-
   constructor(
     private authservicio: AuthService,
     private router: Router,
     private ngZone: NgZone,
     private cogerUsuarios: TakeUsersService
-  ) {
-    this.VerPopUp = false;
-  }
+  ) {}
 
   ngOnInit(): void {
     this.name = localStorage.getItem('name');
 
     this.getAllUsers();
 
-    //this.findLikes();
+    this.findLikes();
+    console.log(this.likesLista);
   }
 
   switchWindow(window: string) {
@@ -66,7 +67,7 @@ export class DisplayComponent implements OnInit {
         messList.style.translate = '100%';
         likeList.style.translate = '100%';
         dislikeList.style.translate = '100%';
-        this.findMatches();
+        this.findLikes();
         break;
       case 'messages':
         firstHr.style.opacity = '0';
@@ -124,8 +125,11 @@ export class DisplayComponent implements OnInit {
 
   async getAllUsers() {
     this.cogerUsuarios.getAllUsers().subscribe((res) => {
+      //console.log(res);
+
       this.perfiles = res;
-      this.findDislikes();
+
+      console.log(res);
     });
   }
 
@@ -162,46 +166,5 @@ export class DisplayComponent implements OnInit {
       this.matchLista[index] = this.BuscarrmeAmi(todosarray[index]);
     }
     console.log(this.matchLista);
-  }
-
-verPopUp() {
-  if (this.VerPopUp == false) {
-    this.VerPopUp = true;
-    let module = <HTMLElement>document.getElementById('module');
-    module.style.filter='blur(2px)';
-    let getGold = <HTMLElement>document.getElementById('getGold');
-    getGold.style.cursor='default';
-    
-  } else {
-    this.VerPopUp = false;
-    let module = <HTMLElement>document.getElementById('module');
-    module.style.filter='blur(0px)';
-  }
-}
-
-
-// const divStyles: CSS.Properties = {  
-//   content: '',
-//   position: 'absolute',
-//   top: '0',
-//   left: '0',
-//   width: '100%',
-//   height: '100%',
-//   filter: 'brightness(70%) blur(2px)',
-//   opacity: '0.6'
-// };
-
-
-
-  findDislikes() {
-    const myId = localStorage.getItem('id');
-
-    const dislikesLista = this.perfiles.find((item: any) => {
-      return item._id == myId;
-    }).dislikeDado;
-
-    this.dislikedUsers = this.perfiles.filter(({ _id }: any) =>
-      dislikesLista.includes(_id)
-    );
   }
 }
