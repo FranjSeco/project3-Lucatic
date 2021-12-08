@@ -45,38 +45,17 @@ app.use(
 ///seguridad; permite accesder a servidores de terceros; elegir proveedores en especifico por ej
 app.use(cors());
 
+
 // API root
 app.use("/api", rutas);
 
-// export const createUser = (req, res, next) => {
-//   UserModel.create({
-//     name: req.name,
-//     genero: req.genero,
-//     email: req.email,
-//     password: req.password,
-//   })
-// };
 
-// const fakeUsers = (req, res, next) => {
-//   user.create({
-//     name: req.name,
-//     genero: req.genero,
-//     email: req.email,
-//     password: req.password,
-//     edad: req.edad,
-//     foto: req.foto,
-//     playa: req.playa,
-//     fumador: req.fumador,
-//     deportista: req.deportista,
-//     cinefilo: req.cinefilo,
-//   })
-// }
-
-dbData.find((err, data) => {
-  data.map((item) => {
-    console.log(item);
-  });
-});
+// PRINTING FAKE USERS
+// dbData.find((err, data) => {
+//   data.map((item) => {
+//     console.log(item);
+//   });
+// });
 
 dbData.find(function (err, data) {
   if (data.length < 4) {
@@ -89,6 +68,7 @@ dbData.find(function (err, data) {
             genero: req.genero,
             email: req.email,
             edad: req.edad,
+            localidad:req.localidad,
             foto: req.foto,
             localidad: req.localidad,
             playa: req.playa,
@@ -103,6 +83,8 @@ dbData.find(function (err, data) {
     console.log("Hay suficientes usuarios");
   }
 });
+
+
 
 // PORT
 const port = process.env.PORT || 8080;
