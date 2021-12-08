@@ -19,13 +19,17 @@ export class DisplayComponent implements OnInit {
   name!: any;
   matches!: any;
   funciona!: false;
+  
+  VerPopUp: Boolean;
 
   constructor(
     private authservicio: AuthService,
     private router: Router,
     private ngZone: NgZone,
     private cogerUsuarios: TakeUsersService
-  ) {}
+  ) {
+    this.VerPopUp = false;
+  }
 
   ngOnInit(): void {
     this.name = localStorage.getItem('name');
@@ -159,6 +163,35 @@ export class DisplayComponent implements OnInit {
     }
     console.log(this.matchLista);
   }
+
+verPopUp() {
+  if (this.VerPopUp == false) {
+    this.VerPopUp = true;
+    let module = <HTMLElement>document.getElementById('module');
+    module.style.filter='blur(2px)';
+    let getGold = <HTMLElement>document.getElementById('getGold');
+    getGold.style.cursor='default';
+    
+  } else {
+    this.VerPopUp = false;
+    let module = <HTMLElement>document.getElementById('module');
+    module.style.filter='blur(0px)';
+  }
+}
+
+
+// const divStyles: CSS.Properties = {  
+//   content: '',
+//   position: 'absolute',
+//   top: '0',
+//   left: '0',
+//   width: '100%',
+//   height: '100%',
+//   filter: 'brightness(70%) blur(2px)',
+//   opacity: '0.6'
+// };
+
+
 
   findDislikes() {
     const myId = localStorage.getItem('id');

@@ -23,6 +23,7 @@ export class CardComponent implements OnInit {
 
   VerDetalles: Boolean;
   VerIcons: Boolean;
+  // VerPopUp: Boolean;
 
   constructor(
     private authservicio: AuthService,
@@ -35,6 +36,7 @@ export class CardComponent implements OnInit {
     this.VerDetalles = false;
     this.Yo = {} as UserInterface;
     this.VerIcons = true;
+    // this.VerPopUp = false;
   }
 
   ngOnInit(): void {
@@ -237,4 +239,12 @@ export class CardComponent implements OnInit {
       this.VerIcons = false;
     }
   }
+  // verPopUp() {
+  //   if (this.VerPopUp == false) {
+  //     this.VerPopUp = true;
+      
+  //   } else {
+  //     this.VerPopUp = false;
+  //   }
+  // }
 }
