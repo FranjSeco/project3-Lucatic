@@ -39,30 +39,6 @@ export class AuthService {
       .pipe(catchError(this.handleError));
   }
 
-  // authorize(email: string, password: any) {
-  //   let API_URL = `${this.REST_API}/login`;
-  //   return this.httpClient.post(API_URL, );
-  // }
-
-  //   authorize = (email, password) => {
-  //     return fetch(`${BASE_URL}/signin`, {
-  //         method: 'POST',
-  //         headers: {
-  //             'Accept': 'application/json',
-  //             'Content-Type': 'application/json'
-  //         },
-  //         body: JSON.stringify({ email, password })
-  //     })
-  //         .then((res) => {
-  //             return res.json()
-  //         })
-  //         .then((data) => {
-  //             localStorage.setItem('jwt', data.token);
-  //             return data;
-  //         })
-  //         .catch((err) => console.log(err));
-  // }
-
   handleError(error: HttpErrorResponse) {
     let errorMessage = '';
     if (error.error instanceof ErrorEvent) {
