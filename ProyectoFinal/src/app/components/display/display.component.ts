@@ -41,8 +41,8 @@ titularAlerta:string="";
 
     this.getAllUsers();
 
-    this.findLikes();
-    console.log(this.likesLista);
+    //this.findLikes();
+    
   }
 
   switchWindow(window: string) {
@@ -72,7 +72,7 @@ titularAlerta:string="";
         messList.style.translate = '100%';
         likeList.style.translate = '100%';
         dislikeList.style.translate = '100%';
-        this.findLikes();
+        this.findMatches();
         break;
       case 'messages':
         firstHr.style.opacity = '0';
@@ -136,6 +136,7 @@ titularAlerta:string="";
 
       console.log(res);
     });
+    
   }
 
   BuscarrmeAmi(id: string) {
