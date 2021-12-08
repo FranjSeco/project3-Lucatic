@@ -3,8 +3,7 @@ import { Component, OnInit, NgZone } from '@angular/core';
 import { AuthService } from '../../services/auth.service';
 
 import { TakeUsersService } from '../../services/take-users.service';
-import { LikesService } from 'src/app/services/likes.service';
-
+import { DislikeService } from 'src/app/services/dislike.service';
 import { Router, ActivatedRoute } from '@angular/router';
 
 import { UserInterface } from '../../model/user-interface';
@@ -32,7 +31,7 @@ export class CardComponent implements OnInit {
     private router: Router,
     private ngZone: NgZone,
     private cogerUsuarios: TakeUsersService,
-    private addLike: LikesService
+    private dislike: DislikeService
   ) {
     this.PersonaVisualizada = {} as UserInterface;
     this.VerDetalles = false;
@@ -94,6 +93,8 @@ export class CardComponent implements OnInit {
           console.log(err);
         }
       );
+
+      window.location.reload();
       console.log(this.user);
       this.authservicio.updateUser(this.user._id, this.user).subscribe(
         () => {
@@ -115,28 +116,20 @@ export class CardComponent implements OnInit {
   }
 
   darDislike() {
-    if (this.UsuariosSinVer() == false) {
-      this.BuscarmeAmi();
-      this.Yo.dislikeDado?.push(this.user._id + '');
-      //console.log(this.Yo);
-
-      this.authservicio.updateUser(this.Yo._id, this.Yo).subscribe(
-        () => {
-          //console.log('dislike dado');
-          this.ngZone.run(() => this.router.navigateByUrl('/updateUser'));
-        },
-        (err) => {
-          //console.log(err);
-        }
-      );
-
-      this.router
-        .navigateByUrl('/card', { skipLocationChange: true })
-        .then(() => {
-          this.router.navigate(['/display']);
-        });
-    } else {
-    }
+    this.dislike.dislikes(this.user, this.Yo._id).subscribe(
+      () => {
+        this.ngZone.run(() => this.router.navigateByUrl('/dislikes'));
+        window.location.reload();
+      },
+      (err) => {
+        console.log(err);
+      }
+    );
+    this.router
+      .navigateByUrl('/card', { skipLocationChange: true })
+      .then(() => {
+        this.router.navigate(['/display']);
+      });
   }
 
   getAllUsers() {

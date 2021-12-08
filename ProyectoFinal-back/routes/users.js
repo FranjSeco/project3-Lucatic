@@ -2,7 +2,7 @@ import express from 'express';
 
 import user from '../models/users.js';
 
-import { likeUser, login, createUser, updateUser, getAllUsers } from '../controllers/users.js'
+import { likeUser, login, createUser, updateUser, getAllUsers, dislikeUser } from '../controllers/users.js'
 
 const rutas = express.Router();
 
@@ -24,5 +24,7 @@ rutas.get('/display', getAllUsers);
 rutas.put('/updateUser/:id', updateUser);
 
 rutas.put('/:_id/likes', likeUser);
+
+rutas.put('/dislikes/:id', dislikeUser);
 
 export default rutas;
