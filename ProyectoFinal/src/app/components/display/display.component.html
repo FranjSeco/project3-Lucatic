@@ -59,11 +59,17 @@
     </div>
     <div class="windows">
       <div class="profiles" id="matchList">
-        <div class="p-card" *ngFor="let cliente of likesLista">
+        <div class="p-card" *ngFor="let match of matchLista">
           <a href="" class="pic">
             <div class="innerPic">
+<<<<<<< HEAD
+              <div
+                style="
+                  background-image: url('{{ match.foto }}');
+=======
               <div style="
                   background-image: url('{{ cliente.foto }}');
+>>>>>>> 6efe55f816b58216be95464f53158448a85ed791
                   background-repeat: no-repeat;
                   background-position: 50% 50%;
                   background-size: 100%;
@@ -74,7 +80,7 @@
                 "></div>
               <div class="profileText"></div>
               <span class="p-text">
-                <div class="p-text-inner">Antonio</div>
+                <div class="p-text-inner">{{ match.name }}</div>
               </span>
             </div>
           </a>
