@@ -9,6 +9,8 @@ import {
 } from '@angular/router';
 import { UserInterface } from '../../model/user-interface';
 import { Observable } from 'rxjs';
+//probando el alert
+import swal from'sweetalert2';
 
 @Component({
   selector: 'app-display',
@@ -24,6 +26,10 @@ export class DisplayComponent implements OnInit {
   name!: any;
   matches!: any;
   funciona!: false;
+
+///alerta
+titularAlerta:string="";
+
   constructor(
     private authservicio: AuthService,
     private router: Router,
@@ -36,8 +42,8 @@ export class DisplayComponent implements OnInit {
 
     this.getAllUsers();
 
-    this.findLikes();
-    console.log(localStorage.getItem('id'));
+    //this.findLikes();
+    
   }
 
   switchWindow(window: string) {
@@ -67,7 +73,7 @@ export class DisplayComponent implements OnInit {
         messList.style.translate = '100%';
         likeList.style.translate = '100%';
         dislikeList.style.translate = '100%';
-        this.findLikes();
+        this.findMatches();
         break;
       case 'messages':
         firstHr.style.opacity = '0';
@@ -128,6 +134,7 @@ export class DisplayComponent implements OnInit {
       this.perfiles = res;
       this.findDislikes();
     });
+    
   }
 
   BuscarrmeAmi(id: string) {
