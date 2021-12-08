@@ -4,6 +4,7 @@ import { AuthService } from '../../services/auth.service';
 
 import { TakeUsersService } from '../../services/take-users.service';
 import { LikesService } from 'src/app/services/likes.service';
+import { DisplayComponent } from '../display/display.component';
 
 import { Router, ActivatedRoute } from '@angular/router';
 
@@ -26,6 +27,7 @@ export class CardComponent implements OnInit {
 
   VerDetalles: Boolean;
   VerIcons: Boolean;
+  // VerPopUp: Boolean;
 
   constructor(
     private authservicio: AuthService,
@@ -38,6 +40,7 @@ export class CardComponent implements OnInit {
     this.VerDetalles = false;
     this.Yo = {} as UserInterface;
     this.VerIcons = true;
+    // this.VerPopUp = false;
   }
 
   ngOnInit(): void {
@@ -246,4 +249,12 @@ export class CardComponent implements OnInit {
       this.VerIcons = false;
     }
   }
+  // verPopUp() {
+  //   if (this.VerPopUp == false) {
+  //     this.VerPopUp = true;
+      
+  //   } else {
+  //     this.VerPopUp = false;
+  //   }
+  // }
 }

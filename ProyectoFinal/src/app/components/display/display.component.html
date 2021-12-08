@@ -1,4 +1,4 @@
-<div class="module">
+<div class="module" id="module">
   <div class="navbar">
     <div class="redNav">
       <div class="user">
@@ -49,7 +49,7 @@
       </svg>
       <hr class="line" />
       <div class="fiftyOff">GET 50% OFF YOUR FIRST MONTH!</div>
-      <button class="getGold">GET LUCATINDER GOLD</button>
+      <button class="getGold" (click)="verPopUp()" id="getGold">GET LUCATINDER GOLD</button>
     </div>
     <div class="p-nav">
       <div class="p-opt" (click)="switchWindow('matches')" id="matches">
@@ -203,4 +203,11 @@
       <app-card></app-card>
     </div>
   </div>
+</div>
+
+<div class="pop-up" *ngIf="VerPopUp==true">
+<p class="cont">Obtén Lucatinder Gold y descubre opciones únicas.<br/><br/>
+  <button class="butt"><i class="fas fa-dollar-sign"></i></button>
+</p>
+
 </div>
