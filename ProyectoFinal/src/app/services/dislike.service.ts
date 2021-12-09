@@ -11,7 +11,7 @@ import { catchError } from 'rxjs/operators';
   providedIn: 'root',
 })
 export class DislikeService {
-  REST_API: string = 'http://localhost:8080/api';
+  REST_API: string = 'https://p3-lucatic.herokuapp.com/api';
   httpHeaders = new HttpHeaders().set('Content-Type', 'application/json');
   constructor(private httpClient: HttpClient) {}
 

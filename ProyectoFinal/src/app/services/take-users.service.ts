@@ -5,14 +5,13 @@ import {
   HttpHeaders,
   HttpErrorResponse,
 } from '@angular/common/http';
-import { Observable, throwError } from 'rxjs';
-import { catchError, map } from 'rxjs/operators';
-import { UserInterface } from '../model/user-interface';
+import { throwError } from 'rxjs';
+import { catchError } from 'rxjs/operators';
 @Injectable({
   providedIn: 'root',
 })
 export class TakeUsersService {
-  REST_API: string = 'http://localhost:8080/api';
+  REST_API: string = 'https://p3-lucatic.herokuapp.com/api';
   httpHeaders = new HttpHeaders().set('Content-Type', 'application/json');
   constructor(private httpClient: HttpClient) {}
 

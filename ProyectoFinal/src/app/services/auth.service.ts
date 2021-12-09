@@ -14,7 +14,8 @@ import {
   providedIn: 'root',
 })
 export class AuthService {
-  REST_API: string = 'http://localhost:8080/api';
+  // REST_API: string = 'http://localhost:8080/api';
+  REST_API: string = 'https://p3-lucatic.herokuapp.com/api';
   httpHeaders = new HttpHeaders().set('Content-Type', 'application/json');
   constructor(private httpClient: HttpClient) {}
 
