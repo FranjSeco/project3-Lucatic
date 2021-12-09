@@ -94,7 +94,6 @@ export class CardComponent implements OnInit {
         }
       );
 
-      window.location.reload();
       console.log(this.user);
       this.authservicio.updateUser(this.user._id, this.user).subscribe(
         () => {
@@ -119,7 +118,6 @@ export class CardComponent implements OnInit {
     this.dislike.dislikes(this.user, this.Yo._id).subscribe(
       () => {
         this.ngZone.run(() => this.router.navigateByUrl('/dislikes'));
-        window.location.reload();
       },
       (err) => {
         console.log(err);
@@ -242,7 +240,7 @@ export class CardComponent implements OnInit {
   // verPopUp() {
   //   if (this.VerPopUp == false) {
   //     this.VerPopUp = true;
-      
+
   //   } else {
   //     this.VerPopUp = false;
   //   }
