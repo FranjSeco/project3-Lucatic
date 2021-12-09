@@ -84,27 +84,11 @@ export class CardComponent implements OnInit {
       this.Yo.likesDado?.push(this.user._id + '');
       this.user?.likeRecivido?.push(this.Yo._id + '');
 
-      this.authservicio.updateUser(this.Yo._id, this.Yo).subscribe(
-        () => {
-          //console.log('Like dado');
-          this.ngZone.run(() => this.router.navigateByUrl('/updateUser'));
-        },
-        (err) => {
-          console.log(err);
-        }
-      );
+    this.actualizar(this.Yo._id+"",this.Yo);
 
-      window.location.reload();
+      //window.location.reload();
       console.log(this.user);
-      this.authservicio.updateUser(this.user._id, this.user).subscribe(
-        () => {
-          console.log('holi');
-          this.ngZone.run(() => this.router.navigateByUrl('/updateUser'));
-        },
-        (err) => {
-          console.log(err);
-        }
-      );
+      this.actualizar(this.user._id+"",this.user);
 
       this.router
         .navigateByUrl('/card', { skipLocationChange: true })
@@ -116,6 +100,7 @@ export class CardComponent implements OnInit {
   }
 
   darDislike() {
+    if (this.UsuariosSinVer() == false) {
     this.dislike.dislikes(this.user, this.Yo._id).subscribe(
       () => {
         this.ngZone.run(() => this.router.navigateByUrl('/dislikes'));
@@ -130,6 +115,8 @@ export class CardComponent implements OnInit {
       .then(() => {
         this.router.navigate(['/display']);
       });
+    } else {
+    }
   }
 
   getAllUsers() {
@@ -205,25 +192,38 @@ export class CardComponent implements OnInit {
       this.Yo.likesDado?.length !== undefined &&
       this.Yo.likeRecivido?.length !== undefined
     ) {
-      for (let i = 0; i < this.Yo.likesDado?.length; i++) {
+     
         for (let j = 0; j < this.Yo.likeRecivido?.length; j++) {
-          if (this.Yo.likesDado[i] == this.Yo.likeRecivido[j]) {
-            let matchAnterior = false;
-            if (this.Yo.match?.length !== undefined) {
-              for (let k = 0; k < this.Yo.match?.length; k++) {
-                if (this.Yo.match[k] == this.Yo.likesDado[i]) {
-                  matchAnterior = true;
-                }
-              }
-            }
-            if (matchAnterior == false) {
-              this.Yo.match?.push(this.Yo.likesDado[i]);
-            }
+          if (  this.user?._id== this.Yo.likeRecivido[j]) {
+                   
+              this.Yo.match?.push( this.user?._id);
+
+              this.user.match?.push(this.Yo?._id+"");
+
           }
         }
-      }
+      
     }
   }
+
+
+
+
+actualizar(id:string,persona:UserInterface){
+
+  this.authservicio.updateUser(id, persona).subscribe(
+    () => {
+      //console.log('Like dado');
+      this.ngZone.run(() => this.router.navigateByUrl('/updateUser'));
+    },
+    (err) => {
+      console.log(err);
+    }
+  );
+
+
+}
+
 
   verDetalles() {
     if (this.VerDetalles == false) {
