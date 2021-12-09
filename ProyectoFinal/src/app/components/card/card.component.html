@@ -1,10 +1,10 @@
 <div class="content">
   <div class="card">
     <div class="card__image-container">
-      <img class="card__image-element" src="{{user.foto}}" alt="">
+      <img class="card__image-element" src="{{user?.foto}}" alt="">
     </div>
     <div class="card__info-container">
-      <h2 class="card__user-name">{{user.name}}, {{user.edad}}</h2>
+      <h2 class="card__user-name">{{user?.name}}, {{user?.edad}}</h2>
       <button class="but" (click)="verDetalles()" (click)="verIcons()"><span class="icon-info"><i
             class="fas fa-info-circle"></i></span></button>
     </div>
@@ -19,10 +19,10 @@
   <div class="info" *ngIf="VerDetalles==true">
     <p *ngIf="user.localidad!=undefined"><span><i class="fas fa-home"></i></span>Vive en {{user.localidad}} (<span
         *ngIf="user.genero!=undefined">{{user.genero}}</span>)</p>
-    <p class="hobbie" *ngIf="user.cinefilo!=undefined"><span><i class="fas fa-film"></i></span> Cinefilo Lover</p>
-    <p class="hobbie" *ngIf="user.playa!=undefined"><span><i class="fas fa-umbrella-beach"></i></span> Playa Lover</p>
-    <p class="hobbie" *ngIf="user.fumador!=undefined"><span><i class="fas fa-smoking"></i></span> Fumador Lover</p>
-    <p class="hobbie" *ngIf="user.deportista!=undefined"><span><i class="fas fa-running"></i></span> Deportista</p>
+    <p class="hobbie" *ngIf="user.cinefilo!=false"><span><i class="fas fa-film"></i></span> Cinefilo Lover</p>
+    <p class="hobbie" *ngIf="user.playa!=false"><span><i class="fas fa-umbrella-beach"></i></span> Playa Lover</p>
+    <p class="hobbie" *ngIf="user.fumador!=false"><span><i class="fas fa-smoking"></i></span> Fumador Lover</p>
+    <p class="hobbie" *ngIf="user.deportista!=false"><span><i class="fas fa-running"></i></span> Deportista</p>
   </div>
 </div>
 <!-- <div class="pop-up" *ngIf="VerPopUp==true">

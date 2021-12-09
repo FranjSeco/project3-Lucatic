@@ -17,7 +17,7 @@ export class DislikeService {
 
   dislikes(thatUser: any, id: any): Observable<any> {
     let API_URL = `${this.REST_API}/dislikes/${id}`;
-    console.log(thatUser._id, 'that user');
+    // console.log(thatUser._id, 'that user');
     return this.httpClient
       .put(API_URL, thatUser, { headers: this.httpHeaders })
       .pipe(catchError(this.handleError));
@@ -32,7 +32,7 @@ export class DislikeService {
       // Handle server error
       errorMessage = `Error Code: ${error.status}\nMessage: ${error.message}`;
     }
-    console.log(errorMessage);
+    // console.log(errorMessage);
     return throwError(errorMessage);
   }
 }
