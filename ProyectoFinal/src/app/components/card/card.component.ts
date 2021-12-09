@@ -8,6 +8,8 @@ import { Router } from '@angular/router';
 
 import { UserInterface } from '../../model/user-interface';
 
+
+
 @Component({
   selector: 'app-card',
   templateUrl: './card.component.html',
@@ -23,20 +25,23 @@ export class CardComponent implements OnInit {
 
   VerDetalles: Boolean;
   VerIcons: Boolean;
-  // VerPopUp: Boolean;
+   VerPopUp: Boolean;
+   matchAhora:Boolean;
 
   constructor(
     private authservicio: AuthService,
     private router: Router,
     private ngZone: NgZone,
     private cogerUsuarios: TakeUsersService,
-    private dislike: DislikeService
+    private dislike: DislikeService,
+    
   ) {
     this.PersonaVisualizada = {} as UserInterface;
     this.VerDetalles = false;
     this.Yo = {} as UserInterface;
     this.VerIcons = true;
-    // this.VerPopUp = false;
+     this.VerPopUp = false;
+     this.matchAhora=false;
   }
 
   ngOnInit(): void {
@@ -89,12 +94,26 @@ export class CardComponent implements OnInit {
       //window.location.reload();
       console.log(this.user);
       this.actualizar(this.user._id+"",this.user);
+     
+      if(this.matchAhora==true){
 
+        this.verPopUp()
+
+      //   var result = confirm( "Do you want to do this?" );
+      // if ( result ) {
+      //   this.matchAhora=false;
+      // } else {
+      //   this.matchAhora=false; 
+      // }
+      
+    }
+    if(this.matchAhora==false){
       this.router
         .navigateByUrl('/card', { skipLocationChange: true })
         .then(() => {
           this.router.navigate(['/display']);
         });
+      }
     } else {
     }
   }
@@ -197,9 +216,12 @@ export class CardComponent implements OnInit {
           if (  this.user?._id== this.Yo.likeRecivido[j]) {
                    
               this.Yo.match?.push( this.user?._id);
-
               this.user.match?.push(this.Yo?._id+"");
-
+              this.matchAhora=true;
+        
+              
+         
+      
           }
         }
       
@@ -239,12 +261,20 @@ actualizar(id:string,persona:UserInterface){
       this.VerIcons = false;
     }
   }
-  // verPopUp() {
-  //   if (this.VerPopUp == false) {
-  //     this.VerPopUp = true;
+  verPopUp() {
+    if (this.VerPopUp == false) {
+      this.VerPopUp = true;
+
       
-  //   } else {
-  //     this.VerPopUp = false;
-  //   }
-  // }
+    } else {
+      this.VerPopUp = false;
+      this.matchAhora=false;
+      this.router
+      .navigateByUrl('/card', { skipLocationChange: true })
+      .then(() => {
+        this.router.navigate(['/display']);
+      });
+          
+    }
+  }
 }

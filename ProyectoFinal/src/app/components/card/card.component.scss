@@ -148,12 +148,38 @@
 .icons {
   margin-bottom: 2%;
 }
+ .pop-up{
+ background:linear-gradient(260deg, #ff6036, #fd267a);
+ border-radius: 5px;
+ color:white;
+ font-size: 35px;
+ font-style: italic;
+ font-family: "Brush Script MT";
+ position: absolute;
+  width: 400px;
+ height: 430px;
+ top: 24px;
+  left: 20%;
+  padding: 13px;
+  padding-top: 2%;
+line-height: 40px;
+text-align: center;
+box-shadow: 2px 2px 22px 2px rgb(66, 64, 64);
 
-// .pop-up{
-//   background-color: aqua;
-//   position: absolute;
-//   width: 200px;
-//   height: 200px;
-//   top: 12px;
-//   left: 12%;
-// }
+
+
+.fotosMatch{
+display:flex;
+
+justify-content:center;
+padding-top: 6%;
+
+  .imgMatch{
+    width: 180px;
+    height: 230px;
+  object-fit: cover;
+  padding: 2px;
+  }
+}
+
+}
