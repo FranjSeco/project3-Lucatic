@@ -191,24 +191,6 @@ export class DisplayComponent implements OnInit {
     console.log('hola');
   }
 
-  // @HostListener('document:click', ['$event'])
-  // onDocumentClick(event: MouseEvent) {
-  //   let transparent = <HTMLElement>document.querySelector('.transparent');
-
-  //   console.log('hola');
-  // }
-
-  // const divStyles: CSS.Properties = {
-  //   content: '',
-  //   position: 'absolute',
-  //   top: '0',
-  //   left: '0',
-  //   width: '100%',
-  //   height: '100%',
-  //   filter: 'brightness(70%) blur(2px)',
-  //   opacity: '0.6'
-  // };
-
   findDislikes() {
     const myId = localStorage.getItem('id');
 
