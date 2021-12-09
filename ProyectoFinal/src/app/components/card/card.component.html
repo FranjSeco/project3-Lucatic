@@ -1,4 +1,4 @@
-<div class="content">
+<div class="content" id="content">
   <div class="card">
     <div class="card__image-container">
       <img class="card__image-element" src="{{user?.foto}}" alt="">
@@ -25,6 +25,13 @@
     <p class="hobbie" *ngIf="user.deportista!=false"><span><i class="fas fa-running"></i></span> Deportista</p>
   </div>
 </div>
-<!-- <div class="pop-up" *ngIf="VerPopUp==true">
+ <div class="pop-up" *ngIf="VerPopUp==true">
+<p>It´s a Match!</p>
+<p class="fotosMatch">
+  <img class="imgMatch" src="{{user?.foto}}" alt="">
+  <img class="imgMatch" src="{{Yo?.foto}}" alt=""></p>
 
-</div> -->
+
+<button class="login-but" mat-raised-button color="secondary" >Empezar Chat</button><br />
+<button class="login-but" mat-raised-button color="primary" (click)="verPopUp()">¡Genial!</button><br />
+</div>
