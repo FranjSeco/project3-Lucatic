@@ -5,8 +5,8 @@ import bodyParser from "body-parser";
 import { mockUsers } from "./mockUsers/mockUsers.js";
 import rutas from "./routes/users.js";
 import user from "./models/users.js";
-
-
+import dotenv from 'dotenv';
+dotenv.config();
 
 mongoose.Promise = global.Promise;
 
@@ -71,7 +71,7 @@ import swaggerUi from 'swagger-ui-express';
 
 app.use(
   '/api-docs',
-  swaggerUi.serve, 
+  swaggerUi.serve,
   swaggerUi.setup(my_json_file)
 );
 
@@ -96,7 +96,7 @@ dbData.find(function (err, data) {
             genero: req.genero,
             email: req.email,
             edad: req.edad,
-            localidad:req.localidad,
+            localidad: req.localidad,
             foto: req.foto,
             localidad: req.localidad,
             playa: req.playa,
