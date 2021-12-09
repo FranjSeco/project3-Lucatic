@@ -18,11 +18,11 @@ export class AppComponent {
   }
 
   isUser() {
-    console.log(localStorage);
+    // console.log(localStorage);
     if (localStorage.length > 0) {
       this.router.navigate(['/display']);
     } else {
-      console.log('The user needs to login manually.');
+      // console.log('The user needs to login manually.');
     }
   }
 }

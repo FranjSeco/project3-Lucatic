@@ -90,18 +90,18 @@ export class CardComponent implements OnInit {
           this.ngZone.run(() => this.router.navigateByUrl('/updateUser'));
         },
         (err) => {
-          console.log(err);
+          // console.log(err);
         }
       );
 
       console.log(this.user);
       this.authservicio.updateUser(this.user._id, this.user).subscribe(
         () => {
-          console.log('holi');
+          // console.log('holi');
           this.ngZone.run(() => this.router.navigateByUrl('/updateUser'));
         },
         (err) => {
-          console.log(err);
+          // console.log(err);
         }
       );
 
@@ -120,7 +120,7 @@ export class CardComponent implements OnInit {
         this.ngZone.run(() => this.router.navigateByUrl('/dislikes'));
       },
       (err) => {
-        console.log(err);
+        // console.log(err);
       }
     );
     this.router
@@ -194,7 +194,7 @@ export class CardComponent implements OnInit {
     if (contador == this.perfiles.length) {
       noQuedan = true;
     }
-    console.log(contador - this.perfiles.length);
+    // console.log(contador - this.perfiles.length);
     return noQuedan;
   }
 
