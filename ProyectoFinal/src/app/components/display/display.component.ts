@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, HostListener, OnInit } from '@angular/core';
 import { TakeUsersService } from 'src/app/services/take-users.service';
 import { AuthService } from '../../services/auth.service';
 import { NgZone } from '@angular/core';
@@ -165,17 +165,30 @@ export class DisplayComponent implements OnInit {
   }
 
   verPopUp() {
-    if (this.VerPopUp == false) {
-      this.VerPopUp = true;
-      let module = <HTMLElement>document.getElementById('module');
-      module.style.filter = 'blur(2px)';
-      let getGold = <HTMLElement>document.getElementById('getGold');
-      getGold.style.cursor = 'default';
-    } else {
-      this.VerPopUp = false;
-      let module = <HTMLElement>document.getElementById('module');
-      module.style.filter = 'blur(0px)';
-    }
+    this.VerPopUp = true;
+    let modules = <HTMLElement>document.getElementById('module');
+    let transparent = <HTMLElement>document.querySelector('.transparent');
+    let getGold = <HTMLElement>document.getElementById('getGold');
+    let popup = <HTMLElement>document.querySelector('.pop-up');
+    transparent.style.visibility = 'visible';
+    modules.style.filter = 'blur(3px)';
+    popup.style.visibility = 'visible';
+    getGold.style.cursor = 'default';
+    getGold.style.zIndex = '0';
+    transparent.addEventListener('click', this.hidden);
+  }
+
+  hidden() {
+    let modules = <HTMLElement>document.getElementById('module');
+    let transparent = <HTMLElement>document.querySelector('.transparent');
+    let getGold = <HTMLElement>document.getElementById('getGold');
+    let popup = <HTMLElement>document.querySelector('.pop-up');
+    transparent.style.visibility = 'hidden';
+    modules.style.filter = 'none';
+    popup.style.visibility = 'hidden';
+    getGold.style.cursor = 'pointer';
+    getGold.style.zIndex = '1';
+    console.log('hola');
   }
 
   findDislikes() {

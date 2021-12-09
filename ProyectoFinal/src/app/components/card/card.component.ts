@@ -8,8 +8,6 @@ import { Router } from '@angular/router';
 
 import { UserInterface } from '../../model/user-interface';
 
-
-
 @Component({
   selector: 'app-card',
   templateUrl: './card.component.html',
@@ -25,23 +23,22 @@ export class CardComponent implements OnInit {
 
   VerDetalles: Boolean;
   VerIcons: Boolean;
-   VerPopUp: Boolean;
-   matchAhora:Boolean;
+  VerPopUp: Boolean;
+  matchAhora: Boolean;
 
   constructor(
     private authservicio: AuthService,
     private router: Router,
     private ngZone: NgZone,
     private cogerUsuarios: TakeUsersService,
-    private dislike: DislikeService,
-    
+    private dislike: DislikeService
   ) {
     this.PersonaVisualizada = {} as UserInterface;
     this.VerDetalles = false;
     this.Yo = {} as UserInterface;
     this.VerIcons = true;
-     this.VerPopUp = false;
-     this.matchAhora=false;
+    this.VerPopUp = false;
+    this.matchAhora = false;
   }
 
   ngOnInit(): void {
@@ -89,30 +86,28 @@ export class CardComponent implements OnInit {
       this.Yo.likesDado?.push(this.user._id + '');
       this.user?.likeRecivido?.push(this.Yo._id + '');
 
-    this.actualizar(this.Yo._id+"",this.Yo);
+      this.actualizar(this.Yo._id + '', this.Yo);
 
       //window.location.reload();
       console.log(this.user);
-      this.actualizar(this.user._id+"",this.user);
-     
-      if(this.matchAhora==true){
+      this.actualizar(this.user._id + '', this.user);
 
-        this.verPopUp()
+      if (this.matchAhora == true) {
+        this.verPopUp();
 
-      //   var result = confirm( "Do you want to do this?" );
-      // if ( result ) {
-      //   this.matchAhora=false;
-      // } else {
-      //   this.matchAhora=false; 
-      // }
-      
-    }
-    if(this.matchAhora==false){
-      this.router
-        .navigateByUrl('/card', { skipLocationChange: true })
-        .then(() => {
-          this.router.navigate(['/display']);
-        });
+        //   var result = confirm( "Do you want to do this?" );
+        // if ( result ) {
+        //   this.matchAhora=false;
+        // } else {
+        //   this.matchAhora=false;
+        // }
+      }
+      if (this.matchAhora == false) {
+        this.router
+          .navigateByUrl('/card', { skipLocationChange: true })
+          .then(() => {
+            this.router.navigate(['/display']);
+          });
       }
     } else {
     }
@@ -120,20 +115,19 @@ export class CardComponent implements OnInit {
 
   darDislike() {
     if (this.UsuariosSinVer() == false) {
-    this.dislike.dislikes(this.user, this.Yo._id).subscribe(
-      () => {
-        this.ngZone.run(() => this.router.navigateByUrl('/dislikes'));
-        window.location.reload();
-      },
-      (err) => {
-        // console.log(err);
-      }
-    );
-    this.router
-      .navigateByUrl('/card', { skipLocationChange: true })
-      .then(() => {
-        this.router.navigate(['/display']);
-      });
+      this.dislike.dislikes(this.user, this.Yo._id).subscribe(
+        () => {
+          this.ngZone.run(() => this.router.navigateByUrl('/dislikes'));
+        },
+        (err) => {
+          // console.log(err);
+        }
+      );
+      this.router
+        .navigateByUrl('/card', { skipLocationChange: true })
+        .then(() => {
+          this.router.navigate(['/display']);
+        });
     } else {
     }
   }
@@ -211,41 +205,27 @@ export class CardComponent implements OnInit {
       this.Yo.likesDado?.length !== undefined &&
       this.Yo.likeRecivido?.length !== undefined
     ) {
-     
-        for (let j = 0; j < this.Yo.likeRecivido?.length; j++) {
-          if (  this.user?._id== this.Yo.likeRecivido[j]) {
-                   
-              this.Yo.match?.push( this.user?._id);
-              this.user.match?.push(this.Yo?._id+"");
-              this.matchAhora=true;
-        
-              
-         
-      
-          }
+      for (let j = 0; j < this.Yo.likeRecivido?.length; j++) {
+        if (this.user?._id == this.Yo.likeRecivido[j]) {
+          this.Yo.match?.push(this.user?._id);
+          this.user.match?.push(this.Yo?._id + '');
+          this.matchAhora = true;
         }
-      
+      }
     }
   }
 
-
-
-
-actualizar(id:string,persona:UserInterface){
-
-  this.authservicio.updateUser(id, persona).subscribe(
-    () => {
-      //console.log('Like dado');
-      this.ngZone.run(() => this.router.navigateByUrl('/updateUser'));
-    },
-    (err) => {
-      console.log(err);
-    }
-  );
-
-
-}
-
+  actualizar(id: string, persona: UserInterface) {
+    this.authservicio.updateUser(id, persona).subscribe(
+      () => {
+        //console.log('Like dado');
+        this.ngZone.run(() => this.router.navigateByUrl('/updateUser'));
+      },
+      (err) => {
+        console.log(err);
+      }
+    );
+  }
 
   verDetalles() {
     if (this.VerDetalles == false) {
@@ -264,17 +244,14 @@ actualizar(id:string,persona:UserInterface){
   verPopUp() {
     if (this.VerPopUp == false) {
       this.VerPopUp = true;
-
-      
     } else {
       this.VerPopUp = false;
-      this.matchAhora=false;
+      this.matchAhora = false;
       this.router
-      .navigateByUrl('/card', { skipLocationChange: true })
-      .then(() => {
-        this.router.navigate(['/display']);
-      });
-          
+        .navigateByUrl('/card', { skipLocationChange: true })
+        .then(() => {
+          this.router.navigate(['/display']);
+        });
     }
   }
 }

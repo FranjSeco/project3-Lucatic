@@ -435,28 +435,44 @@ button {
   color: white;
 }
 
-.pop-up{
+.transparent {
+  width: 100vw;
+  height: 100vh;
+  background: transparent;
+  visibility: hidden;
+  position: absolute;
+  top: 50%;
+
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.pop-up {
   width: 350px;
   height: 270px;
-  position: absolute;
+  visibility: hidden;
   font-size: 40px;
   text-align: center;
-  line-height : 60px;
+  line-height: 60px;
   padding: 10px;
   font-style: italic;
   border-radius: 2pc;
-  top: 25%;
-  color: white;
+  color: black;
+  position: absolute;
+  top: 50%;
+
   left: 50%;
-  background: linear-gradient(135deg, #c1920f, #e6ae16 42%, #f7d472);
-  .cont{
+  transform: translate(-50%, -50%);
+  background: white;
+  border: 4px solid linear-gradient(135deg, #c1920f, #e6ae16 42%, #f7d472);
+  .cont {
     height: 300px;
   }
-  .butt{
+  .butt {
     font-size: 40px;
     cursor: pointer;
     color: white;
-    :hover{
+    :hover {
       color: rgb(112, 105, 105);
     }
   }
