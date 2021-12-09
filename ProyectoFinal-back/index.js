@@ -5,6 +5,9 @@ import bodyParser from "body-parser";
 import { mockUsers } from "./mockUsers/mockUsers.js";
 import rutas from "./routes/users.js";
 import user from "./models/users.js";
+
+
+
 mongoose.Promise = global.Promise;
 
 import bcrypt from 'bcryptjs';
@@ -48,6 +51,31 @@ app.use(cors());
 
 // API root
 app.use("/api", rutas);
+
+
+//Swagger
+
+import { createRequire } from "module";
+const require = createRequire(import.meta.url);
+const my_json_file = require("./swagger.json");
+
+
+
+import swaggerUi from 'swagger-ui-express';
+// import {swaggerDocument} from './swagger.json';
+// import {swaggerUi} from 'swagger-ui-express';
+// import {swaggerDocument} from './swagger.json';
+
+// const swaggerUi = require('swagger-ui-express'),
+// swaggerDocument = require('./swagger.json');
+
+app.use(
+  '/api-docs',
+  swaggerUi.serve, 
+  swaggerUi.setup(my_json_file)
+);
+
+
 
 
 // PRINTING FAKE USERS
