@@ -19,6 +19,7 @@ export class LikesService {
     let API_URL = `${this.REST_API}/${id}/likes`;
     return this.httpClient.put(API_URL, id).pipe(catchError(this.handleError));
   }
+
   handleError(error: HttpErrorResponse) {
     let errorMessage = '';
     if (error.error instanceof ErrorEvent) {
