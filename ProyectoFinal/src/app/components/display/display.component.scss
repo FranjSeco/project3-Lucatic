@@ -434,3 +434,30 @@ button {
   text-decoration: none;
   color: white;
 }
+
+.pop-up{
+  width: 350px;
+  height: 270px;
+  position: absolute;
+  font-size: 40px;
+  text-align: center;
+  line-height : 60px;
+  padding: 10px;
+  font-style: italic;
+  border-radius: 2pc;
+  top: 25%;
+  color: white;
+  left: 50%;
+  background: linear-gradient(135deg, #c1920f, #e6ae16 42%, #f7d472);
+  .cont{
+    height: 300px;
+  }
+  .butt{
+    font-size: 40px;
+    cursor: pointer;
+    color: white;
+    :hover{
+      color: rgb(112, 105, 105);
+    }
+  }
+}

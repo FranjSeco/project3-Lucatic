@@ -149,7 +149,7 @@ export class DisplayComponent implements OnInit {
     for (let index = 0; index < todosarray.length; index++) {
       this.likesLista[index] = this.BuscarrmeAmi(todosarray[index]);
     }
-    console.log(this.likesLista);
+    // console.log(this.likesLista);
   }
 
   findMatches() {
