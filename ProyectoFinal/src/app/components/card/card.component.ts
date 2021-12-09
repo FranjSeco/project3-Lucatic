@@ -107,7 +107,7 @@ export class CardComponent implements OnInit {
         window.location.reload();
       },
       (err) => {
-        console.log(err);
+        // console.log(err);
       }
     );
     this.router
@@ -183,7 +183,7 @@ export class CardComponent implements OnInit {
     if (contador == this.perfiles.length) {
       noQuedan = true;
     }
-    console.log(contador - this.perfiles.length);
+    // console.log(contador - this.perfiles.length);
     return noQuedan;
   }
 

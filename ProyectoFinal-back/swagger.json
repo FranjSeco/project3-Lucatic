@@ -1,0 +1,218 @@
+{
+    "swagger": "2.0",
+    "info": {
+        "version": "1.0.0",
+        "title": "My Final Proyect",
+        "description": "Group One Final Proyect",
+        "license": {
+            "name": "LucaTic"
+        }
+    },
+    "host": "localhost:8080",
+    "basePath": "/api",
+    "schemes": ["http"],
+    "consumes": ["application/json"],
+    "produces": ["application/json"],
+    "paths": {
+        "/login": {
+            "get": {
+                "description": "Return one user from the Mongo Atlas data base proyectoFinal",
+                "summary": "Find usuarios by email and name",
+                "produces": ["application/json"],
+                "parameters": [{
+                    "name": "email",
+                    "in": "query",
+                    "description": "email to find user",
+                    "required": "true",
+                    "type": "string"
+                }, {
+                    "name": "password",
+                    "in": "query",
+                    "description": "password to find user",
+                    "required": "true",
+                    "type": "string"
+                }],
+                "responses": {
+                    "200": {
+                        "description": "Usuario encontrado",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/components/login"
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "unexpected error"
+                    }
+                }
+
+            },
+            "put": {
+                "summary": "We add the logged in user to the localstorage",
+                "consumes": "application/json",
+                "produces": "application/json",
+                "parameters": {
+                    "name": "body",
+                    "in": "body",
+                    "description": "email of the candidate who likes you or dislikes you that to be added to arrLikes or arrDislike",
+                    "required": "true",
+                    "type": "string"
+                },
+                "responses": {
+                    "200": {
+                        "description": "Guardado"
+                    },
+                    "400": {
+                        "description": "Error"
+                    }
+                }
+
+            }
+        },
+        "/formulario": {
+            "post": {
+              "summary": "add a new user from register",
+              "consumes": "application/json",
+              "produces": "application/json",
+              "parameters": [{
+                "name": "name",
+                "in": "query",
+                "description": "name to modify user",
+                "required": "true",
+                "type": "string"
+            },{
+                "name": "edad",
+                "in": "query",
+                "description": "edad to modify user",
+                "required": "true",
+                "type": "string"
+            },{
+                "name": "localidad",
+                "in": "query",
+                "description": "localidad to modify user",
+                "required": "true",
+                "type": "string"
+            },{
+                "name": "foto",
+                "in": "query",
+                "description": "foto to modify user",
+                "required": "true",
+                "type": "string"
+            }, {
+                "name": "genero",
+                "in": "query",
+                "description": "genero to modify user",
+                "required": "true",
+                "type": "string"
+            }, {
+                "name": "fumador",
+                "in": "query",
+                "description": "fumador to modify user",
+                "required": "true",
+                "type": "boolean"
+            }, {
+                "name": "deportista",
+                "in": "query",
+                "description": "deportista to modify user",
+                "required": "true",
+                "type": "boolean"
+            }, {
+                "name": "cinefilo",
+                "in": "query",
+                "description": "cinefilo to modify user",
+                "required": "true",
+                "type": "boolean"
+            }, {
+                "name": "playa",
+                "in": "query",
+                "description": "playa to modify user",
+                "required": "true",
+                "type": "boolean"
+            }
+        ],
+              "responses": {
+                "200": {
+                  "description": "usuario creado",
+                  "schema": {
+                    "$ref": "#/components/login"
+                  }
+                },
+                "400": {
+                  "description": "error"
+                }
+              }
+            }
+          }
+
+
+    },
+    "components": {
+        "login": {
+          "type": "object",
+          "properties": {
+            "name": {
+              "type": "string"
+            },
+            "genero": {
+              "type": "string"
+            },
+            "email": {
+              "type": "string"
+            },
+            "password": {
+              "type": "string"
+            },
+            "edad": {
+              "type": "string"
+            },
+            "localidad": {
+              "type": "string"
+            },
+            "foto": {
+                "type": "string"
+              },
+            "fumador": {
+              "type": "boolean"
+            },
+            "deportista": {
+                "type": "boolean"
+              },
+              "cinefilo": {
+                "type": "boolean"
+              },
+              "playa": {
+                "type": "boolean"
+              },
+              "montaña": {
+                "type": "boolean"
+              },
+            "likesDado": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            },
+            "dislikeDado": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            },
+            " match": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              },
+              "likeRecivido": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              }
+          }
+        }
+      }
+
+}
