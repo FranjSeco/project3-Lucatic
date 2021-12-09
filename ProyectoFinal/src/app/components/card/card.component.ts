@@ -23,7 +23,8 @@ export class CardComponent implements OnInit {
 
   VerDetalles: Boolean;
   VerIcons: Boolean;
-  // VerPopUp: Boolean;
+  VerPopUp: Boolean;
+  matchAhora: Boolean;
 
   constructor(
     private authservicio: AuthService,
@@ -36,7 +37,8 @@ export class CardComponent implements OnInit {
     this.VerDetalles = false;
     this.Yo = {} as UserInterface;
     this.VerIcons = true;
-    // this.VerPopUp = false;
+    this.VerPopUp = false;
+    this.matchAhora = false;
   }
 
   ngOnInit(): void {
@@ -84,27 +86,43 @@ export class CardComponent implements OnInit {
       this.Yo.likesDado?.push(this.user._id + '');
       this.user?.likeRecivido?.push(this.Yo._id + '');
 
-      this.authservicio.updateUser(this.Yo._id, this.Yo).subscribe(
-        () => {
-          //console.log('Like dado');
-          this.ngZone.run(() => this.router.navigateByUrl('/updateUser'));
-        },
-        (err) => {
-          // console.log(err);
-        }
-      );
+      this.actualizar(this.Yo._id + '', this.Yo);
 
+      //window.location.reload();
       console.log(this.user);
-      this.authservicio.updateUser(this.user._id, this.user).subscribe(
+      this.actualizar(this.user._id + '', this.user);
+
+      if (this.matchAhora == true) {
+        this.verPopUp();
+
+        //   var result = confirm( "Do you want to do this?" );
+        // if ( result ) {
+        //   this.matchAhora=false;
+        // } else {
+        //   this.matchAhora=false;
+        // }
+      }
+      if (this.matchAhora == false) {
+        this.router
+          .navigateByUrl('/card', { skipLocationChange: true })
+          .then(() => {
+            this.router.navigate(['/display']);
+          });
+      }
+    } else {
+    }
+  }
+
+  darDislike() {
+    if (this.UsuariosSinVer() == false) {
+      this.dislike.dislikes(this.user, this.Yo._id).subscribe(
         () => {
-          // console.log('holi');
-          this.ngZone.run(() => this.router.navigateByUrl('/updateUser'));
+          this.ngZone.run(() => this.router.navigateByUrl('/dislikes'));
         },
         (err) => {
           // console.log(err);
         }
       );
-
       this.router
         .navigateByUrl('/card', { skipLocationChange: true })
         .then(() => {
@@ -112,22 +130,6 @@ export class CardComponent implements OnInit {
         });
     } else {
     }
-  }
-
-  darDislike() {
-    this.dislike.dislikes(this.user, this.Yo._id).subscribe(
-      () => {
-        this.ngZone.run(() => this.router.navigateByUrl('/dislikes'));
-      },
-      (err) => {
-        // console.log(err);
-      }
-    );
-    this.router
-      .navigateByUrl('/card', { skipLocationChange: true })
-      .then(() => {
-        this.router.navigate(['/display']);
-      });
   }
 
   getAllUsers() {
@@ -203,24 +205,26 @@ export class CardComponent implements OnInit {
       this.Yo.likesDado?.length !== undefined &&
       this.Yo.likeRecivido?.length !== undefined
     ) {
-      for (let i = 0; i < this.Yo.likesDado?.length; i++) {
-        for (let j = 0; j < this.Yo.likeRecivido?.length; j++) {
-          if (this.Yo.likesDado[i] == this.Yo.likeRecivido[j]) {
-            let matchAnterior = false;
-            if (this.Yo.match?.length !== undefined) {
-              for (let k = 0; k < this.Yo.match?.length; k++) {
-                if (this.Yo.match[k] == this.Yo.likesDado[i]) {
-                  matchAnterior = true;
-                }
-              }
-            }
-            if (matchAnterior == false) {
-              this.Yo.match?.push(this.Yo.likesDado[i]);
-            }
-          }
+      for (let j = 0; j < this.Yo.likeRecivido?.length; j++) {
+        if (this.user?._id == this.Yo.likeRecivido[j]) {
+          this.Yo.match?.push(this.user?._id);
+          this.user.match?.push(this.Yo?._id + '');
+          this.matchAhora = true;
         }
       }
     }
+  }
+
+  actualizar(id: string, persona: UserInterface) {
+    this.authservicio.updateUser(id, persona).subscribe(
+      () => {
+        //console.log('Like dado');
+        this.ngZone.run(() => this.router.navigateByUrl('/updateUser'));
+      },
+      (err) => {
+        console.log(err);
+      }
+    );
   }
 
   verDetalles() {
@@ -237,12 +241,17 @@ export class CardComponent implements OnInit {
       this.VerIcons = false;
     }
   }
-  // verPopUp() {
-  //   if (this.VerPopUp == false) {
-  //     this.VerPopUp = true;
-
-  //   } else {
-  //     this.VerPopUp = false;
-  //   }
-  // }
+  verPopUp() {
+    if (this.VerPopUp == false) {
+      this.VerPopUp = true;
+    } else {
+      this.VerPopUp = false;
+      this.matchAhora = false;
+      this.router
+        .navigateByUrl('/card', { skipLocationChange: true })
+        .then(() => {
+          this.router.navigate(['/display']);
+        });
+    }
+  }
 }
